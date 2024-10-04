@@ -3,9 +3,10 @@ function getZodiacAndTraits(dob) {
     const date = new Date(dob);
     const month = date.getUTCMonth() + 1; // getUTCMonth() is zero-based
     const day = date.getUTCDate();
+    const year = date.getUTCFullYear();
 
     let zodiacSign = '';
-    let luckyNumber = Math.floor(Math.random() * 100) + 1; // Random lucky number between 1 and 100
+    let luckyNumber = calculateLuckyNumber(month, day, year); // Calculate lucky number
     let element = '';
     let signType = '';
     let planet = '';
@@ -89,9 +90,33 @@ function getZodiacAndTraits(dob) {
     return { zodiacSign, luckyNumber, element, signType, planet, traits };
 }
 
+// Function to calculate lucky number based on birth date
+function calculateLuckyNumber(month, day, year) {
+    const reducedMonth = month; // Month is already a single digit
+    const reducedDay = day.toString().split('').reduce((sum, num) => sum + parseInt(num), 0);
+    const reducedYear = year.toString().split('').reduce((sum, num) => sum + parseInt(num), 0);
+
+    // Calculate the total
+    let luckyNumber = reducedMonth + reducedDay + reducedYear;
+
+    // Reduce to a single digit if necessary
+    while (luckyNumber > 9) {
+        luckyNumber = luckyNumber.toString().split('').reduce((sum, num) => sum + parseInt(num), 0);
+    }
+
+    return luckyNumber;
+}
+
+// Enable button based on input
+document.getElementById('dob').addEventListener('input', function() {
+    const dob = this.value;
+    document.getElementById('find-sign').disabled = !dob; // Enable button if date is entered
+});
+
 // Handle button click
 document.getElementById('find-sign').addEventListener('click', function() {
     const dob = document.getElementById('dob').value;
+    
     if (dob) {
         const result = getZodiacAndTraits(dob);
         document.getElementById('zodiac-sign').textContent = result.zodiacSign;
@@ -109,6 +134,7 @@ document.getElementById('find-sign').addEventListener('click', function() {
             traitsList.appendChild(li);
         });
 
+        // Show results
         document.getElementById('results').classList.remove('hidden');
     } else {
         alert('Please enter your date of birth!');
