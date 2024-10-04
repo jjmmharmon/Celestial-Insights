@@ -4,30 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celestial Insights</title>
-    <link rel="stylesheet" href="fdstyles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Your CSS file -->
 </head>
 <body>
     <div class="container">
         <h1>Celestial Insights</h1>
-        <p>Discover your Zodiac sign and Lucky Number!</p>
+        <h2>Discover your Zodiac sign and Lucky Number!</h2>
+
         <label for="dob">Enter your Date of Birth:</label>
         <input type="date" id="dob" required>
-        <button id="find-sign">Find My Zodiac & Lucky Number</button>
-        
+        <button id="find-sign" disabled>Find My Zodiac & Lucky Number</button>
+
         <div id="results" class="hidden">
-            <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
+            <h3>Your Zodiac Sign: <span id="zodiac-sign"></span></h3>
             <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
-            <h4>Element: <span id="element"></span></h4>
-            <h4>Sign Type: <span id="sign-type"></span></h4>
-            <h4>Planet: <span id="planet"></span></h4>
-            <h4>Traits:</h4>
+            <h3>Element: <span id="element"></span></h3>
+            <h3>Sign Type: <span id="sign-type"></span></h3>
+            <h3>Planet: <span id="planet"></span></h3>
+            <h3>Traits:</h3>
             <ul id="traits"></ul>
         </div>
-        
-        <footer>
-            <p>© 2024 Celestial Insights. All rights reserved.</p>
-        </footer>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- Your JavaScript file -->
 </body>
 </html>
