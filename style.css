@@ -58,14 +58,6 @@ button:hover {
     background-color: #e0f7fa;
 }
 
-footer {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-}
-
 /* Responsive design */
 @media (max-width: 600px) {
     .container {
