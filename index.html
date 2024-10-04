@@ -3,62 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zodiac Profile - Celestial Insights</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Celestial Insights</title>
+    <link rel="stylesheet" href="fdstyles.css">
 </head>
 <body>
-    <div class="zodiac-container">
-        <div class="zodiac-header">
-            <h2>AQUARIUS</h2>
-            <p>Jan 21 - Feb 18</p>
+    <div class="container">
+        <h1>Celestial Insights</h1>
+        <p>Discover your Zodiac sign and Lucky Number!</p>
+        <label for="dob">Enter your Date of Birth:</label>
+        <input type="date" id="dob" required>
+        <button id="find-sign">Find My Zodiac & Lucky Number</button>
+        
+        <div id="results" class="hidden">
+            <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
+            <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
+            <h4>Element: <span id="element"></span></h4>
+            <h4>Sign Type: <span id="sign-type"></span></h4>
+            <h4>Planet: <span id="planet"></span></h4>
+            <h4>Traits:</h4>
+            <ul id="traits"></ul>
         </div>
-
-        <div class="zodiac-image">
-            <img src="aquarius-image.jpg" alt="Aquarius Image">
-        </div>
-
-        <div class="zodiac-info">
-            <div class="zodiac-box">
-                <h3>Symbol</h3>
-                <p>♒️</p>
-            </div>
-
-            <div class="zodiac-box">
-                <h3>Element</h3>
-                <p>Air</p>
-            </div>
-
-            <div class="zodiac-box">
-                <h3>Sign Type</h3>
-                <p>Masculine</p>
-            </div>
-
-            <div class="zodiac-box">
-                <h3>Planet</h3>
-                <p>
-                    <strong>Uranus Traits (Modern):</strong> Innovation, rebellion, change, progress.<br>
-                    <strong>Saturn Traits (Traditional):</strong> Discipline, structure, responsibility.
-                </p>
-            </div>
-
-            <div class="zodiac-box">
-                <h3>Constellation</h3>
-                <p>Aquarius</p>
-            </div>
-
-            <div class="zodiac-box">
-                <h3>Traits</h3>
-                <p>
-                    Female Aquarius: Unconventional, independent, humanitarian.<br>
-                    Male Aquarius: Visionary, intellectual, socially aware.
-                </p>
-            </div>
-
-            <div class="zodiac-box">
-                <h3>Most Compatibility</h3>
-                <p>Gemini, Libra, Sagittarius, Aries</p>
-            </div>
-        </div>
+        
+        <footer>
+            <p>© 2024 Celestial Insights. All rights reserved.</p>
+        </footer>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
