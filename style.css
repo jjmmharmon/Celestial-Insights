@@ -26,6 +26,11 @@ input[type="date"] {
     font-size: 1em;
 }
 
+input[type="date"]:focus {
+    border: 2px solid #4CAF50;
+    outline: none; /* Remove default outline */
+}
+
 button {
     padding: 10px 20px;
     font-size: 1em;
@@ -34,6 +39,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition */
 }
 
 button:hover {
@@ -47,11 +53,28 @@ button:hover {
 #results {
     margin-top: 20px;
     padding: 15px;
-    border: 1px solid #333;
+    border: 1px solid #4CAF50; /* Matching border color */
     border-radius: 10px;
     background-color: #e0f7fa;
 }
 
 footer {
     margin-top: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 2em; /* Slightly smaller heading */
+    }
+    button {
+        width: 100%; /* Full width button on small screens */
+    }
 }
