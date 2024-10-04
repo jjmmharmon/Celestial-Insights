@@ -5,97 +5,99 @@ function getZodiacAndTraits(dob) {
     const day = date.getUTCDate();
     const year = date.getUTCFullYear();
 
-    let zodiacSign = '';
-    let luckyNumber = calculateLuckyNumber(month, day, year); // Calculate lucky number
-    let element = '';
-    let signType = '';
-    let planet = '';
-    let traits = [];
-
-    // Zodiac signs data
-    const zodiacSigns = {
+    const zodiacData = {
         Aquarius: {
             dates: "January 20 – February 18",
             element: "Air",
             signType: "Masculine",
-            rulingPlanets: {
-                modern: "Uranus",
-                traditional: "Saturn"
-            },
-            planetTraits: {
-                Uranus: "Innovation, rebellion, change, progress.",
-                Saturn: "Discipline, structure, responsibility."
-            },
-            traits: {
-                female: "Unconventional, independent, humanitarian.",
-                male: "Visionary, intellectual, socially aware."
-            },
-            compatibility: {
-                bestMatches: ["Gemini", "Libra", "Sagittarius", "Aries"],
-                possibleMatches: ["Aquarius", "Leo"],
-                challengingMatches: ["Taurus", "Scorpio", "Capricorn", "Cancer", "Virgo"]
-            }
+            rulingPlanets: { modern: "Uranus", traditional: "Saturn" },
+            traits: { female: ["Unconventional", "Independent", "Humanitarian"], male: ["Visionary", "Intellectual", "Socially Aware"] }
         },
         Pisces: {
             dates: "February 19 – March 20",
             element: "Water",
             signType: "Feminine",
-            rulingPlanets: {
-                modern: "Neptune",
-                traditional: "Jupiter"
-            },
-            planetTraits: {
-                Neptune: "Imagination, spirituality, dreams, intuition.",
-                Jupiter: "Expansion, wisdom, optimism."
-            },
-            traits: {
-                female: "Compassionate, artistic, empathetic.",
-                male: "Gentle, imaginative, empathetic."
-            },
-            compatibility: {
-                bestMatches: ["Cancer", "Scorpio", "Taurus", "Capricorn"],
-                possibleMatches: ["Pisces", "Virgo"],
-                challengingMatches: ["Gemini", "Sagittarius", "Leo", "Aquarius"]
-            }
+            rulingPlanets: { modern: "Neptune", traditional: "Jupiter" },
+            traits: { female: ["Compassionate", "Artistic", "Empathetic"], male: ["Gentle", "Imaginative", "Empathetic"] }
         },
         Aries: {
             dates: "March 21 – April 19",
             element: "Fire",
             signType: "Masculine",
-            rulingPlanet: "Mars",
-            planetTraits: {
-                Mars: "Action, energy, assertiveness, courage, passion."
-            },
-            traits: {
-                female: "Bold, independent, energetic.",
-                male: "Assertive, competitive, passionate."
-            },
-            compatibility: {
-                bestMatches: ["Leo", "Sagittarius", "Gemini", "Aquarius"],
-                possibleMatches: ["Libra", "Taurus", "Scorpio"],
-                challengingMatches: ["Cancer", "Capricorn", "Virgo", "Pisces"]
-            }
+            rulingPlanets: { modern: "Mars" },
+            traits: { female: ["Bold", "Independent", "Energetic"], male: ["Assertive", "Competitive", "Passionate"] }
         },
-        // Add the rest of the zodiac signs similarly...
+        Taurus: {
+            dates: "April 20 – May 20",
+            element: "Earth",
+            signType: "Feminine",
+            rulingPlanets: { modern: "Venus" },
+            traits: { female: ["Patient", "Reliable", "Loyal"], male: ["Determined", "Practical", "Sensual"] }
+        },
+        Gemini: {
+            dates: "May 21 – June 20",
+            element: "Air",
+            signType: "Masculine",
+            rulingPlanets: { modern: "Mercury" },
+            traits: { female: ["Adaptable", "Intellectual", "Social"], male: ["Curious", "Versatile", "Witty"] }
+        },
+        Cancer: {
+            dates: "June 21 – July 22",
+            element: "Water",
+            signType: "Feminine",
+            rulingPlanets: { modern: "Moon" },
+            traits: { female: ["Nurturing", "Emotional", "Intuitive"], male: ["Protective", "Sentimental", "Caring"] }
+        },
+        Leo: {
+            dates: "July 23 – August 22",
+            element: "Fire",
+            signType: "Masculine",
+            rulingPlanets: { modern: "Sun" },
+            traits: { female: ["Confident", "Generous", "Dramatic"], male: ["Charismatic", "Ambitious", "Creative"] }
+        },
+        Virgo: {
+            dates: "August 23 – September 22",
+            element: "Earth",
+            signType: "Feminine",
+            rulingPlanets: { modern: "Mercury" },
+            traits: { female: ["Analytical", "Practical", "Detail-Oriented"], male: ["Reliable", "Modest", "Perfectionist"] }
+        },
+        Libra: {
+            dates: "September 23 – October 22",
+            element: "Air",
+            signType: "Masculine",
+            rulingPlanets: { modern: "Venus" },
+            traits: { female: ["Diplomatic", "Charming", "Idealistic"], male: ["Fair", "Balanced", "Sociable"] }
+        },
+        Scorpio: {
+            dates: "October 23 – November 21",
+            element: "Water",
+            signType: "Feminine",
+            rulingPlanets: { modern: "Pluto", traditional: "Mars" },
+            traits: { female: ["Mysterious", "Passionate", "Resourceful"], male: ["Intense", "Loyal", "Strategic"] }
+        },
+        Sagittarius: {
+            dates: "November 22 – December 21",
+            element: "Fire",
+            signType: "Masculine",
+            rulingPlanets: { modern: "Jupiter" },
+            traits: { female: ["Adventurous", "Optimistic", "Independent"], male: ["Philosophical", "Energetic", "Generous"] }
+        },
         Capricorn: {
             dates: "December 22 – January 19",
             element: "Earth",
             signType: "Feminine",
-            rulingPlanet: "Saturn",
-            planetTraits: {
-                Saturn: "Discipline, structure, responsibility, long-term goals."
-            },
-            traits: {
-                female: "Ambitious, disciplined, practical, goal-oriented.",
-                male: "Determined, strategic, responsible."
-            },
-            compatibility: {
-                bestMatches: ["Taurus", "Virgo", "Scorpio", "Pisces"],
-                possibleMatches: ["Capricorn", "Cancer"],
-                challengingMatches: ["Aries", "Libra", "Gemini", "Sagittarius"]
-            }
-        }
+            rulingPlanets: { modern: "Saturn" },
+            traits: { female: ["Ambitious", "Disciplined", "Practical"], male: ["Determined", "Strategic", "Responsible"] }
+        },
     };
+
+    let zodiacSign = '';
+    let luckyNumber = calculateLuckyNumber(month, day, year);
+    let element = '';
+    let signType = '';
+    let planet = '';
+    let traits = [];
 
     // Zodiac sign determination
     if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
@@ -124,14 +126,48 @@ function getZodiacAndTraits(dob) {
         zodiacSign = "Capricorn";
     }
 
-    // Retrieve traits and other information from the zodiacSigns object
     if (zodiacSign) {
-        const signData = zodiacSigns[zodiacSign];
+        const signData = zodiacData[zodiacSign];
         element = signData.element;
         signType = signData.signType;
-        planet = signData.rulingPlanets.modern; // Or use traditional if needed
-        traits = signData.traits.male; // Change to .female if you want traits for females
+        planet = signData.rulingPlanets.modern; // or traditional based on your preference
+        traits = signData.traits.male; // or female based on gender if applicable
     }
 
     return { zodiacSign, luckyNumber, element, signType, planet, traits };
 }
+
+// Lucky number calculation based on DOB
+function calculateLuckyNumber(month, day, year) {
+    const digits = (month + day + year).toString().split('');
+    const total = digits.reduce((acc, digit) => acc + Number(digit), 0);
+    return total % 9 === 0 ? 9 : total % 9; // Ensure lucky number is between 1-9
+}
+
+// Event listener for button click
+document.getElementById('find-sign').addEventListener('click', function () {
+    const dob = document.getElementById('dob').value;
+
+    if (dob) {
+        const result = getZodiacAndTraits(dob);
+        document.getElementById('zodiac-sign').textContent = result.zodiacSign;
+        document.getElementById('lucky-number').textContent = result.luckyNumber;
+        document.getElementById('element').textContent = result.element;
+        document.getElementById('sign-type').textContent = result.signType;
+        document.getElementById('planet').textContent = result.planet;
+
+        // Display traits
+        const traitsList = document.getElementById('traits');
+        traitsList.innerHTML = ''; // Clear previous traits
+        result.traits.forEach(trait => {
+            const li = document.createElement('li');
+            li.textContent = trait;
+            traitsList.appendChild(li);
+        });
+
+        // Show results
+        document.getElementById('results').classList.remove('hidden');
+    } else {
+        alert('Please enter your date of birth!');
+    }
+});
