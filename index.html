@@ -4,33 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celestial Insights</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Celestial Insights</h1>
-        <p>Discover your Zodiac sign and Lucky Number!</p>
-    </header>
+    <h1>Celestial Insights</h1>
+    <p>Discover your Zodiac sign and Lucky Number!</p>
 
-    <main>
-        <!-- Form to input date of birth -->
-        <div class="dob-input">
-            <label for="dob">Enter your Date of Birth:</label>
-            <input type="date" id="dob" name="dob">
-            <button id="submit-btn">Find My Zodiac & Lucky Number</button>
-        </div>
+    <label for="dob">Enter your Date of Birth: </label>
+    <input type="date" id="dob">
+    <button onclick="findZodiacAndLuckyNumber()">Find My Zodiac & Lucky Number</button>
 
-        <!-- Section to display the results -->
-        <div id="results" class="results">
-            <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
-            <h2>Your Lucky Number: <span id="lucky-number"></span></h2>
-        </div>
-    </main>
+    <h2>Your Zodiac Sign:</h2>
+    <p id="zodiac"></p>
+
+    <h2>Your Lucky Number:</h2>
+    <p id="lucky-number"></p>
 
     <footer>
-        <p>&copy; 2024 Celestial Insights. All rights reserved.</p>
+        <p>© 2024 Celestial Insights. All rights reserved.</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
