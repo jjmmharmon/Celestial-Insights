@@ -1,24 +1,30 @@
-document.getElementById("submit-btn").addEventListener("click", function() {
-    // Get the input value (Date of Birth)
-    const dob = document.getElementById("dob").value;
-    
-    if (dob) {
-        const zodiacSign = getZodiacSign(new Date(dob));
-        const luckyNumber = getLuckyNumber(new Date(dob));
+function findZodiacAndLuckyNumber() {
+    // Get the user's date of birth from the input field
+    const dob = document.getElementById('dob').value;
 
-        // Display the zodiac sign and lucky number
-        document.getElementById("zodiac-sign").innerText = zodiacSign;
-        document.getElementById("lucky-number").innerText = luckyNumber;
-    } else {
-        alert("Please enter your date of birth!");
+    // Check if the date of birth is entered
+    if (!dob) {
+        alert("Please enter your date of birth.");
+        return;
     }
-});
 
-// Function to get Zodiac Sign based on date of birth
-function getZodiacSign(date) {
-    const month = date.getMonth() + 1; // JS months are 0-indexed
-    const day = date.getDate();
+    // Convert the date of birth into a Date object
+    const birthDate = new Date(dob);
+    const day = birthDate.getDate();
+    const month = birthDate.getMonth() + 1; // Months are zero-based
 
+    // Function to find the zodiac sign
+    const zodiac = getZodiacSign(day, month);
+    
+    // Function to calculate the lucky number
+    const luckyNumber = getLuckyNumber(birthDate);
+
+    // Update the HTML content
+    document.getElementById('zodiac').textContent = zodiac;
+    document.getElementById('lucky-number').textContent = luckyNumber;
+}
+
+function getZodiacSign(day, month) {
     if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return "Aquarius";
     if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return "Pisces";
     if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return "Aries";
@@ -33,15 +39,17 @@ function getZodiacSign(date) {
     if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return "Capricorn";
 }
 
-// Function to calculate a "lucky number" based on the date of birth
-function getLuckyNumber(date) {
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
+function getLuckyNumber(birthDate) {
+    const digits = birthDate.getFullYear().toString().split('').concat(
+        birthDate.getMonth() + 1, birthDate.getDate());
 
-    // Add up the digits of the day, month, and year
-    const sum = day + month + year;
+    const sum = digits.reduce((acc, curr) => acc + parseInt(curr), 0);
 
-    // Return a single-digit lucky number
-    return sum.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+    // Reduce the sum to a single digit (if needed)
+    let luckyNumber = sum;
+    while (luckyNumber > 9) {
+        luckyNumber = luckyNumber.toString().split('').reduce((acc, curr) => acc + parseInt(curr), 0);
+    }
+
+    return luckyNumber;
 }
