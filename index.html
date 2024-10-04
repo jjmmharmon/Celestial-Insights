@@ -25,6 +25,136 @@
             <ul id="traits"></ul>
         </div>
     </div>
-    <script src="script.js"></script> <!-- Your JavaScript file -->
+    <script>
+        // Function to determine Zodiac sign and traits
+        function getZodiacAndTraits(dob) {
+            const date = new Date(dob);
+            const month = date.getUTCMonth() + 1; // getUTCMonth() is zero-based
+            const day = date.getUTCDate();
+            const year = date.getUTCFullYear();
+
+            const zodiacData = {
+                Aquarius: {
+                    dates: "January 20 – February 18",
+                    element: "Air",
+                    signType: "Masculine",
+                    rulingPlanets: {
+                        modern: "Uranus",
+                        traditional: "Saturn"
+                    },
+                    planetTraits: {
+                        Uranus: "Innovation, rebellion, change, progress.",
+                        Saturn: "Discipline, structure, responsibility."
+                    },
+                    traits: {
+                        female: "Unconventional, independent, humanitarian.",
+                        male: "Visionary, intellectual, socially aware."
+                    },
+                    compatibility: {
+                        bestMatches: ["Gemini", "Libra", "Sagittarius", "Aries"],
+                        possibleMatches: ["Aquarius", "Leo"],
+                        challengingMatches: ["Taurus", "Scorpio", "Capricorn", "Cancer", "Virgo"]
+                    }
+                },
+                // Include other zodiac signs similarly
+                Capricorn: {
+                    dates: "December 22 – January 19",
+                    element: "Earth",
+                    signType: "Feminine",
+                    rulingPlanet: "Saturn",
+                    planetTraits: {
+                        Saturn: "Discipline, structure, responsibility, long-term goals."
+                    },
+                    traits: {
+                        female: "Ambitious, disciplined, practical, goal-oriented.",
+                        male: "Determined, strategic, responsible."
+                    },
+                    compatibility: {
+                        bestMatches: ["Taurus", "Virgo", "Scorpio", "Pisces"],
+                        possibleMatches: ["Capricorn", "Cancer"],
+                        challengingMatches: ["Aries", "Libra", "Gemini", "Sagittarius"]
+                    }
+                },
+                // Add all other zodiac signs here...
+            };
+
+            let zodiacSign = '';
+            let luckyNumber = calculateLuckyNumber(month, day, year); // Calculate lucky number
+            let element = '';
+            let signType = '';
+            let planet = '';
+            let traits = [];
+
+            // Zodiac sign determination
+            for (const sign in zodiacData) {
+                const dates = zodiacData[sign].dates.split(" – ");
+                const startDate = new Date(year, new Date(dates[0]).getUTCMonth(), parseInt(dates[0].split(" ")[1]));
+                const endDate = new Date(year, new Date(dates[1]).getUTCMonth(), parseInt(dates[1].split(" ")[1]));
+
+                if ((month === startDate.getUTCMonth() + 1 && day >= startDate.getUTCDate()) || 
+                    (month === endDate.getUTCMonth() + 1 && day <= endDate.getUTCDate())) {
+                    zodiacSign = sign;
+                    element = zodiacData[sign].element;
+                    signType = zodiacData[sign].signType;
+                    planet = zodiacData[sign].rulingPlanets.modern; // or traditional if needed
+                    traits = zodiacData[sign].traits.male; // Choose 'female' or 'male' based on context
+                    break;
+                }
+            }
+
+            return { zodiacSign, luckyNumber, element, signType, planet, traits };
+        }
+
+        // Function to calculate lucky number based on birth date
+        function calculateLuckyNumber(month, day, year) {
+            const reducedMonth = month; // Month is already a single digit
+            const reducedDay = day.toString().split('').reduce((sum, num) => sum + parseInt(num), 0);
+            const reducedYear = year.toString().split('').reduce((sum, num) => sum + parseInt(num), 0);
+
+            // Calculate the total
+            let luckyNumber = reducedMonth + reducedDay + reducedYear;
+
+            // Reduce to a single digit if necessary
+            while (luckyNumber > 9) {
+                luckyNumber = luckyNumber.toString().split('').reduce((sum, num) => sum + parseInt(num), 0);
+            }
+
+            return luckyNumber;
+        }
+
+        // Enable button based on input
+        document.getElementById('dob').addEventListener('input', function() {
+            const dob = this.value;
+            document.getElementById('find-sign').disabled = !dob; // Enable button if date is entered
+        });
+
+        // Handle button click
+        document.getElementById('find-sign').addEventListener('click', function() {
+            const dob = document.getElementById('dob').value;
+            
+            if (dob) {
+                const result = getZodiacAndTraits(dob);
+                document.getElementById('zodiac-sign').textContent = result.zodiacSign;
+                document.getElementById('lucky-number').textContent = result.luckyNumber;
+                document.getElementById('element').textContent = result.element;
+                document.getElementById('sign-type').textContent = result.signType;
+                document.getElementById('planet').textContent = result.planet;
+
+                // Display traits
+                const traitsList = document.getElementById('traits');
+                traitsList.innerHTML = ''; // Clear previous traits
+                result.traits.forEach(trait => {
+                    const li = document.createElement('li');
+                    li.textContent = trait;
+                    traitsList.appendChild(li);
+                });
+
+                // Show results
+                document.getElementById('results').classList.remove('hidden');
+            } else {
+                alert('Please enter your date of birth!');
+            }
+        });
+    </script> <!-- Your JavaScript file -->
 </body>
 </html>
