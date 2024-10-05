@@ -52,6 +52,10 @@ button:hover {
     background-color: #45a049;
 }
 
+button:focus {
+    outline: 2px solid #4CAF50; /* Add focus outline */
+}
+
 .hidden {
     display: none;
 }
@@ -62,6 +66,18 @@ button:hover {
     border: 1px solid #4CAF50; /* Matching border color */
     border-radius: 10px;
     background-color: #e0f7fa;
+}
+
+ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove default padding */
+}
+
+ul li {
+    background-color: rgba(255, 255, 255, 0.5); /* Add a light background */
+    margin: 5px 0; /* Space between list items */
+    padding: 10px; /* Add some padding */
+    border-radius: 5px; /* Round corners */
 }
 
 /* Responsive design */
