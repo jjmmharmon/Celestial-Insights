@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Air",
                 signType: "Masculine",
                 rulingPlanets: { modern: "Uranus", traditional: "Saturn" },
+                planetTraits: { 
+                    Pluto: ["Transformation", "Power", "Intensity", "Depth"], 
+                    Saturn: ["Discipline", "Structure", "Responsibility"] 
+                },
+                planetImpact: "Uranus gives Aquarius its forward-thinking mindset, while Saturn adds discipline and responsibility.",
                 traits: { female: ["Unconventional", "Independent", "Humanitarian"], male: ["Visionary", "Intellectual", "Socially Aware"] }
             },
             Pisces: {
@@ -19,6 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Water",
                 signType: "Feminine",
                 rulingPlanets: { modern: "Neptune", traditional: "Jupiter" },
+                planetTraits:{
+                    Neptune: ["Imagination", "Spirituality", "Dreams", "Intuition"],
+                    Jupiter: ["Expansion", "Wisdom", "Optimism"] // Fixed spelling error
+                },
+                planetImpact: "Neptune fuels Pisces' imagination and spirituality, while Jupiter brings optimism and philosophical thinking.",
                 traits: { female: ["Compassionate", "Artistic", "Empathetic"], male: ["Gentle", "Imaginative", "Empathetic"] }
             },
             Aries: {
@@ -26,6 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Fire",
                 signType: "Masculine",
                 rulingPlanets: { modern: "Mars" },
+                planetTraits:{
+                    Mars: ["Action", "Energy", "Assertiveness", "Courage", "Passion"]
+                },
+                planetImpact: "Mars gives Aries its boldness, competitiveness, and adventurous nature.",
                 traits: { female: ["Bold", "Independent", "Energetic"], male: ["Assertive", "Competitive", "Passionate"] }
             },
             Taurus: {
@@ -33,6 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Earth",
                 signType: "Feminine",
                 rulingPlanets: { modern: "Venus" },
+                planetTraits:{
+                    Venus: ["Love", "Beauty", "Harmony", "Material Wealth", "Comfort"]
+                },
+                planetImpact: "Venus brings sensuality, stability, and a love for comfort and nature.",
                 traits: { female: ["Patient", "Reliable", "Loyal"], male: ["Determined", "Practical", "Sensual"] }
             },
             Gemini: {
@@ -40,6 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Air",
                 signType: "Masculine",
                 rulingPlanets: { modern: "Mercury" },
+                planetTraits:{
+                    Mercury: ["Communication", "Intellect", "Adaptability", "Quick Thinking"]
+                },
+                planetImpact: "Mercury fuels Gemini's sharp intellect, wit, and social adaptability.",
                 traits: { female: ["Adaptable", "Intellectual", "Social"], male: ["Curious", "Versatile", "Witty"] }
             },
             Cancer: {
@@ -47,6 +69,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Water",
                 signType: "Feminine",
                 rulingPlanets: { modern: "Moon" },
+                planetTraits:{
+                    Moon: ["Emotions", "Intuition", "Deep Emotional Connections"]
+                },
+                planetImpact: "The Moon governs Cancer's emotional sensitivity, nurturing nature, and strong intuition.",
                 traits: { female: ["Nurturing", "Emotional", "Intuitive"], male: ["Protective", "Sentimental", "Caring"] }
             },
             Leo: {
@@ -54,6 +80,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Fire",
                 signType: "Masculine",
                 rulingPlanets: { modern: "Sun" },
+                planetTraits:{
+                    Sun: ["Vitality", "Leadership", "Creativity", "Confidence"]
+                },
+                planetImpact: "The Sun fuels Leo's charisma, self-confidence, and desire to lead.",
                 traits: { female: ["Confident", "Generous", "Dramatic"], male: ["Charismatic", "Ambitious", "Creative"] }
             },
             Virgo: {
@@ -61,6 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Earth",
                 signType: "Feminine",
                 rulingPlanets: { modern: "Mercury" },
+                planetTraits:{
+                    Mercury: ["Logic", "Communication", "Intellect", "Organization"]
+                },
+                planetImpact: "Mercury sharpens Virgo's analytical and detail-oriented mindset.",
                 traits: { female: ["Analytical", "Practical", "Detail-Oriented"], male: ["Reliable", "Modest", "Perfectionist"] }
             },
             Libra: {
@@ -68,6 +102,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Air",
                 signType: "Masculine",
                 rulingPlanets: { modern: "Venus" },
+                planetTraits:{
+                    Venus: ["Harmony", "Love", "Beauty", "Balance", "Diplomacy"]
+                },
+                planetImpact: "Venus gives Libra its love for balance, fairness, and harmonious relationships.",
                 traits: { female: ["Diplomatic", "Charming", "Idealistic"], male: ["Fair", "Balanced", "Sociable"] }
             },
             Scorpio: {
@@ -75,6 +113,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Water",
                 signType: "Feminine",
                 rulingPlanets: { modern: "Pluto", traditional: "Mars" },
+                planetTraits:{
+                    Pluto: ["Transformation", "Power", "Intensity", "Depth"],
+                    Mars: ["Passion", "Action", "Drive", "Assertiveness"]
+                },
+                planetImpact: "Pluto gives Scorpio depth and intensity, while Mars adds passion and determination.",
                 traits: { female: ["Mysterious", "Passionate", "Resourceful"], male: ["Intense", "Loyal", "Strategic"] }
             },
             Sagittarius: {
@@ -82,6 +125,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Fire",
                 signType: "Masculine",
                 rulingPlanets: { modern: "Jupiter" },
+                planetTraits:{
+                    Jupiter: ["Expansion", "Optimism", "Growth", "Wisdom"]
+                },
+                planetImpact: "Jupiter inspires Sagittarius' love for adventure, optimism, and philosophical thinking.",
                 traits: { female: ["Adventurous", "Optimistic", "Independent"], male: ["Philosophical", "Energetic", "Generous"] }
             },
             Capricorn: {
@@ -89,6 +136,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Earth",
                 signType: "Feminine",
                 rulingPlanets: { modern: "Saturn" },
+                planetTraits:{
+                    Saturn: ["Discipline", "Structure", "Responsibility", "Long-Term Goals"] // Fixed spelling error
+                },
+                planetImpact: "Saturn's influence makes Capricorn disciplined, goal-oriented, and practical.",
                 traits: { female: ["Ambitious", "Disciplined", "Practical"], male: ["Determined", "Strategic", "Responsible"] }
             },
         };
@@ -98,6 +149,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let element = '';
         let signType = '';
         let planet = '';
+        let planetTraits = [];
+        let planetImpact = "";
         let traits = [];
 
         // Zodiac sign determination
