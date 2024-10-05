@@ -144,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
         };
 
+    
         let zodiacSign = '';
         let luckyNumber = calculateLuckyNumber(month, day, year);
         let element = '';
@@ -180,15 +181,19 @@ document.addEventListener("DOMContentLoaded", function () {
             zodiacSign = "Capricorn";
         }
 
-        if (zodiacSign) {
+      // Inside the getZodiacAndTraits function after determining the zodiac sign:
+ if (zodiacSign) {
             const signData = zodiacData[zodiacSign];
             element = signData.element;
             signType = signData.signType;
             planet = signData.rulingPlanets.modern; // or traditional based on your preference
             traits = signData.traits.male; // or female based on gender if applicable
+            planetTraits = Object.values(signData.planetTraits).flat(); // Collect all planet traits
+            planetImpact = signData.planetImpact; // Collect planet impact
         }
 
-        return { zodiacSign, luckyNumber, element, signType, planet, traits };
+        // Return object should also include planetTraits and planetImpact
+        return { zodiacSign, luckyNumber, element, signType, planet, traits, planetTraits, planetImpact };
     }
 
     // Lucky number calculation based on DOB
@@ -218,6 +223,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 li.textContent = trait;
                 traitsList.appendChild(li);
             });
+
+            // Display planet traits
+            const planetTraitsList = document.getElementById('planet-traits');
+            planetTraitsList.innerHTML = ''; // Clear previous planet traits
+            result.planetTraits.forEach(trait => {
+                const li = document.createElement('li');
+                li.textContent = trait;
+                planetTraitsList.appendChild(li);
+            });
+
+            // Set planet impact text
+            document.getElementById('planet-impact').textContent = result.planetImpact;
 
             // Show results
             document.getElementById('results').classList.remove('hidden');
