@@ -1,8 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
     color: #333;
     text-align: center;
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Set height to full viewport */
+    background-image: url('background.jpg'); /* Use your image file name */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+    filter: brightness(0.8); /* Optionally darken the background image */
 }
 
 .container {
@@ -11,7 +17,7 @@ body {
     padding: 20px;
     border: 2px solid #333;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8); /* Add slight transparency */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
