@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "January 20 – February 18",
                 element: "Air",
                 signType: "Masculine",
-                rulingPlanets: { modern: "Uranus", traditional: "Saturn" },
+                rulingPlanets: { modern: "Modern: Uranus, Traditional Saturn"},
                 planetTraits: { 
-                    Pluto: ["Transformation", "Power", "Intensity", "Depth"], 
-                    Saturn: ["Discipline", "Structure", "Responsibility"] 
+                    Pluto: ["Pluto: Transformation", "Power", "Intensity", "Depth"], 
+                    Saturn: ["Saturn: Discipline", "Structure", "Responsibility"] 
                 },
                 planetImpact: "Uranus gives Aquarius its forward-thinking mindset, while Saturn adds discipline and responsibility.",
                 traits: { female: ["Unconventional", "Independent", "Humanitarian"], male: ["Visionary", "Intellectual", "Socially Aware"] }
@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "February 19 – March 20",
                 element: "Water",
                 signType: "Feminine",
-                rulingPlanets: { modern: "Neptune", traditional: "Jupiter" },
+                rulingPlanets: { modern: "Modern: Neptune, Traditional: Jupiter"},
                 planetTraits:{
-                    Neptune: ["Imagination", "Spirituality", "Dreams", "Intuition"],
-                    Jupiter: ["Expansion", "Wisdom", "Optimism"] // Fixed spelling error
+                    Neptune: ["Neptune: Imagination", "Spirituality", "Dreams", "Intuition"],
+                    Jupiter: ["Jupiter: Expansion", "Wisdom", "Optimism"] 
                 },
                 planetImpact: "Neptune fuels Pisces' imagination and spirituality, while Jupiter brings optimism and philosophical thinking.",
                 traits: { female: ["Compassionate", "Artistic", "Empathetic"], male: ["Gentle", "Imaginative", "Empathetic"] }
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "March 21 – April 19",
                 element: "Fire",
                 signType: "Masculine",
-                rulingPlanets: { modern: "Mars" },
+                rulingPlanets: { "Modern: Mars" },
                 planetTraits:{
                     Mars: ["Action", "Energy", "Assertiveness", "Courage", "Passion"]
                 },
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "April 20 – May 20",
                 element: "Earth",
                 signType: "Feminine",
-                rulingPlanets: { modern: "Venus" },
+                rulingPlanets: {"Modern: Venus" },
                 planetTraits:{
                     Venus: ["Love", "Beauty", "Harmony", "Material Wealth", "Comfort"]
                 },
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "May 21 – June 20",
                 element: "Air",
                 signType: "Masculine",
-                rulingPlanets: { modern: "Mercury" },
+                rulingPlanets: {"Modern: Mercury" },
                 planetTraits:{
                     Mercury: ["Communication", "Intellect", "Adaptability", "Quick Thinking"]
                 },
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "June 21 – July 22",
                 element: "Water",
                 signType: "Feminine",
-                rulingPlanets: { modern: "Moon" },
+                rulingPlanets: { "Mdern: Moon" },
                 planetTraits:{
                     Moon: ["Emotions", "Intuition", "Deep Emotional Connections"]
                 },
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "July 23 – August 22",
                 element: "Fire",
                 signType: "Masculine",
-                rulingPlanets: { modern: "Sun" },
+                rulingPlanets: { "Modern: Sun" },
                 planetTraits:{
                     Sun: ["Vitality", "Leadership", "Creativity", "Confidence"]
                 },
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "August 23 – September 22",
                 element: "Earth",
                 signType: "Feminine",
-                rulingPlanets: { modern: "Mercury" },
+                rulingPlanets: { "Modern: Mercury" },
                 planetTraits:{
                     Mercury: ["Logic", "Communication", "Intellect", "Organization"]
                 },
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "September 23 – October 22",
                 element: "Air",
                 signType: "Masculine",
-                rulingPlanets: { modern: "Venus" },
+                rulingPlanets: { "Modern: Venus" },
                 planetTraits:{
                     Venus: ["Harmony", "Love", "Beauty", "Balance", "Diplomacy"]
                 },
@@ -112,10 +112,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "October 23 – November 21",
                 element: "Water",
                 signType: "Feminine",
-                rulingPlanets: { modern: "Pluto", traditional: "Mars" },
+                rulingPlanets: { "Modern: Pluto, Traditional: Mars" },
                 planetTraits:{
-                    Pluto: ["Transformation", "Power", "Intensity", "Depth"],
-                    Mars: ["Passion", "Action", "Drive", "Assertiveness"]
+                    Pluto: ["Pluto: Transformation", "Power", "Intensity", "Depth"],
+                    Mars: ["Mars: Passion", "Action", "Drive", "Assertiveness"]
                 },
                 planetImpact: "Pluto gives Scorpio depth and intensity, while Mars adds passion and determination.",
                 traits: { female: ["Mysterious", "Passionate", "Resourceful"], male: ["Intense", "Loyal", "Strategic"] }
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "November 22 – December 21",
                 element: "Fire",
                 signType: "Masculine",
-                rulingPlanets: { modern: "Jupiter" },
+                rulingPlanets: { "Modern: Jupiter" },
                 planetTraits:{
                     Jupiter: ["Expansion", "Optimism", "Growth", "Wisdom"]
                 },
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "December 22 – January 19",
                 element: "Earth",
                 signType: "Feminine",
-                rulingPlanets: { modern: "Saturn" },
+                rulingPlanets: { "Modern: Saturn" },
                 planetTraits:{
                     Saturn: ["Discipline", "Structure", "Responsibility", "Long-Term Goals"] // Fixed spelling error
                 },
