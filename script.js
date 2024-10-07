@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 signType: "Masculine",
                 rulingPlanets: { modern: "Uranus", traditional: "Saturn" },
                 planetTraits: { 
-                    Uranus: ["Transformation", "Innovation", "Rebellion", "Vision"],
-                    Saturn: ["Discipline", "Structure", "Responsibility"]
+                    Uranus: ["Transformation", "Rebellion", "Innovation"], 
+                    Saturn: ["Discipline", "Structure", "Responsibility"] 
                 },
                 planetImpact: "Uranus gives Aquarius its forward-thinking mindset, while Saturn adds discipline and responsibility.",
                 traits: { female: ["Unconventional", "Independent", "Humanitarian"], male: ["Visionary", "Intellectual", "Socially Aware"] }
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 rulingPlanets: { modern: "Neptune", traditional: "Jupiter" },
                 planetTraits: {
                     Neptune: ["Imagination", "Spirituality", "Dreams", "Intuition"],
-                    Jupiter: ["Expansion", "Wisdom", "Optimism"]
+                    Jupiter: ["Expansion", "Wisdom", "Optimism"] 
                 },
                 planetImpact: "Neptune fuels Pisces' imagination and spirituality, while Jupiter brings optimism and philosophical thinking.",
                 traits: { female: ["Compassionate", "Artistic", "Empathetic"], male: ["Gentle", "Imaginative", "Empathetic"] }
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Fire",
                 signType: "Masculine",
                 rulingPlanets: { modern: "Mars", traditional: "Mars" },
-                planetTraits: {
+                planetTraits:{
                     Mars: ["Action", "Energy", "Assertiveness", "Courage", "Passion"]
                 },
                 planetImpact: "Mars gives Aries its boldness, competitiveness, and adventurous nature.",
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Earth",
                 signType: "Feminine",
                 rulingPlanets: { modern: "Venus", traditional: "Venus" },
-                planetTraits: {
+                planetTraits:{
                     Venus: ["Love", "Beauty", "Harmony", "Material Wealth", "Comfort"]
                 },
                 planetImpact: "Venus brings sensuality, stability, and a love for comfort and nature.",
@@ -58,90 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 element: "Air",
                 signType: "Masculine",
                 rulingPlanets: { modern: "Mercury", traditional: "Mercury" },
-                planetTraits: {
+                planetTraits:{
                     Mercury: ["Communication", "Intellect", "Adaptability", "Quick Thinking"]
                 },
                 planetImpact: "Mercury fuels Gemini's sharp intellect, wit, and social adaptability.",
                 traits: { female: ["Adaptable", "Intellectual", "Social"], male: ["Curious", "Versatile", "Witty"] }
             },
-            Cancer: {
-                dates: "June 21 – July 22",
-                element: "Water",
-                signType: "Feminine",
-                rulingPlanets: { modern: "Moon", traditional: "Moon" },
-                planetTraits: {
-                    Moon: ["Emotions", "Intuition", "Deep Emotional Connections"]
-                },
-                planetImpact: "The Moon governs Cancer's emotional sensitivity, nurturing nature, and strong intuition.",
-                traits: { female: ["Nurturing", "Emotional", "Intuitive"], male: ["Protective", "Sentimental", "Caring"] }
-            },
-            Leo: {
-                dates: "July 23 – August 22",
-                element: "Fire",
-                signType: "Masculine",
-                rulingPlanets: { modern: "Sun", traditional: "Sun" },
-                planetTraits: {
-                    Sun: ["Vitality", "Leadership", "Creativity", "Confidence"]
-                },
-                planetImpact: "The Sun fuels Leo's charisma, self-confidence, and desire to lead.",
-                traits: { female: ["Confident", "Generous", "Dramatic"], male: ["Charismatic", "Ambitious", "Creative"] }
-            },
-            Virgo: {
-                dates: "August 23 – September 22",
-                element: "Earth",
-                signType: "Feminine",
-                rulingPlanets: { modern: "Mercury", traditional: "Mercury" },
-                planetTraits: {
-                    Mercury: ["Logic", "Communication", "Intellect", "Organization"]
-                },
-                planetImpact: "Mercury sharpens Virgo's analytical and detail-oriented mindset.",
-                traits: { female: ["Analytical", "Practical", "Detail-Oriented"], male: ["Reliable", "Modest", "Perfectionist"] }
-            },
-            Libra: {
-                dates: "September 23 – October 22",
-                element: "Air",
-                signType: "Masculine",
-                rulingPlanets: { modern: "Venus", traditional: "Venus" },
-                planetTraits: {
-                    Venus: ["Harmony", "Love", "Beauty", "Balance", "Diplomacy"]
-                },
-                planetImpact: "Venus gives Libra its love for balance, fairness, and harmonious relationships.",
-                traits: { female: ["Diplomatic", "Charming", "Idealistic"], male: ["Fair", "Balanced", "Sociable"] }
-            },
-            Scorpio: {
-                dates: "October 23 – November 21",
-                element: "Water",
-                signType: "Feminine",
-                rulingPlanets: { modern: "Pluto", traditional: "Mars" },
-                planetTraits: {
-                    Pluto: ["Transformation", "Power", "Intensity", "Depth"],
-                    Mars: ["Passion", "Action", "Drive", "Assertiveness"]
-                },
-                planetImpact: "Pluto gives Scorpio depth and intensity, while Mars adds passion and determination.",
-                traits: { female: ["Mysterious", "Passionate", "Resourceful"], male: ["Intense", "Loyal", "Strategic"] }
-            },
-            Sagittarius: {
-                dates: "November 22 – December 21",
-                element: "Fire",
-                signType: "Masculine",
-                rulingPlanets: { modern: "Jupiter", traditional: "Jupiter" },
-                planetTraits: {
-                    Jupiter: ["Expansion", "Optimism", "Growth", "Wisdom"]
-                },
-                planetImpact: "Jupiter inspires Sagittarius' love for adventure, optimism, and philosophical thinking.",
-                traits: { female: ["Adventurous", "Optimistic", "Independent"], male: ["Philosophical", "Energetic", "Generous"] }
-            },
-            Capricorn: {
-                dates: "December 22 – January 19",
-                element: "Earth",
-                signType: "Feminine",
-                rulingPlanets: { modern: "Saturn", traditional: "Saturn" },
-                planetTraits: {
-                    Saturn: ["Discipline", "Structure", "Responsibility", "Long-Term Goals"]
-                },
-                planetImpact: "Saturn's influence makes Capricorn disciplined, goal-oriented, and practical.",
-                traits: { female: ["Ambitious", "Disciplined", "Practical"], male: ["Determined", "Strategic", "Responsible"] }
-            }
+            // Add other zodiac signs here
         };
 
         let zodiacSign = '';
@@ -154,12 +77,14 @@ document.addEventListener("DOMContentLoaded", function () {
         let planetImpact = "";
         let traits = [];
 
-        // Zodiac sign determination
-        if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+         let zodiacSign = "";
+        let luckyNumber = Math.floor(Math.random() * 100) + 1; // Generate random lucky number between 1 and 100
+      if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
             zodiacSign = "Aquarius";
         } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
             zodiacSign = "Pisces";
-        } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+        }
+        else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
             zodiacSign = "Aries";
         } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
             zodiacSign = "Taurus";
@@ -179,85 +104,74 @@ document.addEventListener("DOMContentLoaded", function () {
             zodiacSign = "Sagittarius";
         } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
             zodiacSign = "Capricorn";
-        }
 
+        // Fetch zodiac traits and planets
         if (zodiacSign) {
-            const zodiacInfo = zodiacData[zodiacSign];
-            element = zodiacInfo.element;
-            signType = zodiacInfo.signType;
-            modernPlanet = zodiacInfo.rulingPlanets.modern;
-            traditionalPlanet = zodiacInfo.rulingPlanets.traditional;
-            planetTraits = zodiacInfo.planetTraits;
-            planetImpact = zodiacInfo.planetImpact;
-            traits = zodiacInfo.traits;
+            const signData = zodiacData[zodiacSign];
+            element = signData.element;
+            signType = signData.signType;
+            modernPlanet = signData.rulingPlanets.modern;
+            traditionalPlanet = signData.rulingPlanets.traditional;
+            planetTraits = signData.planetTraits;
+            planetImpact = signData.planetImpact;
+            traits = signData.traits.male; // Or female, based on preference
         }
 
-        return {
-            zodiacSign,
-            luckyNumber,
-            element,
-            signType,
-            modernPlanet,
-            traditionalPlanet,
-            planetTraits,
-            planetImpact,
-            traits
-        };
+        // Return all data
+        return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
     }
 
-    // Function to calculate lucky number
+    // Lucky number calculation based on DOB
     function calculateLuckyNumber(month, day, year) {
-        const sum = month + day + year;
-        return sum % 9 === 0 ? 9 : sum % 9;
+        const digits = (month + day + year).toString().split('');
+        const total = digits.reduce((acc, digit) => acc + Number(digit), 0);
+        return total % 9 === 0 ? 9 : total % 9; // Ensure lucky number is between 1-9
     }
 
-    // Event Listener for 'Find My Zodiac & Lucky Number' button
-    document.getElementById("find-sign").addEventListener("click", function () {
-        const dob = document.getElementById("dob").value;
+    // Event listener for button click
+    document.getElementById('find-sign').addEventListener('click', function () {
+        const dob = document.getElementById('dob').value;
 
         if (dob) {
             const result = getZodiacAndTraits(dob);
+            document.getElementById('zodiac-sign').textContent = result.zodiacSign;
+            document.getElementById('lucky-number').textContent = result.luckyNumber;
+            document.getElementById('element').textContent = result.element;
+            document.getElementById('sign-type').textContent = result.signType;
+            document.getElementById('modern-planet').textContent = result.modernPlanet;
+            document.getElementById('traditional-planet').textContent = result.traditionalPlanet;
 
-            // Display results
-            document.getElementById("zodiac-sign").innerText = result.zodiacSign;
-            document.getElementById("lucky-number").innerText = result.luckyNumber;
-            document.getElementById("element").innerText = result.element;
-            document.getElementById("sign-type").innerText = result.signType;
-            document.getElementById("modern-planet").innerText = result.modernPlanet;
-            document.getElementById("traditional-planet").innerText = result.traditionalPlanet;
-            
-            // Populate planet traits
-            const planetTraitsDiv = document.getElementById("planet-traits");
-            planetTraitsDiv.innerHTML = ''; // Clear previous results
-            for (const [planet, traits] of Object.entries(result.planetTraits)) {
-                const planetHeader = document.createElement("h4");
-                planetHeader.innerText = `${planet} Traits:`;
-                planetTraitsDiv.appendChild(planetHeader);
+            // Display planet traits grouped by planet
+            const planetTraitsDiv = document.getElementById('planet-traits');
+            planetTraitsDiv.innerHTML = ''; // Clear previous traits
 
-                const traitsList = document.createElement("ul");
-                traits.forEach(trait => {
-                    const listItem = document.createElement("li");
-                    listItem.innerText = trait;
-                    traitsList.appendChild(listItem);
+            Object.keys(result.planetTraits).forEach(planet => {
+                const planetName = document.createElement('h4');
+                planetName.textContent = planet + ":";
+                planetTraitsDiv.appendChild(planetName);
+
+                result.planetTraits[planet].forEach(trait => {
+                    const li = document.createElement('li');
+                    li.textContent = trait;
+                    planetTraitsDiv.appendChild(li);
                 });
-
-                planetTraitsDiv.appendChild(traitsList);
-            }
-
-            document.getElementById("planet-impact").innerText = result.planetImpact;
-
-            // Populate gender-specific traits (assuming the user is male)
-            const traitsList = document.getElementById("traits");
-            traitsList.innerHTML = ''; // Clear previous results
-            result.traits.male.forEach(trait => {
-                const listItem = document.createElement("li");
-                listItem.innerText = trait;
-                traitsList.appendChild(listItem);
             });
 
-            document.getElementById("results").classList.remove("hidden");
+            document.getElementById('planet-impact').textContent = result.planetImpact;
+
+            // Display traits
+            const traitsList = document.getElementById('traits');
+            traitsList.innerHTML = ''; // Clear previous traits
+            result.traits.forEach(trait => {
+                const li = document.createElement('li');
+                li.textContent = trait;
+                traitsList.appendChild(li);
+            });
+
+            // Show results
+            document.getElementById('results').classList.remove('hidden');
         } else {
-            alert("Please enter a valid date of birth.");
+            alert('Please enter your date of birth!');
         }
     });
 });
