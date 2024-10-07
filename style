@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: center;
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Set height to full viewport */
+    background-image: url('background.jpg'); /* Use your image file name */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+    filter: brightness(0.8); /* Optionally darken the background image */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Make border semi-transparent */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5); /* Slightly transparent white */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+input[type="date"] {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1em;
+}
+
+input[type="date"]:focus {
+    border: 2px solid #4CAF50;
+    outline: none; /* Remove default outline */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: rgba(76, 175, 80, 0.7); /* Semi-transparent button background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition */
+}
+
+button:hover {
+    background-color: rgba(69, 160, 73, 0.7); /* Semi-transparent hover effect */
+}
+
+button:focus {
+    outline: 2px solid #4CAF50; /* Add focus outline */
+}
+
+.hidden {
+    display: none;
+}
+
+
+#results {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid rgba(76, 175, 80, 0.7); /* Semi-transparent border color */
+    border-radius: 10px;
+    background-color: rgba(224, 247, 250, 0.7); /* Semi-transparent results background */
+}
+
+ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove default padding */
+}
+
+ul li {
+    background-color: rgba(255, 255, 255, 0.6); /* Add a light semi-transparent background */
+    margin: 5px 0; /* Space between list items */
+    padding: 10px; /* Add some padding */
+    border-radius: 5px; /* Round corners */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 2em; /* Slightly smaller heading */
+    }
+    button {
+        width: 100%; /* Full width button on small screens */
+    }
+}
