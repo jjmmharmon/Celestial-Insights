@@ -204,54 +204,55 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Event listener for button click
-   document.getElementById('find-sign').addEventListener('click', function () {
-    const dob = document.getElementById('dob').value;
-    console.log("Button clicked!"); // Debugging statement
-
+document.getElementById('find-sign').addEventListener('click', function () {
+        const dob = document.getElementById('dob').value;
+        console.log("Button clicked!"); // Debugging statement
+    
     if (dob) {
-        console.log("Date of Birth entered: ", dob); // Debugging statement
-        const result = getZodiacAndTraits(dob);
+            console.log("Date of Birth entered: ", dob); // Debugging statement
+            const result = getZodiacAndTraits(dob);
 
-        // Check if result is valid
-        console.log("Zodiac Result: ", result); // Debugging statement
+            // Check if result is valid
+            console.log("Zodiac Result: ", result); // Debugging statement
 
-        document.getElementById('zodiac-sign').textContent = result.zodiacSign;
-        document.getElementById('lucky-number').textContent = result.luckyNumber;
-        document.getElementById('element').textContent = result.element;
-        document.getElementById('sign-type').textContent = result.signType;
-        document.getElementById('modern-planet').textContent = result.modernPlanet;
-        document.getElementById('traditional-planet').textContent = result.traditionalPlanet;
+            document.getElementById('zodiac-sign').textContent = result.zodiacSign;
+            document.getElementById('lucky-number').textContent = result.luckyNumber;
+            document.getElementById('element').textContent = result.element;
+            document.getElementById('sign-type').textContent = result.signType;
+            document.getElementById('modern-planet').textContent = result.modernPlanet;
+            document.getElementById('traditional-planet').textContent = result.traditionalPlanet;
 
-        // Display planet traits grouped by planet
-        const planetTraitsDiv = document.getElementById('planet-traits');
-        planetTraitsDiv.innerHTML = ''; // Clear previous traits
+            // Display planet traits grouped by planet
+            const planetTraitsDiv = document.getElementById('planet-traits');
+            planetTraitsDiv.innerHTML = ''; // Clear previous traits
 
-        Object.keys(result.planetTraits).forEach(planet => {
-            const planetName = document.createElement('h4');
-            planetName.textContent = planet + ":";
-            planetTraitsDiv.appendChild(planetName);
+            Object.keys(result.planetTraits).forEach(planet => {
+                const planetName = document.createElement('h4');
+                planetName.textContent = planet + ":";
+                planetTraitsDiv.appendChild(planetName);
 
-            result.planetTraits[planet].forEach(trait => {
+                result.planetTraits[planet].forEach(trait => {
+                    const li = document.createElement('li');
+                    li.textContent = trait;
+                    planetTraitsDiv.appendChild(li);
+                });
+            });
+
+            document.getElementById('planet-impact').textContent = result.planetImpact;
+
+            // Display traits
+            const traitsList = document.getElementById('traits');
+            traitsList.innerHTML = ''; // Clear previous traits
+            result.traits.forEach(trait => {
                 const li = document.createElement('li');
                 li.textContent = trait;
-                planetTraitsDiv.appendChild(li);
+                traitsList.appendChild(li);
             });
-        });
 
-        document.getElementById('planet-impact').textContent = result.planetImpact;
-
-        // Display traits
-        const traitsList = document.getElementById('traits');
-        traitsList.innerHTML = ''; // Clear previous traits
-        result.traits.forEach(trait => {
-            const li = document.createElement('li');
-            li.textContent = trait;
-            traitsList.appendChild(li);
-        });
-
-        // Show results
-        document.getElementById('results').classList.remove('hidden');
-    } else {
-        alert('Please enter your date of birth!');
-    }
+            // Show results
+            document.getElementById('results').classList.remove('hidden');
+        } else {
+            alert('Please enter your date of birth!');
+        }
+    });
 });
