@@ -67,12 +67,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // Add other zodiac signs here
         };
 
-        let zodiacSign = '';
+       let zodiacSign = "";
         let luckyNumber = calculateLuckyNumber(month, day, year);
-        let element = '';
-        let signType = '';
-        let modernPlanet = '';
-        let traditionalPlanet = '';
+        let element = "";
+        let signType = "";
+        let modernPlanet = "";
+        let traditionalPlanet = "";
         let planetTraits = {};
         let planetImpact = "";
         let traits = [];
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Lucky number calculation based on DOB
-    function calculateLuckyNumber(month, day, year) {
+   function calculateLuckyNumber(month, day, year) {
         const digits = (month + day + year).toString().split('');
         const total = digits.reduce((acc, digit) => acc + Number(digit), 0);
         return total % 9 === 0 ? 9 : total % 9; // Ensure lucky number is between 1-9
