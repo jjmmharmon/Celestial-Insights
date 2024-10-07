@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
-           let zodiacSign = '';
+        let zodiacSign = '';
         let luckyNumber = calculateLuckyNumber(month, day, year);
         let element = '';
         let signType = '';
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let traits = [];
 
 
-      if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+     if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
             zodiacSign = "Aquarius";
         } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
             zodiacSign = "Pisces";
@@ -179,10 +179,11 @@ document.addEventListener("DOMContentLoaded", function () {
             zodiacSign = "Sagittarius";
         } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
             zodiacSign = "Capricorn";
+        }
         // Add more zodiac sign logic here as needed
 
         // Fetch zodiac traits and planets
-         if (zodiacSign) {
+     if (zodiacSign) {
             const signData = zodiacData[zodiacSign];
             element = signData.element;
             signType = signData.signType;
@@ -197,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Lucky number calculation based on DOB
+  // Lucky number calculation based on DOB
     function calculateLuckyNumber(month, day, year) {
         const digits = (month + day + year).toString().split('');
         const total = digits.reduce((acc, digit) => acc + Number(digit), 0);
@@ -204,16 +206,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Event listener for button click
-document.getElementById('find-sign').addEventListener('click', function () {
+    document.getElementById('find-sign').addEventListener('click', function () {
         const dob = document.getElementById('dob').value;
-        console.log("Button clicked!"); // Debugging statement
-    
-    if (dob) {
-            console.log("Date of Birth entered: ", dob); // Debugging statement
+        if (dob) {
             const result = getZodiacAndTraits(dob);
-
-            // Check if result is valid
-            console.log("Zodiac Result: ", result); // Debugging statement
 
             document.getElementById('zodiac-sign').textContent = result.zodiacSign;
             document.getElementById('lucky-number').textContent = result.luckyNumber;
