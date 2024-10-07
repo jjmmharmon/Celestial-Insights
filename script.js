@@ -1,19 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Function to determine Zodiac sign and traits
-    function getZodiacAndTraits(dob) {
-        const date = new Date(dob);
-        const month = date.getUTCMonth() + 1; // getUTCMonth() is zero-based
-        const day = date.getUTCDate();
-        const year = date.getUTCFullYear();
+  function getZodiacAndTraits(dob) {
+    const date = new Date(dob);
+    const month = date.getUTCMonth() + 1; // getUTCMonth() is zero-based
+    const day = date.getUTCDate();
+    const year = date.getUTCFullYear();
 
         const zodiacData = {
             Aquarius: {
                 dates: "January 20 – February 18",
                 element: "Air",
                 signType: "Masculine",
-                rulingPlanets: { modern: "Modern: Uranus, Traditional Saturn"},
+                rulingPlanets: {
+                modern: "Uranus", 
+                traditional: "Saturn"},
                 planetTraits: { 
-                    Pluto: ["Pluto: Transformation", "Power", "Intensity", "Depth"], 
+                    Uranus: ["Pluto: Transformation", "Power", "Intensity", "Depth"], 
                     Saturn: ["Saturn: Discipline", "Structure", "Responsibility"] 
                 },
                 planetImpact: "Uranus gives Aquarius its forward-thinking mindset, while Saturn adds discipline and responsibility.",
@@ -23,7 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "February 19 – March 20",
                 element: "Water",
                 signType: "Feminine",
-                rulingPlanets: { modern: "Modern: Neptune, Traditional: Jupiter"},
+                rulingPlanets: { 
+                modern: "Modern: Neptune",
+                traditional: "Jupiter"},
                 planetTraits:{
                     Neptune: ["Neptune: Imagination", "Spirituality", "Dreams", "Intuition"],
                     Jupiter: ["Jupiter: Expansion", "Wisdom", "Optimism"] 
@@ -35,7 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "March 21 – April 19",
                 element: "Fire",
                 signType: "Masculine",
-                rulingPlanets: { "Modern: Mars" },
+                rulingPlanets: { 
+                modern: "Modern: Mars" },
                 planetTraits:{
                     Mars: ["Action", "Energy", "Assertiveness", "Courage", "Passion"]
                 },
@@ -46,7 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "April 20 – May 20",
                 element: "Earth",
                 signType: "Feminine",
-                rulingPlanets: {"Modern: Venus" },
+                rulingPlanets: {
+                modern: "Modern: Venus" },
                 planetTraits:{
                     Venus: ["Love", "Beauty", "Harmony", "Material Wealth", "Comfort"]
                 },
@@ -57,7 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "May 21 – June 20",
                 element: "Air",
                 signType: "Masculine",
-                rulingPlanets: {"Modern: Mercury" },
+                rulingPlanets: {
+                modern: "Modern: Mercury" },
                 planetTraits:{
                     Mercury: ["Communication", "Intellect", "Adaptability", "Quick Thinking"]
                 },
@@ -68,7 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "June 21 – July 22",
                 element: "Water",
                 signType: "Feminine",
-                rulingPlanets: { "Mdern: Moon" },
+                rulingPlanets: { 
+                modern: "Modern: Moon" },
                 planetTraits:{
                     Moon: ["Emotions", "Intuition", "Deep Emotional Connections"]
                 },
@@ -79,7 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "July 23 – August 22",
                 element: "Fire",
                 signType: "Masculine",
-                rulingPlanets: { "Modern: Sun" },
+                rulingPlanets: { 
+                modern: "Modern: Sun" },
                 planetTraits:{
                     Sun: ["Vitality", "Leadership", "Creativity", "Confidence"]
                 },
@@ -90,7 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "August 23 – September 22",
                 element: "Earth",
                 signType: "Feminine",
-                rulingPlanets: { "Modern: Mercury" },
+                rulingPlanets: { 
+                modern:"Modern: Mercury" },
                 planetTraits:{
                     Mercury: ["Logic", "Communication", "Intellect", "Organization"]
                 },
@@ -101,7 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "September 23 – October 22",
                 element: "Air",
                 signType: "Masculine",
-                rulingPlanets: { "Modern: Venus" },
+                rulingPlanets: { 
+                modern: "Modern: Venus" },
                 planetTraits:{
                     Venus: ["Harmony", "Love", "Beauty", "Balance", "Diplomacy"]
                 },
@@ -112,7 +123,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "October 23 – November 21",
                 element: "Water",
                 signType: "Feminine",
-                rulingPlanets: { "Modern: Pluto, Traditional: Mars" },
+                rulingPlanets: { 
+                modern:"Modern: Pluto",
+                traditional: "Traditional: Mars" },
                 planetTraits:{
                     Pluto: ["Pluto: Transformation", "Power", "Intensity", "Depth"],
                     Mars: ["Mars: Passion", "Action", "Drive", "Assertiveness"]
@@ -124,7 +137,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "November 22 – December 21",
                 element: "Fire",
                 signType: "Masculine",
-                rulingPlanets: { "Modern: Jupiter" },
+                rulingPlanets: { 
+                modern: "Modern: Jupiter" },
                 planetTraits:{
                     Jupiter: ["Expansion", "Optimism", "Growth", "Wisdom"]
                 },
@@ -135,7 +149,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dates: "December 22 – January 19",
                 element: "Earth",
                 signType: "Feminine",
-                rulingPlanets: { "Modern: Saturn" },
+                rulingPlanets: { 
+                modern: "Modern: Saturn" },
                 planetTraits:{
                     Saturn: ["Discipline", "Structure", "Responsibility", "Long-Term Goals"] // Fixed spelling error
                 },
@@ -145,15 +160,16 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
     
-        let zodiacSign = '';
-        let luckyNumber = calculateLuckyNumber(month, day, year);
-        let element = '';
-        let signType = '';
-        let planet = '';
-        let planetTraits = [];
-        let planetImpact = "";
-        let traits = [];
+      let zodiacSign = '';
+    let luckyNumber = calculateLuckyNumber(month, day, year);
+    let element = '';
+    let signType = '';
+    let rulingPlanets = {};
+    let traits = [];
+    let planetTraits = {}; // Now store traits for both planets
+    let planetImpact = '';
 
+        
         // Zodiac sign determination
         if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
             zodiacSign = "Aquarius";
@@ -183,18 +199,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Inside the getZodiacAndTraits function after determining the zodiac sign:
  if (zodiacSign) {
-            const signData = zodiacData[zodiacSign];
-            element = signData.element;
-            signType = signData.signType;
-            planet = signData.rulingPlanets.modern; // or traditional based on your preference
-            traits = signData.traits.male; // or female based on gender if applicable
-            planetTraits = Object.values(signData.planetTraits).flat(); // Collect all planet traits
-            planetImpact = signData.planetImpact; // Collect planet impact
-        }
-
-        // Return object should also include planetTraits and planetImpact
-        return { zodiacSign, luckyNumber, element, signType, planet, traits, planetTraits, planetImpact };
+        const signData = zodiacData[zodiacSign];
+        element = signData.element;
+        signType = signData.signType;
+        rulingPlanets = signData.rulingPlanets; // Store both modern and traditional ruling planets
+        traits = signData.traits.male; // or female based on gender if applicable
+        planetTraits = signData.planetTraits; // Store all planet traits grouped by planet name
+        planetImpact = signData.planetImpact;
     }
+
+    return { zodiacSign, luckyNumber, element, signType, rulingPlanets, traits, planetTraits, planetImpact };
+}
 
     // Lucky number calculation based on DOB
     function calculateLuckyNumber(month, day, year) {
@@ -204,42 +219,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Event listener for button click
-    document.getElementById('find-sign').addEventListener('click', function () {
-        const dob = document.getElementById('dob').value;
+ document.getElementById('find-sign').addEventListener('click', function () {
+    const dob = document.getElementById('dob').value;
 
-        if (dob) {
-            const result = getZodiacAndTraits(dob);
-            document.getElementById('zodiac-sign').textContent = result.zodiacSign;
-            document.getElementById('lucky-number').textContent = result.luckyNumber;
-            document.getElementById('element').textContent = result.element;
-            document.getElementById('sign-type').textContent = result.signType;
-            document.getElementById('planet').textContent = result.planet;
+    if (dob) {
+        const result = getZodiacAndTraits(dob);
+        
+        // Display basic zodiac information
+        document.getElementById('zodiac-sign').textContent = result.zodiacSign;
+        document.getElementById('lucky-number').textContent = result.luckyNumber;
+        document.getElementById('element').textContent = result.element;
+        document.getElementById('sign-type').textContent = result.signType;
 
-            // Display traits
-            const traitsList = document.getElementById('traits');
-            traitsList.innerHTML = ''; // Clear previous traits
-            result.traits.forEach(trait => {
-                const li = document.createElement('li');
-                li.textContent = trait;
-                traitsList.appendChild(li);
-            });
+        // Display ruling planets (modern and traditional)
+        document.getElementById('modern-planet').textContent = "Modern Ruling Planet: " + result.rulingPlanets.modern;
+        document.getElementById('traditional-planet').textContent = "Traditional Ruling Planet: " + (result.rulingPlanets.traditional || 'None');
 
-            // Display planet traits
-            const planetTraitsList = document.getElementById('planet-traits');
-            planetTraitsList.innerHTML = ''; // Clear previous planet traits
-            result.planetTraits.forEach(trait => {
+        // Clear and display traits based on gender
+        const traitsList = document.getElementById('traits');
+        traitsList.innerHTML = '';
+        result.traits.forEach(trait => {
+            const li = document.createElement('li');
+            li.textContent = trait;
+            traitsList.appendChild(li);
+        });
+
+        // Display planet traits grouped under planet names
+        const planetTraitsList = document.getElementById('planet-traits');
+        planetTraitsList.innerHTML = ''; // Clear previous content
+        for (const planet in result.planetTraits) {
+            const planetHeader = document.createElement('h4');
+            planetHeader.textContent = planet + " Traits:";
+            planetTraitsList.appendChild(planetHeader);
+
+            result.planetTraits[planet].forEach(trait => {
                 const li = document.createElement('li');
                 li.textContent = trait;
                 planetTraitsList.appendChild(li);
             });
-
-            // Set planet impact text
-            document.getElementById('planet-impact').textContent = result.planetImpact;
-
-            // Show results
-            document.getElementById('results').classList.remove('hidden');
-        } else {
-            alert('Please enter your date of birth!');
         }
-    });
+
+        // Display planet impact
+        document.getElementById('planet-impact').textContent = result.planetImpact;
+
+        // Show results
+        document.getElementById('results').classList.remove('hidden');
+    } else {
+        alert('Please enter your date of birth!');
+    }
 });
