@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Function to determine Zodiac sign and traits
     function getZodiacAndTraits(dob) {
         const date = new Date(dob);
         const month = date.getUTCMonth() + 1; // getUTCMonth() is zero-based
@@ -197,82 +196,58 @@ document.addEventListener("DOMContentLoaded", function () {
         return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
     }
 
-    // Lucky number calculation based on DOB
-  // Lucky number calculation based on DOB
-    function calculateLuckyNumber(month, day, year) {
+ function calculateLuckyNumber(month, day, year) {
         const digits = (month + day + year).toString().split('');
         const total = digits.reduce((acc, digit) => acc + Number(digit), 0);
-        return total % 9 === 0 ? 9 : total % 9; // Ensure lucky number is between 1-9
+        return total % 9 === 0 ? 9 : total % 9; 
     }
+
 
 // Event listener for button click
-document.getElementById('find-sign').addEventListener('click', function () {
-    const dob = document.getElementById('dob').value;
-    const gender = document.getElementById('gender').value; // Get selected gender
+ document.getElementById('find-sign').addEventListener('click', function () {
+        const dob = document.getElementById('dob').value;
+        const gender = document.getElementById('gender').value;
 
-    if (dob) {
-        const result = getZodiacAndTraits(dob);
+        if (dob) {
+            const result = getZodiacAndTraits(dob);
+            console.log(result); // Add this line to inspect result
 
-        document.getElementById('zodiac-sign').textContent = result.zodiacSign;
-        document.getElementById('lucky-number').textContent = result.luckyNumber;
-        document.getElementById('element').textContent = result.element;
-        document.getElementById('sign-type').textContent = result.signType;
-        document.getElementById('modern-planet').textContent = result.modernPlanet;
-        document.getElementById('traditional-planet').textContent = result.traditionalPlanet;
+            document.getElementById('zodiac-sign').textContent = result.zodiacSign;
+            document.getElementById('lucky-number').textContent = result.luckyNumber;
+            document.getElementById('element').textContent = result.element;
+            document.getElementById('sign-type').textContent = result.signType;
+            document.getElementById('modern-planet').textContent = result.modernPlanet;
+            document.getElementById('traditional-planet').textContent = result.traditionalPlanet;
 
-        // Display planet traits grouped by planet
-        const planetTraitsDiv = document.getElementById('planet-traits');
-        planetTraitsDiv.innerHTML = ''; // Clear previous traits
+            const planetTraitsDiv = document.getElementById('planet-traits');
+            planetTraitsDiv.innerHTML = '';
+            Object.keys(result.planetTraits).forEach(planet => {
+                const planetName = document.createElement('h4');
+                planetName.textContent = planet + ":";
+                planetTraitsDiv.appendChild(planetName);
 
-        Object.keys(result.planetTraits).forEach(planet => {
-            const planetName = document.createElement('h4');
-            planetName.textContent = planet + ":";
-            planetTraitsDiv.appendChild(planetName);
+                result.planetTraits[planet].forEach(trait => {
+                    const li = document.createElement('li');
+                    li.textContent = trait;
+                    planetTraitsDiv.appendChild(li);
+                });
+            });
 
-            result.planetTraits[planet].forEach(trait => {
+            document.getElementById('planet-impact').textContent = result.planetImpact;
+
+            const traitsList = document.getElementById('traits');
+            traitsList.innerHTML = '';
+            const selectedTraits = gender === 'male' ? result.traits : gender === 'female' ? result.traits : [...result.traits, ...result.traits];
+
+            selectedTraits.forEach(trait => {
                 const li = document.createElement('li');
                 li.textContent = trait;
-                planetTraitsDiv.appendChild(li);
+                traitsList.appendChild(li);
             });
-        });
 
-        document.getElementById('planet-impact').textContent = result.planetImpact;
-
-        // Display traits based on gender selection
-        const traitsList = document.getElementById('traits');
-        traitsList.innerHTML = ''; // Clear previous traits
-        
-        if (gender === 'male') {
-            result.traits.forEach(trait => {
-                const li = document.createElement('li');
-                li.textContent = trait; // Male traits
-                traitsList.appendChild(li);
-            });
-        } else if (gender === 'female') {
-            const femaleTraits = result.traits; // Assuming female traits are also stored similarly
-            femaleTraits.forEach(trait => {
-                const li = document.createElement('li');
-                li.textContent = trait; // Female traits
-                traitsList.appendChild(li);
-            });
-        } else if (gender === 'both') {
-            const maleTraits = result.traits; // Male traits
-            const femaleTraits = result.traits; // Female traits, you'll need to adjust accordingly
-            maleTraits.forEach(trait => {
-                const li = document.createElement('li');
-                li.textContent = trait; // Male traits
-                traitsList.appendChild(li);
-            });
-            femaleTraits.forEach(trait => {
-                const li = document.createElement('li');
-                li.textContent = trait; // Female traits
-                traitsList.appendChild(li);
-            });
+            document.getElementById('results').classList.remove('hidden');
+        } else {
+            alert('Please enter your date of birth!');
         }
-
-        // Show results
-        document.getElementById('results').classList.remove('hidden');
-    } else {
-        alert('Please enter your date of birth!');
-    }
+    });
 });
