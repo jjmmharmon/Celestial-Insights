@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("Document is ready."); // Check if the DOM is loaded
+
     function getZodiacAndTraits(dob) {
         const date = new Date(dob);
         const month = date.getUTCMonth() + 1; // getUTCMonth() is zero-based
@@ -182,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add more zodiac sign logic here as needed
 
         // Fetch zodiac traits and planets
-     if (zodiacSign) {
+  if (zodiacSign) {
             const signData = zodiacData[zodiacSign];
             element = signData.element;
             signType = signData.signType;
@@ -193,24 +195,25 @@ document.addEventListener("DOMContentLoaded", function () {
             traits = signData.traits.male; // Or female, based on user choice
         }
 
-        return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
+ return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
     }
 
- function calculateLuckyNumber(month, day, year) {
+    function calculateLuckyNumber(month, day, year) {
         const digits = (month + day + year).toString().split('');
         const total = digits.reduce((acc, digit) => acc + Number(digit), 0);
         return total % 9 === 0 ? 9 : total % 9; 
     }
 
-
-// Event listener for button click
- document.getElementById('find-sign').addEventListener('click', function () {
+    // Event listener for button click
+    document.getElementById('find-sign').addEventListener('click', function () {
         const dob = document.getElementById('dob').value;
         const gender = document.getElementById('gender').value;
 
+        console.log(`DOB: ${dob}, Gender: ${gender}`); // Check values
+
         if (dob) {
             const result = getZodiacAndTraits(dob);
-            console.log(result); // Add this line to inspect result
+            console.log(result); // Inspect result object
 
             document.getElementById('zodiac-sign').textContent = result.zodiacSign;
             document.getElementById('lucky-number').textContent = result.luckyNumber;
