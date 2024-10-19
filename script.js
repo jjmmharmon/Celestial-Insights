@@ -240,22 +240,24 @@ document.getElementById('find-sign').addEventListener('click', function () {
 
         document.getElementById('planet-impact').textContent = result.planetImpact;
 
-        // Handle traits based on gender
-        const traitsList = document.getElementById('traits');
-        traitsList.innerHTML = '';
+       // Handle traits based on gender
+const traitsList = document.getElementById('traits');
+traitsList.innerHTML = '';
 
-   if (result.traits) {
+if (result.traits) {
     console.log("Traits data:", result.traits); // Log traits to see structure
 
     let selectedTraits = []; // Initialize the selectedTraits variable
+
+    const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
+    const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
+
     if (gender === 'male') {
-        selectedTraits = result.traits.male || []; // Get male traits or an empty array if undefined
+        selectedTraits = maleTraits; // Use male traits directly
     } else if (gender === 'female') {
-        selectedTraits = result.traits.female || []; // Get female traits or an empty array if undefined
+        selectedTraits = femaleTraits; // Use female traits directly
     } else {
         // For 'other', combine male and female traits without duplication
-        const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
-        const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
         selectedTraits = [...new Set([...maleTraits, ...femaleTraits])]; // Combine and remove duplicates
     }
 
@@ -276,10 +278,6 @@ document.getElementById('find-sign').addEventListener('click', function () {
     console.error("Traits data is missing or not structured correctly.");
     alert("Unable to load traits data. Please try again.");
 }
-
-
-        document.getElementById('results').classList.remove('hidden');
-    } else {
-        alert('Please enter your date of birth!');
-    }
+}
 });
+    }); 
