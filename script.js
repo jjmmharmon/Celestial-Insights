@@ -274,6 +274,7 @@ if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
     li.textContent = "No traits available.";
     traitsList.appendChild(li);
 }
-       
+            }
+        }
     });
 });
