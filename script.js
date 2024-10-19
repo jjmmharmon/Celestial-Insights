@@ -244,38 +244,39 @@ document.getElementById('find-sign').addEventListener('click', function () {
         const traitsList = document.getElementById('traits');
         traitsList.innerHTML = '';
 
-        if (result.traits) {
-            console.log("Traits data:", result.traits); // Log traits to see structure
+   if (result.traits) {
+    console.log("Traits data:", result.traits); // Log traits to see structure
 
-            let selectedTraits = []; // Initialize the selectedTraits variable
-            if (gender === 'male') {
-                selectedTraits = result.traits.male || []; // Get male traits or an empty array if undefined
-            } else if (gender === 'female') {
-                selectedTraits = result.traits.female || []; // Get female traits or an empty array if undefined
-            } else {
-                // For 'other', combine male and female traits without duplication
-                const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
-                const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
-                selectedTraits = [...new Set([...maleTraits, ...femaleTraits])]; // Combine and remove duplicates
-            }
+    let selectedTraits = []; // Initialize the selectedTraits variable
+    if (gender === 'male') {
+        selectedTraits = result.traits.male || []; // Get male traits or an empty array if undefined
+    } else if (gender === 'female') {
+        selectedTraits = result.traits.female || []; // Get female traits or an empty array if undefined
+    } else {
+        // For 'other', combine male and female traits without duplication
+        const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
+        const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
+        selectedTraits = [...new Set([...maleTraits, ...femaleTraits])]; // Combine and remove duplicates
+    }
 
-            // Check if selectedTraits is defined and has values
-            if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
-                selectedTraits.forEach(trait => {
-                    const li = document.createElement('li');
-                    li.textContent = trait;
-                    traitsList.appendChild(li);
-                });
-            } else {
-                console.warn("No traits available for the selected gender.");
-                const li = document.createElement('li');
-                li.textContent = "No traits available.";
-                traitsList.appendChild(li);
-            }
-        } else {
-            console.error("Traits data is missing or not structured correctly.");
-            alert("Unable to load traits data. Please try again.");
-        }
+    // Output selected traits
+    if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
+        selectedTraits.forEach(trait => {
+            const li = document.createElement('li');
+            li.textContent = trait;
+            traitsList.appendChild(li);
+        });
+    } else {
+        console.warn("No traits available for the selected gender.");
+        const li = document.createElement('li');
+        li.textContent = "No traits available.";
+        traitsList.appendChild(li);
+    }
+} else {
+    console.error("Traits data is missing or not structured correctly.");
+    alert("Unable to load traits data. Please try again.");
+}
+
 
         document.getElementById('results').classList.remove('hidden');
     } else {
