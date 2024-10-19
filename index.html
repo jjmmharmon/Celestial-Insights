@@ -4,34 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celestial Insight</title>
-    <link rel="stylesheet" href="path/to/your/styles.css"> <!-- Make sure the path is correct -->
 </head>
 <body>
-    <div class="container">
-        <h1>Celestial Insight</h1>
-        <label for="dob">Enter your Date of Birth:</label>
-        <input type="date" id="dob" />
-        <label for="gender">Select your gender:</label>
-        <select id="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="both">Both</option>
-        </select>
-        <button id="find-sign">Find My Zodiac & Lucky Number</button>
-
-        <div id="results" class="hidden" style="display:none;"> <!-- Added inline style for visibility -->
-            <h2 id="zodiac-sign"></h2>
-            <p id="lucky-number"></p>
-            <p id="element"></p>
-            <p id="sign-type"></p>
-            <p id="modern-planet"></p>
-            <p id="traditional-planet"></p>
-            <div id="planet-traits"></div>
-            <div id="traits"></div>
-            <p id="planet-impact"></p>
-        </div>
-    </div>
+    <h1>Celestial Insight</h1>
+    <label for="dob">Enter your Date of Birth:</label>
+    <input type="date" id="dob" />
     
-    <script src="path/to/your/script.js"></script> <!-- Make sure the path is correct -->
+    <label for="gender">Select your gender:</label>
+    <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+    </select>
+    
+    <button id="find-sign">Find My Zodiac & Lucky Number</button>
+
+    <div id="results" class="hidden">
+        <h2>Your Results:</h2>
+        <p><strong>Zodiac Sign:</strong> <span id="zodiac-sign"></span></p>
+        <p><strong>Lucky Number:</strong> <span id="lucky-number"></span></p>
+        <p><strong>Element:</strong> <span id="element"></span></p>
+        <p><strong>Sign Type:</strong> <span id="sign-type"></span></p>
+        <p><strong>Modern Planet:</strong> <span id="modern-planet"></span></p>
+        <p><strong>Traditional Planet:</strong> <span id="traditional-planet"></span></p>
+        <div id="planet-traits"></div>
+        <p><strong>Planet Impact:</strong> <span id="planet-impact"></span></p>
+        <ul id="traits"></ul>
+    </div>
+
+    <script src="your_script.js"></script>
 </body>
 </html>
