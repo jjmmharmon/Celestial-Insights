@@ -240,24 +240,37 @@ document.getElementById('planet-impact').textContent = result.planetImpact;
 const traitsList = document.getElementById('traits');
 traitsList.innerHTML = ''; // Clear previous traits
 
-let selectedTraits; // Variable to hold selected traits
+let selectedTraits = []; // Initialize as an empty array
 
-// Select traits based on gender
-if (gender === 'male') {
-    selectedTraits = result.traits.male; // Get male traits
-} else if (gender === 'female') {
-    selectedTraits = result.traits.female; // Get female traits
+// Check if result.traits is defined
+if (result.traits && result.traits.male && result.traits.female) {
+    // Select traits based on gender
+    if (gender === 'male') {
+        selectedTraits = result.traits.male; // Get male traits
+    } else if (gender === 'female') {
+        selectedTraits = result.traits.female; // Get female traits
+    } else {
+        // For 'other', combine male and female traits without duplication
+        selectedTraits = [...new Set([...result.traits.male, ...result.traits.female])];
+    }
 } else {
-    // For 'other', combine male and female traits without duplication
-    selectedTraits = [...new Set([...result.traits.male, ...result.traits.female])];
+    console.error("Traits data is missing or not structured correctly.");
+    alert("Unable to load traits data. Please try again.");
 }
 
-// Populate the traits list
-selectedTraits.forEach(trait => {
+// Populate the traits list if selectedTraits has values
+if (selectedTraits.length > 0) {
+    selectedTraits.forEach(trait => {
+        const li = document.createElement('li');
+        li.textContent = trait;
+        traitsList.appendChild(li);
+    });
+} else {
+    console.warn("No traits available for the selected gender.");
     const li = document.createElement('li');
-    li.textContent = trait;
+    li.textContent = "No traits available.";
     traitsList.appendChild(li);
-});
+}
 
             document.getElementById('results').classList.remove('hidden');
         } else {
