@@ -209,6 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById('find-sign').addEventListener('click', function () {
     const dob = document.getElementById('dob').value;
     const gender = document.getElementById('gender').value; // Get selected gender
+
     if (dob) {
         const result = getZodiacAndTraits(dob);
 
@@ -240,20 +241,34 @@ document.getElementById('find-sign').addEventListener('click', function () {
         // Display traits based on gender selection
         const traitsList = document.getElementById('traits');
         traitsList.innerHTML = ''; // Clear previous traits
-        if (gender === 'male') {
-            result.traits = result.traits.male;
-        } else if (gender === 'female') {
-            result.traits = result.traits.female;
-        } else {
-            // If 'both', combine both male and female traits
-            result.traits = [...result.traits.male, ...result.traits.female];
-        }
         
-        result.traits.forEach(trait => {
-            const li = document.createElement('li');
-            li.textContent = trait;
-            traitsList.appendChild(li);
-        });
+        if (gender === 'male') {
+            result.traits.forEach(trait => {
+                const li = document.createElement('li');
+                li.textContent = trait; // Male traits
+                traitsList.appendChild(li);
+            });
+        } else if (gender === 'female') {
+            const femaleTraits = result.traits; // Assuming female traits are also stored similarly
+            femaleTraits.forEach(trait => {
+                const li = document.createElement('li');
+                li.textContent = trait; // Female traits
+                traitsList.appendChild(li);
+            });
+        } else if (gender === 'both') {
+            const maleTraits = result.traits; // Male traits
+            const femaleTraits = result.traits; // Female traits, you'll need to adjust accordingly
+            maleTraits.forEach(trait => {
+                const li = document.createElement('li');
+                li.textContent = trait; // Male traits
+                traitsList.appendChild(li);
+            });
+            femaleTraits.forEach(trait => {
+                const li = document.createElement('li');
+                li.textContent = trait; // Female traits
+                traitsList.appendChild(li);
+            });
+        }
 
         // Show results
         document.getElementById('results').classList.remove('hidden');
