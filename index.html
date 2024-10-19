@@ -1,49 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-        <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Celestial Insight</title>
-        <link rel="stylesheet" href="style.css">
-        </head>
-        <body>
-        <div class="container">
-        <h1>Celestial Insight</h1>
-        <label for="dob">Enter your Date of Birth:</label>
-        <input type="date" id="dob">
-        <button id="find-sign">Find My Zodiac & Lucky Number</button>
-
-        <label for="gender">Select your Gender:</label>
-        <select id="gender">
+<div class="container">
+    <h1>Celestial Insight</h1>
+    <label for="dob">Enter your Date of Birth:</label>
+    <input type="date" id="dob">
+    
+    <label for="gender">Select your Gender:</label>
+    <select id="gender">
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="both">Both</option>
-        </select>
+    </select>
+    
+    <button id="find-sign">Find My Zodiac & Lucky Number</button>
 
+    <div id="results" class="hidden">
+        <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
+        <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
+        <h3>Element: <span id="element"></span></h3>
+        <h3>Sign Type: <span id="sign-type"></span></h3>
 
-        <div id="results" class="hidden">
-            <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
-            <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
-            <h3>Element: <span id="element"></span></h3>
-            <h3>Sign Type: <span id="sign-type"></span></h3>
+        <h3>Ruling Planets:</h3>
+        <p>Modern: <span id="modern-planet"></span></p>
+        <p>Traditional: <span id="traditional-planet"></span></p>
 
-            <!-- Display both Modern and Traditional ruling planets -->
-            <h3>Ruling Planets:</h3>
-            <p>Modern: <span id="modern-planet"></span></p>
-            <p>Traditional: <span id="traditional-planet"></span></p>
+        <h3>Planet Traits:</h3>
+        <div id="planet-traits"></div>
 
-            <!-- Grouped Planet Traits -->
-            <h3>Planet Traits:</h3>
-            <div id="planet-traits"></div>
+        <h3>Planet Impact:</h3>
+        <p id="planet-impact"></p>
 
-            <h3>Planet Impact:</h3>
-            <p id="planet-impact"></p>
-
-            <h3>Traits:</h3>
-            <ul id="traits"></ul>
-        </div>
+        <h3>Traits:</h3>
+        <ul id="traits"></ul>
     </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+</div>
