@@ -268,39 +268,45 @@ document.getElementById('find-sign').addEventListener('click', function () {
         }
 
         // Handle traits based on gender
-        const traitsList = document.getElementById('traits');
-        traitsList.innerHTML = '';
+       // Handle traits based on gender
+const traitsList = document.getElementById('traits');
+traitsList.innerHTML = ''; // Clear the list
 
-        if (result.traits) {
-            console.log("Traits data:", result.traits); // Log traits to see structure
+if (result.traits) {
+    console.log("Traits data:", result.traits); // Log traits to see structure
 
-            const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
-            const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
+    const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
+    const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
 
-            let selectedTraits = []; // Initialize the selectedTraits variable
+    let selectedTraits = []; // Initialize the selectedTraits variable
 
-            if (gender === 'male') {
-                selectedTraits = maleTraits; // Use male traits directly
-            } else if (gender === 'female') {
-                selectedTraits = femaleTraits; // Use female traits directly
-            } else {
-                // For 'other', combine male and female traits without duplication
-                selectedTraits = [...new Set([...maleTraits, ...femaleTraits])]; // Combine and remove duplicates
-            }
+    // Determine which traits to display based on gender
+    if (gender === 'male') {
+        selectedTraits = maleTraits; // Use male traits directly
+    } else if (gender === 'female') {
+        selectedTraits = femaleTraits; // Use female traits directly
+    } else {
+        // For 'other', combine male and female traits without duplication
+        selectedTraits = [...new Set([...maleTraits, ...femaleTraits])]; // Combine and remove duplicates
+    }
 
-            // Output selected traits
-            if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
-                selectedTraits.forEach(trait => {
-                    const li = document.createElement('li');
-                    li.textContent = trait;
-                    traitsList.appendChild(li);
-                });
-            } else {
-                console.warn("No traits available for the selected gender.");
-                const li = document.createElement('li');
-                li.textContent = "No traits available.";
-                traitsList.appendChild(li);
-            }
+    // Output selected traits
+    if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
+        selectedTraits.forEach(trait => {
+            const li = document.createElement('li');
+            li.textContent = trait;
+            traitsList.appendChild(li);
+        });
+    } else {
+        console.warn("No traits available for the selected gender.");
+        const li = document.createElement('li');
+        li.textContent = "No traits available."; // Display a message when no traits are found
+        traitsList.appendChild(li);
+    }
+} else {
+    console.error("No traits data found in result."); // Log an error if traits are missing
+}
+
         }
     }
 });
