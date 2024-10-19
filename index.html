@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celestial Insight</title>
+    <title>Zodiac Finder</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Celestial Insight</h1>
-    <label for="dob">Enter your Date of Birth:</label>
-    <input type="date" id="dob" />
-    <label for="gender">Select your gender:</label>
+    <input type="date" id="dob" placeholder="Enter your birth date">
     <select id="gender">
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="other">Other</option>
     </select>
-    <button id="find-sign">Find My Zodiac & Lucky Number</button>
-
-    <div id="results" class="hidden">
-        <h2>Your Results</h2>
-        <p id="zodiac-sign"></p>
-        <p id="lucky-number"></p>
+    <button id="find-sign">Find Your Zodiac</button>
+    
+    <div>
+        <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
+        <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
+        <h4>Your Element: <span id="element"></span></h4>
+        <h4>Sign Type: <span id="sign-type"></span></h4>
+        <h4>Modern Planet: <span id="modern-planet"></span></h4>
+        <h4>Traditional Planet: <span id="traditional-planet"></span></h4>
+        <div id="planet-traits"></div>
         <ul id="traits"></ul>
-        <!-- More result fields -->
     </div>
 
     <script src="script.js"></script>
