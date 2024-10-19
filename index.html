@@ -4,39 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celestial Insight</title>
-   <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
-
-
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Celestial Insight</h1>
-  <label for="dob">Enter your Date of Birth:</label>
-<input type="date" id="dob">
-
+    <label for="dob">Enter your Date of Birth:</label>
+    <input type="date" id="dob" />
     <label for="gender">Select your gender:</label>
     <select id="gender">
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="other">Other</option>
     </select>
-    
     <button id="find-sign">Find My Zodiac & Lucky Number</button>
 
     <div id="results" class="hidden">
-        <h2>Your Results:</h2>
-        <p><strong>Zodiac Sign:</strong> <span id="zodiac-sign"></span></p>
-        <p><strong>Lucky Number:</strong> <span id="lucky-number"></span></p>
-        <p><strong>Element:</strong> <span id="element"></span></p>
-        <p><strong>Sign Type:</strong> <span id="sign-type"></span></p>
-        <p><strong>Modern Planet:</strong> <span id="modern-planet"></span></p>
-        <p><strong>Traditional Planet:</strong> <span id="traditional-planet"></span></p>
-        <div id="planet-traits"></div>
-        <p><strong>Planet Impact:</strong> <span id="planet-impact"></span></p>
+        <h2>Your Results</h2>
+        <p id="zodiac-sign"></p>
+        <p id="lucky-number"></p>
         <ul id="traits"></ul>
+        <!-- More result fields -->
     </div>
 
-    <script src="your_script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
