@@ -205,50 +205,59 @@ document.addEventListener("DOMContentLoaded", function () {
         return total % 9 === 0 ? 9 : total % 9; // Ensure lucky number is between 1-9
     }
 
-    // Event listener for button click
-    document.getElementById('find-sign').addEventListener('click', function () {
-        const dob = document.getElementById('dob').value;
-        if (dob) {
-            const result = getZodiacAndTraits(dob);
+// Event listener for button click
+document.getElementById('find-sign').addEventListener('click', function () {
+    const dob = document.getElementById('dob').value;
+    const gender = document.getElementById('gender').value; // Get selected gender
+    if (dob) {
+        const result = getZodiacAndTraits(dob);
 
-            document.getElementById('zodiac-sign').textContent = result.zodiacSign;
-            document.getElementById('lucky-number').textContent = result.luckyNumber;
-            document.getElementById('element').textContent = result.element;
-            document.getElementById('sign-type').textContent = result.signType;
-            document.getElementById('modern-planet').textContent = result.modernPlanet;
-            document.getElementById('traditional-planet').textContent = result.traditionalPlanet;
+        document.getElementById('zodiac-sign').textContent = result.zodiacSign;
+        document.getElementById('lucky-number').textContent = result.luckyNumber;
+        document.getElementById('element').textContent = result.element;
+        document.getElementById('sign-type').textContent = result.signType;
+        document.getElementById('modern-planet').textContent = result.modernPlanet;
+        document.getElementById('traditional-planet').textContent = result.traditionalPlanet;
 
-            // Display planet traits grouped by planet
-            const planetTraitsDiv = document.getElementById('planet-traits');
-            planetTraitsDiv.innerHTML = ''; // Clear previous traits
+        // Display planet traits grouped by planet
+        const planetTraitsDiv = document.getElementById('planet-traits');
+        planetTraitsDiv.innerHTML = ''; // Clear previous traits
 
-            Object.keys(result.planetTraits).forEach(planet => {
-                const planetName = document.createElement('h4');
-                planetName.textContent = planet + ":";
-                planetTraitsDiv.appendChild(planetName);
+        Object.keys(result.planetTraits).forEach(planet => {
+            const planetName = document.createElement('h4');
+            planetName.textContent = planet + ":";
+            planetTraitsDiv.appendChild(planetName);
 
-                result.planetTraits[planet].forEach(trait => {
-                    const li = document.createElement('li');
-                    li.textContent = trait;
-                    planetTraitsDiv.appendChild(li);
-                });
-            });
-
-            document.getElementById('planet-impact').textContent = result.planetImpact;
-
-            // Display traits
-            const traitsList = document.getElementById('traits');
-            traitsList.innerHTML = ''; // Clear previous traits
-            result.traits.forEach(trait => {
+            result.planetTraits[planet].forEach(trait => {
                 const li = document.createElement('li');
                 li.textContent = trait;
-                traitsList.appendChild(li);
+                planetTraitsDiv.appendChild(li);
             });
+        });
 
-            // Show results
-            document.getElementById('results').classList.remove('hidden');
+        document.getElementById('planet-impact').textContent = result.planetImpact;
+
+        // Display traits based on gender selection
+        const traitsList = document.getElementById('traits');
+        traitsList.innerHTML = ''; // Clear previous traits
+        if (gender === 'male') {
+            result.traits = result.traits.male;
+        } else if (gender === 'female') {
+            result.traits = result.traits.female;
         } else {
-            alert('Please enter your date of birth!');
+            // If 'both', combine both male and female traits
+            result.traits = [...result.traits.male, ...result.traits.female];
         }
-    });
+        
+        result.traits.forEach(trait => {
+            const li = document.createElement('li');
+            li.textContent = trait;
+            traitsList.appendChild(li);
+        });
+
+        // Show results
+        document.getElementById('results').classList.remove('hidden');
+    } else {
+        alert('Please enter your date of birth!');
+    }
 });
