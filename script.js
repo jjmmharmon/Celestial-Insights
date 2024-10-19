@@ -243,23 +243,27 @@ traitsList.innerHTML = ''; // Clear previous traits
 let selectedTraits = []; // Initialize as an empty array
 
 // Check if result.traits is defined
-if (result.traits && result.traits.male && result.traits.female) {
+if (result.traits) {
+    console.log("Traits data:", result.traits); // Log traits to see structure
+
     // Select traits based on gender
     if (gender === 'male') {
-        selectedTraits = result.traits.male; // Get male traits
+        selectedTraits = result.traits.male || []; // Get male traits or an empty array if undefined
     } else if (gender === 'female') {
-        selectedTraits = result.traits.female; // Get female traits
+        selectedTraits = result.traits.female || []; // Get female traits or an empty array if undefined
     } else {
         // For 'other', combine male and female traits without duplication
-        selectedTraits = [...new Set([...result.traits.male, ...result.traits.female])];
+        const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
+        const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
+        selectedTraits = [...new Set([...maleTraits, ...femaleTraits])];
     }
 } else {
     console.error("Traits data is missing or not structured correctly.");
     alert("Unable to load traits data. Please try again.");
 }
 
-// Populate the traits list if selectedTraits has values
-if (selectedTraits.length > 0) {
+// Check if selectedTraits is defined and has values
+if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
     selectedTraits.forEach(trait => {
         const li = document.createElement('li');
         li.textContent = trait;
