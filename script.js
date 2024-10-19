@@ -304,3 +304,4 @@ document.getElementById('find-sign').addEventListener('click', function () {
         }
     }
 });
+    });
