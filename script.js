@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
             traits = signData.traits.male; // Or female, based on user choice
         }
 
- return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
+return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
     }
 
     function calculateLuckyNumber(month, day, year) {
@@ -203,26 +203,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Event listener for button click
-   // Event listener for button click
-document.getElementById('find-sign').addEventListener('click', function () {
-    const dob = document.getElementById('dob').value;
-    const gender = document.getElementById('gender').value;
+    document.getElementById('yourButtonId').addEventListener('click', function() {
+        const dob = document.getElementById('dobInput').value; // Get date of birth input
+        const gender = document.querySelector('input[name="gender"]:checked').value; // Get selected gender
 
-    console.log(`DOB: ${dob}, Gender: ${gender}`); // Check values
-
-    if (dob) {
-        const result = getZodiacAndTraits(dob);
-        console.log(result); // Check the entire result object
-
-        // Update the UI with zodiac and related information
-        const zodiacSignElement = document.getElementById('zodiac-sign');
-        if (zodiacSignElement) {
-            zodiacSignElement.textContent = result.zodiacSign;
-        } else {
-            console.error("Element with ID 'zodiac-sign' not found.");
-        }
-
-        // Handle traits based on gender
+        // Get zodiac and traits based on DOB and gender
+        const result = getZodiacAndTraits(dob, gender);
+        
+        // Output traits
         const traitsList = document.getElementById('traits');
         traitsList.innerHTML = ''; // Clear the list
 
@@ -243,9 +231,12 @@ document.getElementById('find-sign').addEventListener('click', function () {
             } else if (gender === 'female') {
                 selectedTraits = femaleTraits; // Use female traits directly
             } else {
-                // For 'other', combine male and female traits without duplication
-                 selectedTraits = [new Set([maleTraits, femaleTraits])];  // Combine and remove duplicates
+                // Combine male and female traits without duplication
+                const combinedTraits = new Set([...maleTraits, ...femaleTraits]);
+                selectedTraits = Array.from(combinedTraits); // Convert Set to Array
             }
+
+            console.log("Selected Traits:", selectedTraits); // Log selected traits
 
             // Output selected traits
             if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
@@ -255,14 +246,14 @@ document.getElementById('find-sign').addEventListener('click', function () {
                     traitsList.appendChild(li);
                 });
             } else {
-                console.warn("No traits available for the selected gender."); // Still a warning
+                console.warn("No traits available for the selected gender.");
                 const li = document.createElement('li');
-                li.textContent = "No traits available."; // Display a message when no traits are found
+                li.textContent = "No traits available.";
                 traitsList.appendChild(li);
             }
         } else {
             console.error("No traits data found in result."); // Log an error if traits are missing
         }
-    }
-});
     });
+
+});
