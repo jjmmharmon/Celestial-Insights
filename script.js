@@ -203,78 +203,104 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Event listener for button click
-    document.getElementById('find-sign').addEventListener('click', function () {
-        const dob = document.getElementById('dob').value;
-        const gender = document.getElementById('gender').value;
+   // Event listener for button click
+document.getElementById('find-sign').addEventListener('click', function () {
+    const dob = document.getElementById('dob').value;
+    const gender = document.getElementById('gender').value;
 
-        console.log(`DOB: ${dob}, Gender: ${gender}`); // Check values
+    console.log(`DOB: ${dob}, Gender: ${gender}`); // Check values
 
-        if (dob) {
-            const result = getZodiacAndTraits(dob);
-            console.log(result); // Inspect result object
+    if (dob) {
+        const result = getZodiacAndTraits(dob);
+        console.log(result); // Inspect result object
 
-            // Update the UI with zodiac and related information
-            document.getElementById('zodiac-sign').textContent = result.zodiacSign;
-            document.getElementById('lucky-number').textContent = result.luckyNumber;
-            document.getElementById('element').textContent = result.element;
-            document.getElementById('sign-type').textContent = result.signType;
-            document.getElementById('modern-planet').textContent = result.modernPlanet;
-            document.getElementById('traditional-planet').textContent = result.traditionalPlanet;
+        // Update the UI with zodiac and related information
+        const zodiacSignElement = document.getElementById('zodiac-sign');
+        if (zodiacSignElement) {
+            zodiacSignElement.textContent = result.zodiacSign || "Unknown Zodiac";
+        } else {
+            console.error("Element with ID 'zodiac-sign' not found.");
+        }
 
-            // Handle planet traits
-            const planetTraitsDiv = document.getElementById('planet-traits');
-            planetTraitsDiv.innerHTML = '';
-            Object.keys(result.planetTraits).forEach(planet => {
-                const planetName = document.createElement('h4');
-                planetName.textContent = planet + ":";
-                planetTraitsDiv.appendChild(planetName);
+        const luckyNumberElement = document.getElementById('lucky-number');
+        if (luckyNumberElement) {
+            luckyNumberElement.textContent = result.luckyNumber || "Unknown Lucky Number";
+        }
 
-                result.planetTraits[planet].forEach(trait => {
+        const elementElement = document.getElementById('element');
+        if (elementElement) {
+            elementElement.textContent = result.element || "Unknown Element";
+        }
+
+        const signTypeElement = document.getElementById('sign-type');
+        if (signTypeElement) {
+            signTypeElement.textContent = result.signType || "Unknown Sign Type";
+        }
+
+        const modernPlanetElement = document.getElementById('modern-planet');
+        if (modernPlanetElement) {
+            modernPlanetElement.textContent = result.modernPlanet || "Unknown Modern Planet";
+        }
+
+        const traditionalPlanetElement = document.getElementById('traditional-planet');
+        if (traditionalPlanetElement) {
+            traditionalPlanetElement.textContent = result.traditionalPlanet || "Unknown Traditional Planet";
+        }
+
+        // Handle planet traits
+        const planetTraitsDiv = document.getElementById('planet-traits');
+        planetTraitsDiv.innerHTML = '';
+        Object.keys(result.planetTraits).forEach(planet => {
+            const planetName = document.createElement('h4');
+            planetName.textContent = planet + ":";
+            planetTraitsDiv.appendChild(planetName);
+
+            result.planetTraits[planet].forEach(trait => {
+                const li = document.createElement('li');
+                li.textContent = trait;
+                planetTraitsDiv.appendChild(li);
+            });
+        });
+
+        const planetImpactElement = document.getElementById('planet-impact');
+        if (planetImpactElement) {
+            planetImpactElement.textContent = result.planetImpact || "Unknown Planet Impact";
+        }
+
+        // Handle traits based on gender
+        const traitsList = document.getElementById('traits');
+        traitsList.innerHTML = '';
+
+        if (result.traits) {
+            console.log("Traits data:", result.traits); // Log traits to see structure
+
+            const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
+            const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
+
+            let selectedTraits = []; // Initialize the selectedTraits variable
+
+            if (gender === 'male') {
+                selectedTraits = maleTraits; // Use male traits directly
+            } else if (gender === 'female') {
+                selectedTraits = femaleTraits; // Use female traits directly
+            } else {
+                // For 'other', combine male and female traits without duplication
+                selectedTraits = [...new Set([...maleTraits, ...femaleTraits])]; // Combine and remove duplicates
+            }
+
+            // Output selected traits
+            if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
+                selectedTraits.forEach(trait => {
                     const li = document.createElement('li');
                     li.textContent = trait;
-                    planetTraitsDiv.appendChild(li);
-            
+                    traitsList.appendChild(li);
                 });
-            });
-
-            document.getElementById('planet-impact').textContent = result.planetImpact;
-
-            // Handle traits based on gender
-            const traitsList = document.getElementById('traits');
-            traitsList.innerHTML = '';
-
-            if (result.traits) {
-                console.log("Traits data:", result.traits); // Log traits to see structure
-
-             // Ensure maleTraits and femaleTraits are properly defined before this line
-const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
-const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
-
-let selectedTraits = []; // Initialize the selectedTraits variable
-
-if (gender === 'male') {
-    selectedTraits = maleTraits; // Use male traits directly
-} else if (gender === 'female') {
-    selectedTraits = femaleTraits; // Use female traits directly
-} else {
-    // For 'other', combine male and female traits without duplication
-    selectedTraits = [...new Set([...maleTraits, ...femaleTraits])]; // Combine and remove duplicates
-}
-
-// Output selected traits
-if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
-    selectedTraits.forEach(trait => {
-        const li = document.createElement('li');
-        li.textContent = trait;
-        traitsList.appendChild(li);
-    });
-} else {
-    console.warn("No traits available for the selected gender.");
-    const li = document.createElement('li');
-    li.textContent = "No traits available.";
-    traitsList.appendChild(li);
-}
+            } else {
+                console.warn("No traits available for the selected gender.");
+                const li = document.createElement('li');
+                li.textContent = "No traits available.";
+                traitsList.appendChild(li);
             }
         }
-    });
+    }
 });
