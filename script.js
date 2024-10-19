@@ -235,18 +235,29 @@ document.addEventListener("DOMContentLoaded", function () {
                     planetTraitsDiv.appendChild(li);
                 });
             });
+document.getElementById('planet-impact').textContent = result.planetImpact;
 
-            document.getElementById('planet-impact').textContent = result.planetImpact;
+const traitsList = document.getElementById('traits');
+traitsList.innerHTML = ''; // Clear previous traits
 
-            const traitsList = document.getElementById('traits');
-            traitsList.innerHTML = '';
-            const selectedTraits = gender === 'male' ? result.traits : gender === 'female' ? result.traits : [...result.traits, ...result.traits];
+let selectedTraits; // Variable to hold selected traits
 
-            selectedTraits.forEach(trait => {
-                const li = document.createElement('li');
-                li.textContent = trait;
-                traitsList.appendChild(li);
-            });
+// Select traits based on gender
+if (gender === 'male') {
+    selectedTraits = result.traits.male; // Get male traits
+} else if (gender === 'female') {
+    selectedTraits = result.traits.female; // Get female traits
+} else {
+    // For 'other', combine male and female traits without duplication
+    selectedTraits = [...new Set([...result.traits.male, ...result.traits.female])];
+}
+
+// Populate the traits list
+selectedTraits.forEach(trait => {
+    const li = document.createElement('li');
+    li.textContent = trait;
+    traitsList.appendChild(li);
+});
 
             document.getElementById('results').classList.remove('hidden');
         } else {
