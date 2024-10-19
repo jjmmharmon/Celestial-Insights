@@ -212,101 +212,56 @@ document.getElementById('find-sign').addEventListener('click', function () {
 
     if (dob) {
         const result = getZodiacAndTraits(dob);
-        console.log(result); // Inspect result object
+        console.log(result); // Check the entire result object
 
         // Update the UI with zodiac and related information
         const zodiacSignElement = document.getElementById('zodiac-sign');
         if (zodiacSignElement) {
-            zodiacSignElement.textContent = result.zodiacSign || "Unknown Zodiac";
+            zodiacSignElement.textContent = result.zodiacSign;
         } else {
             console.error("Element with ID 'zodiac-sign' not found.");
         }
 
-        const luckyNumberElement = document.getElementById('lucky-number');
-        if (luckyNumberElement) {
-            luckyNumberElement.textContent = result.luckyNumber || "Unknown Lucky Number";
-        }
-
-        const elementElement = document.getElementById('element');
-        if (elementElement) {
-            elementElement.textContent = result.element || "Unknown Element";
-        }
-
-        const signTypeElement = document.getElementById('sign-type');
-        if (signTypeElement) {
-            signTypeElement.textContent = result.signType || "Unknown Sign Type";
-        }
-
-        const modernPlanetElement = document.getElementById('modern-planet');
-        if (modernPlanetElement) {
-            modernPlanetElement.textContent = result.modernPlanet || "Unknown Modern Planet";
-        }
-
-        const traditionalPlanetElement = document.getElementById('traditional-planet');
-        if (traditionalPlanetElement) {
-            traditionalPlanetElement.textContent = result.traditionalPlanet || "Unknown Traditional Planet";
-        }
-
-        // Handle planet traits
-        const planetTraitsDiv = document.getElementById('planet-traits');
-        planetTraitsDiv.innerHTML = '';
-        Object.keys(result.planetTraits).forEach(planet => {
-            const planetName = document.createElement('h4');
-            planetName.textContent = planet + ":";
-            planetTraitsDiv.appendChild(planetName);
-
-            result.planetTraits[planet].forEach(trait => {
-                const li = document.createElement('li');
-                li.textContent = trait;
-                planetTraitsDiv.appendChild(li);
-            });
-        });
-
-        const planetImpactElement = document.getElementById('planet-impact');
-        if (planetImpactElement) {
-            planetImpactElement.textContent = result.planetImpact || "Unknown Planet Impact";
-        }
-
         // Handle traits based on gender
-       // Handle traits based on gender
-const traitsList = document.getElementById('traits');
-traitsList.innerHTML = ''; // Clear the list
+        const traitsList = document.getElementById('traits');
+        traitsList.innerHTML = ''; // Clear the list
 
-if (result.traits) {
-    console.log("Traits data:", result.traits); // Log traits to see structure
+        if (result.traits) {
+            console.log("Traits data:", result.traits); // Log traits to see structure
 
-    const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
-    const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
+            const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
+            const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
 
-    let selectedTraits = []; // Initialize the selectedTraits variable
+            console.log("Male Traits:", maleTraits); // Log male traits
+            console.log("Female Traits:", femaleTraits); // Log female traits
 
-    // Determine which traits to display based on gender
-    if (gender === 'male') {
-        selectedTraits = maleTraits; // Use male traits directly
-    } else if (gender === 'female') {
-        selectedTraits = femaleTraits; // Use female traits directly
-    } else {
-        // For 'other', combine male and female traits without duplication
-        selectedTraits = [...new Set([...maleTraits, ...femaleTraits])]; // Combine and remove duplicates
-    }
+            let selectedTraits = []; // Initialize the selectedTraits variable
 
-    // Output selected traits
-    if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
-        selectedTraits.forEach(trait => {
-            const li = document.createElement('li');
-            li.textContent = trait;
-            traitsList.appendChild(li);
-        });
-    } else {
-        console.warn("No traits available for the selected gender.");
-        const li = document.createElement('li');
-        li.textContent = "No traits available."; // Display a message when no traits are found
-        traitsList.appendChild(li);
-    }
-} else {
-    console.error("No traits data found in result."); // Log an error if traits are missing
-}
+            // Determine which traits to display based on gender
+            if (gender === 'male') {
+                selectedTraits = maleTraits; // Use male traits directly
+            } else if (gender === 'female') {
+                selectedTraits = femaleTraits; // Use female traits directly
+            } else {
+                // For 'other', combine male and female traits without duplication
+                selectedTraits = [...new Set([...maleTraits, ...femaleTraits])]; // Combine and remove duplicates
+            }
 
+            // Output selected traits
+            if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
+                selectedTraits.forEach(trait => {
+                    const li = document.createElement('li');
+                    li.textContent = trait;
+                    traitsList.appendChild(li);
+                });
+            } else {
+                console.warn("No traits available for the selected gender."); // Still a warning
+                const li = document.createElement('li');
+                li.textContent = "No traits available."; // Display a message when no traits are found
+                traitsList.appendChild(li);
+            }
+        } else {
+            console.error("No traits data found in result."); // Log an error if traits are missing
         }
     }
 });
