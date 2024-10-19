@@ -244,7 +244,7 @@ document.getElementById('find-sign').addEventListener('click', function () {
                 selectedTraits = femaleTraits; // Use female traits directly
             } else {
                 // For 'other', combine male and female traits without duplication
-                selectedTraits = [...new Set([...maleTraits, ...femaleTraits])]; // Combine and remove duplicates
+                 selectedTraits = [new Set([maleTraits, femaleTraits])];  // Combine and remove duplicates
             }
 
             // Output selected traits
