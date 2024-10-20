@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Document is ready."); // Check if the DOM is loaded
 
@@ -232,7 +233,7 @@ return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPl
                 selectedTraits = femaleTraits; // Use female traits directly
             } else {
                 // Combine male and female traits without duplication
-                const combinedTraits = new Set([...maleTraits, ...femaleTraits]);
+                const combinedTraits = combinedTraits([maleTraits, femaleTraits]);
                 selectedTraits = Array.from(combinedTraits); // Convert Set to Array
             }
 
