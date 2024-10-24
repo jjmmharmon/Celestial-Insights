@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Document is ready."); // Check if the DOM is loaded
 
-    function getZodiacAndTraits(dob) {
+    function getZodiacAndTraits(dob, gender) {
         const date = new Date(dob);
         const month = date.getUTCMonth() + 1; // getUTCMonth() is zero-based
         const day = date.getUTCDate();
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Fetch zodiac traits and planets
-        if (zodiacSign) {
+       if (zodiacSign) {
             const signData = zodiacData[zodiacSign];
             element = signData.element;
             signType = signData.signType;
@@ -191,10 +191,11 @@ document.addEventListener("DOMContentLoaded", function () {
             traditionalPlanet = signData.rulingPlanets.traditional;
             planetTraits = signData.planetTraits;
             planetImpact = signData.planetImpact;
-            traits = signData.traits.male; // Or female, based on user choice
+            traits = signData.traits[gender]; // Use gender to fetch traits
+            setZodiacBackground(zodiacSign); // Set background based on zodiac sign
         }
 
-return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
+        return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
     }
 
     function calculateLuckyNumber(month, day, year) {
@@ -202,8 +203,8 @@ return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPl
         const total = digits.reduce((acc, digit) => acc + Number(digit), 0);
         return total % 9 === 0 ? 9 : total % 9; 
     }
-
-     function setZodiacBackground(zodiacSign) {
+    
+    function setZodiacBackground(zodiacSign) {
         const body = document.body;
         const backgroundImageUrl = `images/${zodiacSign}.jpg`; // Path to your images
 
@@ -224,20 +225,17 @@ return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPl
         const gender = document.querySelector('input[name="gender"]:checked').value; // Get selected gender
 
         // Get zodiac and traits based on DOB and gender
-        const result = getZodiacAndTraits(dob, gender);
+        const zodiacResult = getZodiacAndTraits(dob, gender); // Rename result to zodiacResult
         
         // Output traits
         const traitsList = document.getElementById('traits');
         traitsList.innerHTML = ''; // Clear the list
 
-        if (result.traits) {
-            console.log("Traits data:", result.traits); // Log traits to see structure
+         if (zodiacResult.traits) {
+            console.log("Traits data:", zodiacResult.traits); // Log traits to see structure
 
-            const maleTraits = result.traits.male || []; // Fallback to an empty array if undefined
-            const femaleTraits = result.traits.female || []; // Fallback to an empty array if undefined
-
-            console.log("Male Traits:", maleTraits); // Log male traits
-            console.log("Female Traits:", femaleTraits); // Log female traits
+            const maleTraits = zodiacResult.traits.male || []; // Fallback to an empty array if undefined
+            const femaleTraits = zodiacResult.traits.female || []; // Fallback to an empty array if undefined
 
             let selectedTraits = []; // Initialize the selectedTraits variable
 
@@ -248,11 +246,11 @@ return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPl
                 selectedTraits = femaleTraits; // Use female traits directly
             } else {
                 // Combine male and female traits without duplication
-                const combinedTraits = combinedTraits([maleTraits, femaleTraits]);
+                const combinedTraits = [...new Set([...maleTraits, ...femaleTraits])];
                 selectedTraits = Array.from(combinedTraits); // Convert Set to Array
             }
 
-            console.log("Selected Traits:", selectedTraits); // Log selected traits
+           console.log("Selected Traits:", selectedTraits); // Log selected traits
 
             // Output selected traits
             if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
