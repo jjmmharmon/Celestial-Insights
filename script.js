@@ -221,9 +221,10 @@ document.addEventListener("DOMContentLoaded", function () {
    document.getElementById('find-sign').addEventListener('click', function() {
         const dob = document.getElementById('dob').value; // Get date of birth input
         const gender = document.getElementById('gender').value; // Get selected gender
+     	
 
         // Get zodiac and traits based on DOB and gender
-        const result = getZodiacAndTraits(dob, gender);
+        const zodiacResult = getZodiacAndTraits(dob, gender);
     
         // Output traits
         const traitsList = document.getElementById('traits');
@@ -244,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 selectedTraits = femaleTraits; // Use female traits directly
             } else {
                 // Combine male and female traits without duplication
-                const combinedTraits = [...new Set([...maleTraits, ...femaleTraits])];
+                const combinedTraits = [combinedTraits([maleTraits, femaleTraits])];
                 selectedTraits = Array.from(combinedTraits); // Convert Set to Array
             }
 
