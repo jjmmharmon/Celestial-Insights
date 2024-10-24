@@ -7,25 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input type="date" id="dob"> <!-- No placeholder here -->
-    <select id="gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-    </select>
-    <button id="find-sign">Find Your Zodiac</button>
-    
-    <div>
-        <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
-        <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
-        <h4>Your Element: <span id="element"></span></h4>
-        <h4>Sign Type: <span id="sign-type"></span></h4>
-        <h4>Modern Planet: <span id="modern-planet"></span></h4>
-        <h4>Traditional Planet: <span id="traditional-planet"></span></h4>
-        <div id="planet-traits"></div>
-        <ul id="traits"></ul>
-    </div>
+    <div class="container"> <!-- Wrap in a container -->
+        <input type="date" id="dob">
+        <select id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <button id="find-sign">Find Your Zodiac</button>
 
+        <div>
+            <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
+            <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
+            <h4>Your Element: <span id="element"></span></h4>
+            <h4>Sign Type: <span id="sign-type"></span></h4>
+            <h4>Modern Planet: <span id="modern-planet"></span></h4>
+            <h4>Traditional Planet: <span id="traditional-planet"></span></h4>
+            <div id="planet-traits"></div>
+            <ul id="traits"></ul>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
