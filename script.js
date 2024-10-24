@@ -217,56 +217,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    // Event listener for button click
-   document.getElementById('find-sign').addEventListener('click', function() {
-        const dob = document.getElementById('dob').value; // Get date of birth input
-        const gender = document.getElementById('gender').value; // Get selected gender
-     	
+   // Event listener for button click
+document.getElementById('find-sign').addEventListener('click', function() {
+    const dob = document.getElementById('dob').value; // Get date of birth input
+    const gender = document.getElementById('gender').value; // Get selected gender
 
-        // Get zodiac and traits based on DOB and gender
-        const zodiacResult = getZodiacAndTraits(dob, gender);
-    
-        // Output traits
-        const traitsList = document.getElementById('traits');
-        traitsList.innerHTML = ''; // Clear the list
+    // Get zodiac and traits based on DOB and gender
+    const zodiacResult = getZodiacAndTraits(dob, gender);
 
-         if (zodiacResult.traits) {
-            console.log("Traits data:", zodiacResult.traits); // Log traits to see structure
+    // Output traits
+    const traitsList = document.getElementById('traits');
+    traitsList.innerHTML = ''; // Clear the list
 
-            const maleTraits = zodiacResult.traits.male || []; // Fallback to an empty array if undefined
-            const femaleTraits = zodiacResult.traits.female || []; // Fallback to an empty array if undefined
+    if (zodiacResult.traits) {
+        console.log("Traits data:", zodiacResult.traits); // Log traits to see structure
 
-            let selectedTraits = []; // Initialize the selectedTraits variable
+        const maleTraits = zodiacResult.traits.male || []; // Fallback to an empty array if undefined
+        const femaleTraits = zodiacResult.traits.female || []; // Fallback to an empty array if undefined
 
-            // Determine which traits to display based on gender
-            if (gender === 'male') {
-                selectedTraits = maleTraits; // Use male traits directly
-            } else if (gender === 'female') {
-                selectedTraits = femaleTraits; // Use female traits directly
-            } else {
-                // Combine male and female traits without duplication
-                const combinedTraits = [combinedTraits([maleTraits, femaleTraits])];
-                selectedTraits = Array.from(combinedTraits); // Convert Set to Array
-            }
+        let selectedTraits = []; // Initialize the selectedTraits variable
 
-           console.log("Selected Traits:", selectedTraits); // Log selected traits
-
-            // Output selected traits
-            if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
-                selectedTraits.forEach(trait => {
-                    const li = document.createElement('li');
-                    li.textContent = trait;
-                    traitsList.appendChild(li);
-                });
-            } else {
-                console.warn("No traits available for the selected gender.");
-                const li = document.createElement('li');
-                li.textContent = "No traits available.";
-                traitsList.appendChild(li);
-            }
+        // Determine which traits to display based on gender
+        if (gender === 'male') {
+            selectedTraits = maleTraits; // Use male traits directly
+        } else if (gender === 'female') {
+            selectedTraits = femaleTraits; // Use female traits directly
         } else {
-            console.error("No traits data found in result."); // Log an error if traits are missing
+            // If gender is 'other', no traits will be displayed
+            selectedTraits = []; // Leave as empty
         }
-    });
 
+        console.log("Selected Traits:", selectedTraits); // Log selected traits
+
+        // Output selected traits
+        if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
+            selectedTraits.forEach(trait => {
+                const li = document.createElement('li');
+                li.textContent = trait;
+                traitsList.appendChild(li);
+            });
+        } else {
+            console.warn("No traits available for the selected gender.");
+            const li = document.createElement('li');
+            li.textContent = "No traits available."; // Only for male/female
+            traitsList.appendChild(li);
+        }
+    } else {
+        console.error("No traits data found in result."); // Log an error if traits are missing
+    }
+
+    // Update background image based on the zodiac sign
+    if (zodiacResult.zodiacSign) {
+        document.body.style.backgroundImage = `url('${zodiacResult.zodiacSign}.jpg')`; // Assuming zodiacSign corresponds to image name
+    }
 });
+    });
