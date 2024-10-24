@@ -1,14 +1,15 @@
 /* General body styles */
 body {
-    font-family: Arial, sans-serif;
+   font-family: Arial, sans-serif;
     color: #333;
     text-align: center;
-    margin: 0; /* Remove default margin */
-    height: 100vh; /* Set height to full viewport */
-    background-size: cover; /* Cover the entire background */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repeating the image */
-    filter: brightness(0.8); /* Optionally darken the background image */
+    margin: 0;
+    height: 100vh;
+    background-image: url('background.jpg'); /* Default background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.8);
 }
 
 /* Main container styling */
