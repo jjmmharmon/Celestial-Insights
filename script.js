@@ -203,6 +203,21 @@ return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPl
         return total % 9 === 0 ? 9 : total % 9; 
     }
 
+     function setZodiacBackground(zodiacSign) {
+        const body = document.body;
+        const backgroundImageUrl = `images/${zodiacSign}.jpg`; // Path to your images
+
+        // Set the background image
+        body.style.backgroundImage = `url('${backgroundImageUrl}')`;
+        body.style.backgroundSize = "cover"; // Ensure the image covers the whole background
+        body.style.backgroundPosition = "center"; // Center the image
+        body.style.backgroundRepeat = "no-repeat"; // Prevent the image from repeating
+    }
+
+    // Example of how to call getZodiacAndTraits
+    const dob = "2003-05-30"; // Replace with the user's input
+    const result = getZodiacAndTraits(dob); // Get the zodiac sign and traits
+}
     // Event listener for button click
     document.getElementById('yourButtonId').addEventListener('click', function() {
         const dob = document.getElementById('dobInput').value; // Get date of birth input
