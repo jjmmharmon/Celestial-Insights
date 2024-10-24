@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Document is ready."); // Check if the DOM is loaded
+    console.log("Document is ready.");
 
     function getZodiacAndTraits(dob, gender) {
         const date = new Date(dob);
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setZodiacBackground(zodiacSign); // Set background based on zodiac sign
         }
 
-        return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
+       return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
     }
 
     function calculateLuckyNumber(month, day, year) {
@@ -204,29 +204,27 @@ document.addEventListener("DOMContentLoaded", function () {
         return total % 9 === 0 ? 9 : total % 9; 
     }
     
-    function setZodiacBackground(zodiacSign) {
+   function setZodiacBackground(zodiacSign) {
         const body = document.body;
-        const backgroundImageUrl = `images/${zodiacSign}.jpg`; // Path to your images
+        const backgroundImageUrl = `images/${zodiacSign}.jpg`; // Correctly format the path
 
         // Set the background image
         body.style.backgroundImage = `url('${backgroundImageUrl}')`;
-        body.style.backgroundSize = "cover"; // Ensure the image covers the whole background
-        body.style.backgroundPosition = "center"; // Center the image
-        body.style.backgroundRepeat = "no-repeat"; // Prevent the image from repeating
+        body.style.backgroundSize = "cover";
+        body.style.backgroundPosition = "center";
+        body.style.backgroundRepeat = "no-repeat";
     }
 
-    // Example of how to call getZodiacAndTraits
-    const dob = "2003-05-30"; // Replace with the user's input
-    const result = getZodiacAndTraits(dob); // Get the zodiac sign and traits
-}
+
+
     // Event listener for button click
-    document.getElementById('yourButtonId').addEventListener('click', function() {
-        const dob = document.getElementById('dobInput').value; // Get date of birth input
-        const gender = document.querySelector('input[name="gender"]:checked').value; // Get selected gender
+   document.getElementById('find-sign').addEventListener('click', function() {
+        const dob = document.getElementById('dob').value; // Get date of birth input
+        const gender = document.getElementById('gender').value; // Get selected gender
 
         // Get zodiac and traits based on DOB and gender
-        const zodiacResult = getZodiacAndTraits(dob, gender); // Rename result to zodiacResult
-        
+        const result = getZodiacAndTraits(dob, gender);
+    
         // Output traits
         const traitsList = document.getElementById('traits');
         traitsList.innerHTML = ''; // Clear the list
