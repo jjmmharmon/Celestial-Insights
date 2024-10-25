@@ -251,45 +251,45 @@ function setZodiacBackground(zodiacSign) {
         document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
         document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
 
-        // Output traits
-        const traitsList = document.getElementById('traits');
-        traitsList.innerHTML = ''; // Clear the list before displaying new traits
+     // Output traits
+const traitsList = document.getElementById('traits');
+traitsList.innerHTML = ''; // Clear the list before displaying new traits
 
-        // Check if traits exist in the zodiac result
-        if (zodiacResult && zodiacResult.traits) {
-            console.log("Traits data:", zodiacResult.traits); 
+// Check if traits exist in the zodiac result
+if (zodiacResult && zodiacResult.traits) {
+    console.log("Traits data:", zodiacResult.traits); 
 
-            // Ensure traits are selected based on gender
-            let selectedTraits =  []; // Get the traits based on gender
-             if (gender === 'Other') {
-            // Combine male and female traits for "Other"
-            selectedTraits = zodiacResult.traits.female.concat(zodiacResult.traits.male);
-                } else {
-            selectedTraits = zodiacResult.traits || []; // Get the traits based on gender
-                }
+    // Ensure traits are selected based on gender
+    let selectedTraits = [];
+    
+    if (gender === 'Other') {
+        // Check if male and female traits exist
+        const maleTraits = zodiacResult.traits.male || []; // Fallback to empty array if not found
+        const femaleTraits = zodiacResult.traits.female || []; // Fallback to empty array if not found
+        
+        // Combine male and female traits for "Other"
+        selectedTraits = maleTraits.concat(femaleTraits);
+    } else {
+        selectedTraits = zodiacResult.traits[gender] || []; // Get traits based on gender
+    }
 
-            console.log("Selected Traits:", selectedTraits); 
+    console.log("Selected Traits:", selectedTraits); 
 
-            // Output selected traits
-            if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
-                selectedTraits.forEach(trait => {
-                    const li = document.createElement('li');
-                    li.textContent = trait; // Display each trait
-                    traitsList.appendChild(li);
-                });
-            } else {
-                console.warn("No traits available for the selected gender.");
-                const li = document.createElement('li');
-                li.textContent = "No traits available."; 
-                traitsList.appendChild(li);
-            }
-        } else {
-            console.error("No traits data found in result."); 
-        }
-
-        // Update background image based on the zodiac sign
-        if (zodiacResult && zodiacResult.zodiacSign) {
-            setZodiacBackground(zodiacResult.zodiacSign); // Use the defined function for setting the background
-        }
+    // Output selected traits
+    if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
+        selectedTraits.forEach(trait => {
+            const li = document.createElement('li');
+            li.textContent = trait; // Display each trait
+            traitsList.appendChild(li);
+        });
+    } else {
+        console.warn("No traits available for the selected gender.");
+        const li = document.createElement('li');
+        li.textContent = "No traits available."; 
+        traitsList.appendChild(li);
+    }
+} else {
+    console.error("No traits data found in result."); 
+}
     });
 });
