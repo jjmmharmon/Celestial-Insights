@@ -2,13 +2,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Document is ready.");
 
-    function getZodiacAndTraits(dob, gender) {
+ function getZodiacAndTraits(dob, gender) {
         const date = new Date(dob);
         const month = date.getUTCMonth() + 1; // getUTCMonth() is zero-based
         const day = date.getUTCDate();
         const year = date.getUTCFullYear();
 
+     
         const zodiacData = {
+            
             Aquarius: {
                 dates: "January 20 – February 18",
                 element: "Air",
@@ -146,11 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
-     function getZodiacAndTraits(dob, gender) {
-    const date = new Date(dob);
-    const month = date.getMonth() + 1; // Months are zero-based, so add 1
-    const day = date.getDate(); // Get the day
-    const year = date.getFullYear(); // Get the year
+ 
 
     // Zodiac sign determination
     let zodiacSign = '';
@@ -190,21 +188,20 @@ document.addEventListener("DOMContentLoaded", function () {
             zodiacSign = "Capricorn";
         }
 
-        // Fetch zodiac traits and planets
-          if (zodiacSign) {
-        const signData = zodiacData[zodiacSign];
-        element = signData.element;
-        signType = signData.signType;
-        modernPlanet = signData.rulingPlanets.modern;
-        traditionalPlanet = signData.rulingPlanets.traditional;
-        planetTraits = signData.planetTraits;
-        planetImpact = signData.planetImpact;
-        traits = signData.traits[gender]; // Use gender to fetch traits
-        setZodiacBackground(zodiacSign); // Set background based on zodiac sign
-    }
+      if (zodiacSign) {
+            const signData = zodiacData[zodiacSign];
+            element = signData.element;
+            signType = signData.signType;
+            modernPlanet = signData.rulingPlanets.modern;
+            traditionalPlanet = signData.rulingPlanets.traditional;
+            planetTraits = signData.planetTraits;
+            planetImpact = signData.planetImpact;
+            traits = signData.traits[gender]; // Use gender to fetch traits
+            setZodiacBackground(zodiacSign); // Set background based on zodiac sign
+        }
 
-    return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
-}
+        return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
+    }
 
     function calculateLuckyNumber(month, day, year) {
         const digits = (month + day + year).toString().split('');
@@ -212,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return total % 9 === 0 ? 9 : total % 9; 
     }
     
-   function setZodiacBackground(zodiacSign) {
+    function setZodiacBackground(zodiacSign) {
         const body = document.body;
         const backgroundImageUrl = `images/${zodiacSign}.jpg`; // Correctly format the path
 
@@ -222,70 +219,59 @@ document.addEventListener("DOMContentLoaded", function () {
         body.style.backgroundPosition = "center";
         body.style.backgroundRepeat = "no-repeat";
     }
-// Display zodiac sign and other info
-const signInfo = document.getElementById('sign-info');
-signInfo.innerHTML = `
-    <h3>Your Zodiac Sign: ${zodiacResult.zodiacSign}</h3>
-    <p>Lucky Number: ${zodiacResult.luckyNumber}</p>
-    <p>Element: ${zodiacResult.element}</p>
-    <p>Sign Type: ${zodiacResult.signType}</p>
-    <p>Modern Planet: ${zodiacResult.modernPlanet}</p>
-    <p>Traditional Planet: ${zodiacResult.traditionalPlanet}</p>
-`;
 
+    // Event Listener for finding sign
+    document.getElementById('find-sign').addEventListener('click', function() {
+        const dob = document.getElementById('dob').value; // Get date of birth input
+        const gender = document.getElementById('gender').value; // Get selected gender
 
+        // Get zodiac and traits based on DOB and gender
+        const zodiacResult = getZodiacAndTraits(dob, gender);
 
- document.getElementById('find-sign').addEventListener('click', function() {
-    const dob = document.getElementById('dob').value; // Get date of birth input
-    const gender = document.getElementById('gender').value; // Get selected gender
+        // Log the zodiac result for debugging
+        console.log("Zodiac Result:", zodiacResult); 
 
-    // Get zodiac and traits based on DOB and gender
-    const zodiacResult = getZodiacAndTraits(dob, gender);
+        // Output zodiac information to the respective HTML elements
+        document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
+        document.getElementById('lucky-number').textContent = zodiacResult.luckyNumber || 'Unknown';
+        document.getElementById('element').textContent = zodiacResult.element || 'Unknown';
+        document.getElementById('sign-type').textContent = zodiacResult.signType || 'Unknown';
+        document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
+        document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
 
-    // Log the zodiac result for debugging
-    console.log("Zodiac Result:", zodiacResult); 
+        // Output traits
+        const traitsList = document.getElementById('traits');
+        traitsList.innerHTML = ''; // Clear the list before displaying new traits
 
-    // Output zodiac information to the respective HTML elements
-    document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
-    document.getElementById('lucky-number').textContent = zodiacResult.luckyNumber || 'Unknown';
-    document.getElementById('element').textContent = zodiacResult.element || 'Unknown';
-    document.getElementById('sign-type').textContent = zodiacResult.signType || 'Unknown';
-    document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
-    document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
+        // Check if traits exist in the zodiac result
+        if (zodiacResult && zodiacResult.traits) {
+            console.log("Traits data:", zodiacResult.traits); 
 
-    // Output traits
-    const traitsList = document.getElementById('traits');
-    traitsList.innerHTML = ''; // Clear the list before displaying new traits
+            // Ensure traits are selected based on gender
+            let selectedTraits = zodiacResult.traits || []; // Get the traits based on gender
 
-    // Check if traits exist in the zodiac result
-    if (zodiacResult && zodiacResult.traits) {
-        console.log("Traits data:", zodiacResult.traits); 
+            console.log("Selected Traits:", selectedTraits); 
 
-        // Ensure traits are selected based on gender
-        let selectedTraits = zodiacResult.traits || []; // Get the traits based on gender
-
-        console.log("Selected Traits:", selectedTraits); 
-
-        // Output selected traits
-        if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
-            selectedTraits.forEach(trait => {
+            // Output selected traits
+            if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
+                selectedTraits.forEach(trait => {
+                    const li = document.createElement('li');
+                    li.textContent = trait; // Display each trait
+                    traitsList.appendChild(li);
+                });
+            } else {
+                console.warn("No traits available for the selected gender.");
                 const li = document.createElement('li');
-                li.textContent = trait; // Display each trait
+                li.textContent = "No traits available."; 
                 traitsList.appendChild(li);
-            });
+            }
         } else {
-            console.warn("No traits available for the selected gender.");
-            const li = document.createElement('li');
-            li.textContent = "No traits available."; 
-            traitsList.appendChild(li);
+            console.error("No traits data found in result."); 
         }
-    } else {
-        console.error("No traits data found in result."); 
-    }
 
-    // Update background image based on the zodiac sign
-    if (zodiacResult && zodiacResult.zodiacSign) {
-        setZodiacBackground(zodiacResult.zodiacSign); // Use the defined function for setting the background
-    }
-});
+        // Update background image based on the zodiac sign
+        if (zodiacResult && zodiacResult.zodiacSign) {
+            setZodiacBackground(zodiacResult.zodiacSign); // Use the defined function for setting the background
+        }
     });
+});
