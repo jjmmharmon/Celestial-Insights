@@ -209,11 +209,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return total % 9 === 0 ? 9 : total % 9; 
     }
     
-  function setZodiacBackground(zodiacSign) {
+ function setZodiacBackground(zodiacSign) {
     const body = document.body;
-    const backgroundImageUrl = '{zodiacSign}.jpg`;
-    
-    // Apply the background image
+    const backgroundImageUrl = `https://raw.githubusercontent.com/YourGitHubUsername/Celestial-Insights/main/images/${zodiacSign}.jpg`;
+
+    // Set the background image
     body.style.backgroundImage = `url('${backgroundImageUrl}')`;
     body.style.backgroundSize = "cover";
     body.style.backgroundPosition = "center";
