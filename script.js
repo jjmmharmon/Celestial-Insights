@@ -244,7 +244,7 @@ document.getElementById('find-sign').addEventListener('click', function() {
             selectedTraits = femaleTraits; // Use female traits directly
         } else {
             // If gender is 'other', no traits will be displayed
-            selectedTraits = []; // Leave as empty
+            selectedTraits = maleTraits,femaleTraits; // Leave as empty
         }
 
         console.log("Selected Traits:", selectedTraits); // Log selected traits
