@@ -225,6 +225,9 @@ document.getElementById('find-sign').addEventListener('click', function() {
     // Get zodiac and traits based on DOB and gender
     const zodiacResult = getZodiacAndTraits(dob, gender);
 
+    // Log the zodiac result for debugging
+    console.log("Zodiac Result:", zodiacResult); // This should be here
+
     // Output traits
     const traitsList = document.getElementById('traits');
     traitsList.innerHTML = ''; // Clear the list before displaying new traits
@@ -272,5 +275,4 @@ document.getElementById('find-sign').addEventListener('click', function() {
         document.body.style.backgroundImage = `url('${zodiacResult.zodiacSign}.jpg')`; // Assuming zodiacSign corresponds to image name
     }
 });
-
     });
