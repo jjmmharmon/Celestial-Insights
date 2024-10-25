@@ -209,21 +209,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return total % 9 === 0 ? 9 : total % 9; 
     }
     
-    function setZodiacBackground(zodiacSign) {
-        const body = document.body;
-        const backgroundImageUrl = `images/${zodiacSign}.jpg`; // Correctly format the path
-
-        const img = new Image();
-    img.src = backgroundImageUrl;
-    img.onload = function() {
-        body.style.backgroundImage = `url('${backgroundImageUrl}')`;
-        body.style.backgroundSize = "cover";
-        body.style.backgroundPosition = "center";
-        body.style.backgroundRepeat = "no-repeat";
-    };
-    img.onerror = function() {
-        console.error("Image not found:", backgroundImageUrl); // Error log if image fails to load
-    };
+  function setZodiacBackground(zodiacSign) {
+    const body = document.body;
+    const backgroundImageUrl = `https://raw.githubusercontent.com/yourusername/Celestial-Insights/main/images/${zodiacSign}.jpg`;
+    
+    // Apply the background image
+    body.style.backgroundImage = `url('${backgroundImageUrl}')`;
+    body.style.backgroundSize = "cover";
+    body.style.backgroundPosition = "center";
+    body.style.backgroundRepeat = "no-repeat";
 }
     // Event Listener for finding sign
     document.getElementById('find-sign').addEventListener('click', function() {
