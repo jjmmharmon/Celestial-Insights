@@ -213,13 +213,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const body = document.body;
         const backgroundImageUrl = `images/${zodiacSign}.jpg`; // Correctly format the path
 
-        // Set the background image
+        const img = new Image();
+    img.src = backgroundImageUrl;
+    img.onload = function() {
         body.style.backgroundImage = `url('${backgroundImageUrl}')`;
         body.style.backgroundSize = "cover";
         body.style.backgroundPosition = "center";
         body.style.backgroundRepeat = "no-repeat";
-    }
-
+    };
+    img.onerror = function() {
+        console.error("Image not found:", backgroundImageUrl); // Error log if image fails to load
+    };
+}
     // Event Listener for finding sign
     document.getElementById('find-sign').addEventListener('click', function() {
         const dob = document.getElementById('dob').value; // Get date of birth input
