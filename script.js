@@ -209,11 +209,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return total % 9 === 0 ? 9 : total % 9; 
     }
     
- function setZodiacBackground(zodiacSign) {
+function setZodiacBackground(zodiacSign) {
     const body = document.body;
- const backgroundImageUrl = `https://jjmmharmon.github.io/Celestial-Insights/images/${zodiacSign}.jpg`;
-
-
+    const backgroundImageUrl = `${zodiacSign}.jpg`; // Use root directory path
 
     // Set the background image
     body.style.backgroundImage = `url('${backgroundImageUrl}')`;
