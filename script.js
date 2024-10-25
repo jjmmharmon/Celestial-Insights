@@ -1,4 +1,4 @@
-
+/* jshint esversion: 6 */
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Document is ready.");
 
@@ -244,7 +244,7 @@ document.getElementById('find-sign').addEventListener('click', function() {
             selectedTraits = femaleTraits; // Use female traits directly
         } else {
             // If gender is 'other', no traits will be displayed
-            selectedTraits = maleTraits,femaleTraits; // Leave as empty
+          selectedTraits = []; // Leave as empty
         }
 
         console.log("Selected Traits:", selectedTraits); // Log selected traits
