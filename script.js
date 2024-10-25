@@ -227,9 +227,10 @@ document.getElementById('find-sign').addEventListener('click', function() {
 
     // Output traits
     const traitsList = document.getElementById('traits');
-    traitsList.innerHTML = ''; // Clear the list
+    traitsList.innerHTML = ''; // Clear the list before displaying new traits
 
-    if (zodiacResult.traits) {
+    // Check if traits exist in the zodiac result
+    if (zodiacResult && zodiacResult.traits) {
         console.log("Traits data:", zodiacResult.traits); // Log traits to see structure
 
         const maleTraits = zodiacResult.traits.male || []; // Fallback to an empty array if undefined
@@ -243,8 +244,8 @@ document.getElementById('find-sign').addEventListener('click', function() {
         } else if (gender === 'female') {
             selectedTraits = femaleTraits; // Use female traits directly
         } else {
-            // If gender is 'other', no traits will be displayed
-          selectedTraits = []; // Leave as empty
+            // If gender is 'other', combine traits
+            selectedTraits = maleTraits.concat(femaleTraits); 
         }
 
         console.log("Selected Traits:", selectedTraits); // Log selected traits
@@ -253,13 +254,13 @@ document.getElementById('find-sign').addEventListener('click', function() {
         if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
             selectedTraits.forEach(trait => {
                 const li = document.createElement('li');
-                li.textContent = trait;
+                li.textContent = trait; // Display each trait
                 traitsList.appendChild(li);
             });
         } else {
             console.warn("No traits available for the selected gender.");
             const li = document.createElement('li');
-            li.textContent = "No traits available."; // Only for male/female
+            li.textContent = "No traits available."; // Message for no traits
             traitsList.appendChild(li);
         }
     } else {
@@ -267,8 +268,9 @@ document.getElementById('find-sign').addEventListener('click', function() {
     }
 
     // Update background image based on the zodiac sign
-    if (zodiacResult.zodiacSign) {
+    if (zodiacResult && zodiacResult.zodiacSign) {
         document.body.style.backgroundImage = `url('${zodiacResult.zodiacSign}.jpg')`; // Assuming zodiacSign corresponds to image name
     }
 });
+
     });
