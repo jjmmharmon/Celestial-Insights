@@ -260,7 +260,13 @@ function setZodiacBackground(zodiacSign) {
             console.log("Traits data:", zodiacResult.traits); 
 
             // Ensure traits are selected based on gender
-            let selectedTraits = zodiacResult.traits || []; // Get the traits based on gender
+            let selectedTraits =  []; // Get the traits based on gender
+             if (gender === 'Other') {
+            // Combine male and female traits for "Other"
+            selectedTraits = zodiacResult.traits.female.concat(zodiacResult.traits.male);
+                } else {
+            selectedTraits = zodiacResult.traits || []; // Get the traits based on gender
+                }
 
             console.log("Selected Traits:", selectedTraits); 
 
