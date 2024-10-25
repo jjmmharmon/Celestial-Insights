@@ -245,6 +245,14 @@ signInfo.innerHTML = `
     // Log the zodiac result for debugging
     console.log("Zodiac Result:", zodiacResult); 
 
+    // Output zodiac information to the respective HTML elements
+    document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
+    document.getElementById('lucky-number').textContent = zodiacResult.luckyNumber || 'Unknown';
+    document.getElementById('element').textContent = zodiacResult.element || 'Unknown';
+    document.getElementById('sign-type').textContent = zodiacResult.signType || 'Unknown';
+    document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
+    document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
+
     // Output traits
     const traitsList = document.getElementById('traits');
     traitsList.innerHTML = ''; // Clear the list before displaying new traits
