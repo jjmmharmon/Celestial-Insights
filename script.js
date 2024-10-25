@@ -211,14 +211,27 @@ document.addEventListener("DOMContentLoaded", function () {
     
 function setZodiacBackground(zodiacSign) {
     const body = document.body;
-    const backgroundImageUrl = `${zodiacSign}.jpg`; // Use root directory path
+    const backgroundImageUrl = `https://jjmmharmon.github.io/Celestial-Insights/${zodiacSign}.jpg`; // Full URL for image
 
-    // Set the background image
-    body.style.backgroundImage = `url('${backgroundImageUrl}')`;
-    body.style.backgroundSize = "cover";
-    body.style.backgroundPosition = "center";
-    body.style.backgroundRepeat = "no-repeat";
+    // Debug log to check if URL is correct
+    console.log("Setting background image with URL:", backgroundImageUrl);
+
+    // Attempt to load the image first to check if it exists
+    const img = new Image();
+    img.onload = function() {
+        body.style.backgroundImage = `url('${backgroundImageUrl}')`;
+        body.style.backgroundSize = "cover";
+        body.style.backgroundPosition = "center";
+        body.style.backgroundRepeat = "no-repeat";
+        console.log("Background image loaded successfully.");
+    };
+    img.onerror = function() {
+        console.error("Failed to load background image:", backgroundImageUrl);
+        body.style.backgroundColor = "white"; // Fallback color
+    };
+    img.src = backgroundImageUrl; // Trigger the image load
 }
+
     // Event Listener for finding sign
     document.getElementById('find-sign').addEventListener('click', function() {
         const dob = document.getElementById('dob').value; // Get date of birth input
