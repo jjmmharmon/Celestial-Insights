@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Saturn: ["Discipline", "Structure", "Responsibility"]
                 },
                 planetImpact: "Uranus gives Aquarius its forward-thinking mindset, while Saturn adds discipline and responsibility.",
-                traits: { female: ["Unconventional", "Independent", "Humanitarian"], male: ["Visionary", "Intellectual", "Socially-Aware"],other: ["Unconventional", "Independent", "Humanitarian", "Visionary", "Intellectual", "Socially-Aware"] }
+                traits: { female: ["Unconventional", "Independent", "Humanitarian"], male: ["Visionary", "Intellectual", "Socially-Aware"], other: ["Unconventional", "Independent", "Humanitarian", "Visionary", "Intellectual", "Socially-Aware"] }
             },
             Pisces: {
                 dates: "February 19 – March 20",
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Jupiter: ["Expansion", "Wisdom", "Optimism"]
                 },
                 planetImpact: "Neptune fuels Pisces' imagination and spirituality, while Jupiter brings optimism and philosophical thinking.",
-                traits: { female: ["Compassionate", "Artistic", "Empathetic"], male: ["Gentle", "Imaginative", "Empathetic"] }
+                traits: { female: ["Compassionate", "Artistic", "Empathetic"], male: ["Gentle", "Imaginative", "Empathetic"], other: ["Compassionate", "Artistic", "Empathetic", "Gentle", "Imaginative", "Empathetic"] }
             },
             Aries: {
                 dates: "March 21 – April 19",
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Mars: ["Action", "Energy", "Assertiveness", "Courage", "Passion"]
                 },
                 planetImpact: "Mars gives Aries its boldness, competitiveness, and adventurous nature.",
-                traits: { female: ["Bold", "Independent", "Energetic"], male: ["Assertive", "Competitive", "Passionate"] }
+                traits: { female: ["Bold", "Independent", "Energetic"], male: ["Assertive", "Competitive", "Passionate"], other: ["Bold", "Independent", "Energetic","Assertive", "Competitive", "Passionate"] }
             },
             Taurus: {
                 dates: "April 20 – May 20",
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Venus: ["Love", "Beauty", "Harmony", "Material Wealth", "Comfort"]
                 },
                 planetImpact: "Venus brings sensuality, stability, and a love for comfort and nature.",
-                traits: { female: ["Patient", "Reliable", "Loyal"], male: ["Determined", "Practical", "Sensual"] }
+                traits: { female: ["Patient", "Reliable", "Loyal"], male: ["Determined", "Practical", "Sensual"], other: ["Patient", "Reliable", "Loyal","Determined", "Practical", "Sensual" ] }
             },
             Gemini: {
                 dates: "May 21 – June 20",
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Mercury: ["Communication", "Intellect", "Adaptability", "Quick Thinking"]
                 },
                 planetImpact: "Mercury fuels Gemini's sharp intellect, wit, and social adaptability.",
-                traits: { female: ["Adaptable", "Intellectual", "Social"], male: ["Curious", "Versatile", "Witty"] }
+                traits: { female: ["Adaptable", "Intellectual", "Social"], male: ["Curious", "Versatile", "Witty"] , other: ["Adaptable", "Intellectual", "Social", "Curious", "Versatile", "Witty"] }
             },
             Cancer: {
                 dates: "June 21 – July 22",
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Moon: ["Emotions", "Intuition", "Deep Emotional Connections"]
                 },
                 planetImpact: "The Moon governs Cancer's emotional sensitivity, nurturing nature, and strong intuition.",
-                traits: { female: ["Nurturing", "Emotional", "Intuitive"], male: ["Protective", "Sentimental", "Caring"] }
+                traits: { female: ["Nurturing", "Emotional", "Intuitive"], male: ["Protective", "Sentimental", "Caring"] , other: ["Nurturing", "Emotional", "Intuitive", "Protective", "Sentimental", "Caring"] }
             },
             Leo: {
                 dates: "July 23 – August 22",
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Sun: ["Vitality", "Leadership", "Creativity", "Confidence"]
                 },
                 planetImpact: "The Sun fuels Leo's charisma, self-confidence, and desire to lead.",
-                traits: { female: ["Confident", "Generous", "Dramatic"], male: ["Charismatic", "Ambitious", "Creative"] }
+                traits: { female: ["Confident", "Generous", "Dramatic"], male: ["Charismatic", "Ambitious", "Creative"] , other: ["Confident", "Generous", "Dramatic", "Charismatic", "Ambitious", "Creative" ] }
             },
             Virgo: {
                 dates: "August 23 – September 22",
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Mercury: ["Logic", "Communication", "Intellect", "Organization"]
                 },
                 planetImpact: "Mercury sharpens Virgo's analytical and detail-oriented mindset.",
-                traits: { female: ["Analytical", "Practical", "Detail-Oriented"], male: ["Reliable", "Modest", "Perfectionist"] }
+                traits: { female: ["Analytical", "Practical", "Detail-Oriented"], male: ["Reliable", "Modest", "Perfectionist"] , other: ["Analytical", "Practical", "Detail-Oriented", "Reliable", "Modest", "Perfectionist"] }
             },
             Libra: {
                 dates: "September 23 – October 22",
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Venus: ["Harmony", "Love", "Beauty", "Balance", "Diplomacy"]
                 },
                 planetImpact: "Venus gives Libra its love for balance, fairness, and harmonious relationships.",
-                traits: { female: ["Diplomatic", "Charming", "Idealistic"], male: ["Fair", "Balanced", "Sociable"] }
+                traits: { female: ["Diplomatic", "Charming", "Idealistic"], male: ["Fair", "Balanced", "Sociable"] , other: ["Diplomatic", "Charming", "Idealistic", "Fair", "Balanced", "Sociable"] }
             },
             Scorpio: {
                 dates: "October 23 – November 21",
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Mars: ["Passion", "Action", "Drive", "Assertiveness"]
                 },
                 planetImpact: "Pluto gives Scorpio depth and intensity, while Mars adds passion and determination.",
-                traits: { female: ["Mysterious", "Passionate", "Resourceful"], male: ["Intense", "Loyal", "Strategic"] }
+                traits: { female: ["Mysterious", "Passionate", "Resourceful"], male: ["Intense", "Loyal", "Strategic"] , other: ["Mysterious", "Passionate", "Resourceful", "Intense", "Loyal", "Strategic"] }
             },
             Sagittarius: {
                 dates: "November 22 – December 21",
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Jupiter: ["Expansion", "Optimism", "Growth", "Wisdom"]
                 },
                 planetImpact: "Jupiter inspires Sagittarius' love for adventure, optimism, and philosophical thinking.",
-                traits: { female: ["Adventurous", "Optimistic", "Independent"], male: ["Philosophical", "Energetic", "Generous"] }
+                traits: { female: ["Adventurous", "Optimistic", "Independent"], male: ["Philosophical", "Energetic", "Generous"] , other: ["Adventurous", "Optimistic", "Independent", "Philosophical", "Energetic", "Generous"] }
             },
             Capricorn: {
                 dates: "December 22 – January 19",
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Saturn: ["Discipline", "Structure", "Responsibility", "Long-Term Goals"]
                 },
                 planetImpact: "Saturn's influence makes Capricorn disciplined, goal-oriented, and practical.",
-                traits: { female: ["Ambitious", "Disciplined", "Practical"], male: ["Determined", "Strategic", "Responsible"] }
+                traits: { female: ["Ambitious", "Disciplined", "Practical"], male: ["Determined", "Strategic", "Responsible"] , other: ["Ambitious", "Disciplined", "Practical", "Determined", "Strategic", "Responsible"] }
             }
         };
 
@@ -266,10 +266,8 @@ if (zodiacResult && zodiacResult.traits) {
         // Set traits based on selected gender if they exist
         selectedTraits = zodiacResult.traits[gender] || [];
     } else if (gender === 'Other') {
-        // Combine male and female traits for "Other" if they exist
-        const maleTraits = zodiacResult.traits.male || [];
-        const femaleTraits = zodiacResult.traits.female || [];
-        selectedTraits = [...maleTraits, ...femaleTraits];
+        // Use "Other" traits directly if specified in zodiacData
+        selectedTraits = zodiacResult.traits.other || [...(zodiacResult.traits.male || []), ...(zodiacResult.traits.female || [])];
     }
 
     console.log("Selected Traits:", selectedTraits); 
