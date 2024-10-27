@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Saturn: ["Discipline", "Structure", "Responsibility"]
                 },
                 planetImpact: "Uranus gives Aquarius its forward-thinking mindset, while Saturn adds discipline and responsibility.",
-                traits: { female: ["Unconventional", "Independent", "Humanitarian"], male: ["Visionary", "Intellectual", "Socially-Aware"] }
+                traits: { female: ["Unconventional", "Independent", "Humanitarian"], male: ["Visionary", "Intellectual", "Socially-Aware"],other: ["Unconventional", "Independent", "Humanitarian", "Visionary", "Intellectual", "Socially-Aware"] }
             },
             Pisces: {
                 dates: "February 19 – March 20",
