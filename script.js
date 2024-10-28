@@ -232,40 +232,41 @@ function setZodiacBackground(zodiacSign) {
 }
 
     // Event Listener for finding sign
-    document.getElementById('find-sign').addEventListener('click', function() {
-        const dob = document.getElementById('dob').value;
-        const gender = document.getElementById('gender').value;
+    // Code snippet for rendering traits
+document.getElementById('find-sign').addEventListener('click', function () {
+    const dob = document.getElementById('dob').value; // Get date of birth input
+    const gender = document.getElementById('gender').value; // Get selected gender
 
-        const zodiacResult = getZodiacAndTraits(dob, gender);
-        console.log("Zodiac Result:", zodiacResult);
+    // Get zodiac and traits based on DOB and gender
+    const zodiacResult = getZodiacAndTraits(dob, gender);
 
-        document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
-        document.getElementById('lucky-number').textContent = zodiacResult.luckyNumber || 'Unknown';
-        document.getElementById('element').textContent = zodiacResult.element || 'Unknown';
-        document.getElementById('sign-type').textContent = zodiacResult.signType || 'Unknown';
-        document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
-        document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
+    // Log the zodiac result for debugging
+    console.log("Zodiac Result:", zodiacResult); 
 
-        const traitsList = document.getElementById('traits');
-        traitsList.innerHTML = '';
+    // Output zodiac information to the respective HTML elements
+    document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
+    document.getElementById('lucky-number').textContent = zodiacResult.luckyNumber || 'Unknown';
+    document.getElementById('element').textContent = zodiacResult.element || 'Unknown';
+    document.getElementById('sign-type').textContent = zodiacResult.signType || 'Unknown';
+    document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
+    document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
 
-        let selectedTraits = [];
-        if (gender === 'male' || gender === 'female') {
-            selectedTraits = zodiacResult.traits || [];
-        } else if (gender === 'Other') {
-            selectedTraits = zodiacResult.traits || [];
-        }
+    // Render traits based on gender selection
+    const traitsList = document.getElementById('traits');
+    traitsList.innerHTML = ''; // Clear previous list
 
-        if (selectedTraits.length) {
-            selectedTraits.forEach(trait => {
-                const li = document.createElement('li');
-                li.textContent = trait;
-                traitsList.appendChild(li);
-            });
-        } else {
+    // Check and display traits based on gender selection
+    let selectedTraits = zodiacResult.traits;
+    if (selectedTraits && selectedTraits.length > 0) {
+        selectedTraits.forEach(trait => {
             const li = document.createElement('li');
-            li.textContent = "No traits available.";
+            li.textContent = trait;
             traitsList.appendChild(li);
-        }
-    });
+        });
+    } else {
+        const li = document.createElement('li');
+        li.textContent = "No traits available.";
+        traitsList.appendChild(li);
+    }
+});
 });
