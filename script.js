@@ -232,16 +232,12 @@ function setZodiacBackground(zodiacSign) {
 }
 
     // Event Listener for finding sign
-    // Code snippet for rendering traits
-document.getElementById('find-sign').addEventListener('click', function () {
+  document.getElementById('find-sign').addEventListener('click', function () {
     const dob = document.getElementById('dob').value; // Get date of birth input
-    const gender = document.getElementById('gender').value; // Get selected gender
+    const gender = document.getElementById('gender').value.toLowerCase(); // Get selected gender and normalize case
 
     // Get zodiac and traits based on DOB and gender
     const zodiacResult = getZodiacAndTraits(dob, gender);
-
-    // Log the zodiac result for debugging
-    console.log("Zodiac Result:", zodiacResult); 
 
     // Output zodiac information to the respective HTML elements
     document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
@@ -251,12 +247,17 @@ document.getElementById('find-sign').addEventListener('click', function () {
     document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
     document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
 
+    // Debugging output
+    console.log("Gender selected:", gender);
+    console.log("Zodiac Result:", zodiacResult);
+
     // Render traits based on gender selection
     const traitsList = document.getElementById('traits');
     traitsList.innerHTML = ''; // Clear previous list
 
-    // Check and display traits based on gender selection
-    let selectedTraits = zodiacResult.traits;
+    // Retrieve traits based on gender from zodiacResult
+    let selectedTraits = zodiacResult.traits ? zodiacResult.traits[gender] : null;
+
     if (selectedTraits && selectedTraits.length > 0) {
         selectedTraits.forEach(trait => {
             const li = document.createElement('li');
