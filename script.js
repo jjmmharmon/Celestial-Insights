@@ -231,7 +231,7 @@ function setZodiacBackground(zodiacSign) {
     img.src = backgroundImageUrl; // Trigger the image load
 }
 
-    document.getElementById('find-sign').addEventListener('click', function () {
+   document.getElementById('find-sign').addEventListener('click', function () {
     const dob = document.getElementById('dob').value;
     const gender = document.getElementById('gender').value.toLowerCase(); // Normalize case
 
@@ -254,23 +254,25 @@ function setZodiacBackground(zodiacSign) {
     const traitsList = document.getElementById('traits');
     traitsList.innerHTML = ''; // Clear the list
 
-    // Attempt to access traits based on the gender
-    let selectedTraits = (zodiacResult.traits && zodiacResult.traits[gender]) || [];
+    // Check if zodiacResult.traits exists before proceeding
+    if (zodiacResult.traits) {
+        // Attempt to access traits based on the gender
+        let selectedTraits = zodiacResult.traits[gender] || zodiacResult.traits.other || [];
 
-    // Fallback if traits for gender are not found, log the issue
-    if (selectedTraits.length === 0) {
-        console.warn(`Traits for gender "${gender}" not found. Using "other" traits as fallback.`);
-        selectedTraits = zodiacResult.traits ? zodiacResult.traits.other : [];
-    }
-
-    // Render traits in the list
-    if (selectedTraits.length > 0) {
-        selectedTraits.forEach(trait => {
+        // Render traits in the list if available
+        if (selectedTraits.length > 0) {
+            selectedTraits.forEach(trait => {
+                const li = document.createElement('li');
+                li.textContent = trait;
+                traitsList.appendChild(li);
+            });
+        } else {
             const li = document.createElement('li');
-            li.textContent = trait;
+            li.textContent = "No traits available.";
             traitsList.appendChild(li);
-        });
+        }
     } else {
+        console.warn("No traits found for the selected zodiac sign.");
         const li = document.createElement('li');
         li.textContent = "No traits available.";
         traitsList.appendChild(li);
