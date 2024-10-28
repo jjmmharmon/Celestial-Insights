@@ -231,15 +231,14 @@ function setZodiacBackground(zodiacSign) {
     img.src = backgroundImageUrl; // Trigger the image load
 }
 
-    // Event Listener for finding sign
-  document.getElementById('find-sign').addEventListener('click', function () {
-    const dob = document.getElementById('dob').value; // Get date of birth input
-    const gender = document.getElementById('gender').value.toLowerCase(); // Get selected gender and normalize case
+    document.getElementById('find-sign').addEventListener('click', function () {
+    const dob = document.getElementById('dob').value;
+    const gender = document.getElementById('gender').value.toLowerCase(); // Normalize case
 
     // Get zodiac and traits based on DOB and gender
     const zodiacResult = getZodiacAndTraits(dob, gender);
 
-    // Output zodiac information to the respective HTML elements
+    // Output zodiac information to the HTML elements
     document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
     document.getElementById('lucky-number').textContent = zodiacResult.luckyNumber || 'Unknown';
     document.getElementById('element').textContent = zodiacResult.element || 'Unknown';
@@ -247,18 +246,25 @@ function setZodiacBackground(zodiacSign) {
     document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
     document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
 
-    // Debugging output
-    console.log("Gender selected:", gender);
+    // Debugging: Output entire zodiacResult and the gender to console
     console.log("Zodiac Result:", zodiacResult);
+    console.log("Gender selected:", gender);
 
-    // Render traits based on gender selection
+    // Access traits list in the DOM
     const traitsList = document.getElementById('traits');
-    traitsList.innerHTML = ''; // Clear previous list
+    traitsList.innerHTML = ''; // Clear the list
 
-    // Retrieve traits based on gender from zodiacResult
-    let selectedTraits = zodiacResult.traits ? zodiacResult.traits[gender] : null;
+    // Attempt to access traits based on the gender
+    let selectedTraits = (zodiacResult.traits && zodiacResult.traits[gender]) || [];
 
-    if (selectedTraits && selectedTraits.length > 0) {
+    // Fallback if traits for gender are not found, log the issue
+    if (selectedTraits.length === 0) {
+        console.warn(`Traits for gender "${gender}" not found. Using "other" traits as fallback.`);
+        selectedTraits = zodiacResult.traits ? zodiacResult.traits.other : [];
+    }
+
+    // Render traits in the list
+    if (selectedTraits.length > 0) {
         selectedTraits.forEach(trait => {
             const li = document.createElement('li');
             li.textContent = trait;
