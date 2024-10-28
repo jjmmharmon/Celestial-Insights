@@ -240,6 +240,7 @@ function setZodiacBackground(zodiacSign) {
 
     console.log("Zodiac Result:", zodiacResult);
     console.log("Gender selected:", gender);
+    console.log("Traits object:", zodiacResult.traits); // Debugging to confirm traits structure
 
     document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
     document.getElementById('lucky-number').textContent = zodiacResult.luckyNumber || 'Unknown';
@@ -261,12 +262,14 @@ function setZodiacBackground(zodiacSign) {
             const li = document.createElement('li');
             li.textContent = trait;
             traitsList.appendChild(li);
+            console.log("Traits object:", zodiacResult.traits);
         });
     } else {
         console.warn("No traits found for the selected zodiac sign.");
         const li = document.createElement('li');
         li.textContent = "No traits available.";
         traitsList.appendChild(li);
+        console.log("Traits object:", zodiacResult.traits);
     }
 });
 });
