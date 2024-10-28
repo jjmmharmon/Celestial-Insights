@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Document is ready.");
 
     function getZodiacAndTraits(dob, gender) {
-        const date = new Date(dob);
-        const month = date.getUTCMonth() + 1;
-        const day = date.getUTCDate();
-        const year = date.getUTCFullYear();
+    const date = new Date(dob);
+    const month = date.getUTCMonth() + 1;
+    const day = date.getUTCDate();
+    const year = date.getUTCFullYear();
 
         const zodiacData = {
             
@@ -195,9 +195,10 @@ document.addEventListener("DOMContentLoaded", function () {
             traditionalPlanet = signData.rulingPlanets.traditional;
             planetTraits = signData.planetTraits;
             planetImpact = signData.planetImpact;
-            traits = signData.traits[gender]; // Use gender to fetch traits
+           traits = signData.traits[gender] || signData.traits.other; // Use gender to fetch traits
             setZodiacBackground(zodiacSign); // Set background based on zodiac sign
         }
+         console.log("Traits selected:", traits); // Debug log to verify traits
 
         return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
     }
@@ -231,14 +232,15 @@ function setZodiacBackground(zodiacSign) {
     img.src = backgroundImageUrl; // Trigger the image load
 }
 
-   document.getElementById('find-sign').addEventListener('click', function () {
+  document.getElementById('find-sign').addEventListener('click', function () {
     const dob = document.getElementById('dob').value;
-    const gender = document.getElementById('gender').value.toLowerCase(); // Normalize case
+    const gender = document.getElementById('gender').value.toLowerCase();
 
-    // Get zodiac and traits based on DOB and gender
     const zodiacResult = getZodiacAndTraits(dob, gender);
 
-    // Output zodiac information to the HTML elements
+    console.log("Zodiac Result:", zodiacResult);
+    console.log("Gender selected:", gender);
+
     document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
     document.getElementById('lucky-number').textContent = zodiacResult.luckyNumber || 'Unknown';
     document.getElementById('element').textContent = zodiacResult.element || 'Unknown';
@@ -246,31 +248,20 @@ function setZodiacBackground(zodiacSign) {
     document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
     document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
 
-    // Debugging: Output entire zodiacResult and the gender to console
-    console.log("Zodiac Result:", zodiacResult);
-    console.log("Gender selected:", gender);
-
-    // Access traits list in the DOM
+    // Access traits list in the DOM and clear previous entries
     const traitsList = document.getElementById('traits');
-    traitsList.innerHTML = ''; // Clear the list
+    traitsList.innerHTML = '';
 
-    // Check if zodiacResult.traits exists before proceeding
-    if (zodiacResult.traits) {
-        // Attempt to access traits based on the gender
-        let selectedTraits = zodiacResult.traits[gender] || zodiacResult.traits.other || [];
+    // Determine traits based on gender or fallback to 'other'
+    let selectedTraits = zodiacResult.traits ? (zodiacResult.traits[gender] || zodiacResult.traits.other || []) : [];
 
-        // Render traits in the list if available
-        if (selectedTraits.length > 0) {
-            selectedTraits.forEach(trait => {
-                const li = document.createElement('li');
-                li.textContent = trait;
-                traitsList.appendChild(li);
-            });
-        } else {
+    // Render traits in the list if available
+    if (selectedTraits.length > 0) {
+        selectedTraits.forEach(trait => {
             const li = document.createElement('li');
-            li.textContent = "No traits available.";
+            li.textContent = trait;
             traitsList.appendChild(li);
-        }
+        });
     } else {
         console.warn("No traits found for the selected zodiac sign.");
         const li = document.createElement('li');
