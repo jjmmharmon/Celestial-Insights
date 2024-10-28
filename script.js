@@ -2,13 +2,12 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Document is ready.");
 
- function getZodiacAndTraits(dob, gender) {
+    function getZodiacAndTraits(dob, gender) {
         const date = new Date(dob);
-        const month = date.getUTCMonth() + 1; // getUTCMonth() is zero-based
+        const month = date.getUTCMonth() + 1;
         const day = date.getUTCDate();
         const year = date.getUTCFullYear();
 
-     
         const zodiacData = {
             
             Aquarius: {
@@ -234,16 +233,12 @@ function setZodiacBackground(zodiacSign) {
 
     // Event Listener for finding sign
     document.getElementById('find-sign').addEventListener('click', function() {
-        const dob = document.getElementById('dob').value; // Get date of birth input
-        const gender = document.getElementById('gender').value; // Get selected gender
+        const dob = document.getElementById('dob').value;
+        const gender = document.getElementById('gender').value;
 
-        // Get zodiac and traits based on DOB and gender
         const zodiacResult = getZodiacAndTraits(dob, gender);
+        console.log("Zodiac Result:", zodiacResult);
 
-        // Log the zodiac result for debugging
-        console.log("Zodiac Result:", zodiacResult); 
-
-        // Output zodiac information to the respective HTML elements
         document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
         document.getElementById('lucky-number').textContent = zodiacResult.luckyNumber || 'Unknown';
         document.getElementById('element').textContent = zodiacResult.element || 'Unknown';
@@ -251,42 +246,26 @@ function setZodiacBackground(zodiacSign) {
         document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
         document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
 
- // Output traits
-const traitsList = document.getElementById('traits');
-traitsList.innerHTML = ''; // Clear the list before displaying new traits
+        const traitsList = document.getElementById('traits');
+        traitsList.innerHTML = '';
 
-// Check if traits exist in the zodiac result
-if (zodiacResult && zodiacResult.traits) {
-    console.log("Zodiac Result:", zodiacResult); // Log the entire result for inspection
+        let selectedTraits = [];
+        if (gender === 'male' || gender === 'female') {
+            selectedTraits = zodiacResult.traits || [];
+        } else if (gender === 'Other') {
+            selectedTraits = zodiacResult.traits || [];
+        }
 
-    // Initialize selectedTraits based on gender
-    let selectedTraits = [];
-    
-    if (gender === 'male' || gender === 'female') {
-        // Set traits based on selected gender if they exist
-        selectedTraits = zodiacResult.traits[gender] || [];
-    } else if (gender === 'Other') {
-        // Use "Other" traits directly if specified in zodiacData
-        selectedTraits = zodiacResult.traits.other || [...(zodiacResult.traits.male || []), ...(zodiacResult.traits.female || [])];
-    }
-
-    console.log("Selected Traits:", selectedTraits); 
-
-    // Output selected traits
-    if (Array.isArray(selectedTraits) && selectedTraits.length > 0) {
-        selectedTraits.forEach(trait => {
+        if (selectedTraits.length) {
+            selectedTraits.forEach(trait => {
+                const li = document.createElement('li');
+                li.textContent = trait;
+                traitsList.appendChild(li);
+            });
+        } else {
             const li = document.createElement('li');
-            li.textContent = trait; // Display each trait
+            li.textContent = "No traits available.";
             traitsList.appendChild(li);
-        });
-    } else {
-        console.warn("No traits available for the selected gender.");
-        const li = document.createElement('li');
-        li.textContent = "No traits available."; 
-        traitsList.appendChild(li);
-    }
-} else {
-    console.error("No traits data found in result.");
-}
+        }
     });
 });
