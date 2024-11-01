@@ -198,8 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
            traits = signData.traits[gender] || signData.traits.other; // Use gender to fetch traits
             setZodiacBackground(zodiacSign); // Set background based on zodiac sign
         }
-         console.log("Traits selected:", traits); // Debug log to verify traits
-
         return { zodiacSign, luckyNumber, element, signType, modernPlanet, traditionalPlanet, planetTraits, planetImpact, traits };
     }
 
@@ -249,23 +247,64 @@ function setZodiacBackground(zodiacSign) {
     document.getElementById('modern-planet').textContent = zodiacResult.modernPlanet || 'Unknown';
     document.getElementById('traditional-planet').textContent = zodiacResult.traditionalPlanet || 'Unknown';
 
-  // Access traits list in the DOM and clear previous entries
-const traitsList = document.getElementById('traits');
-traitsList.innerHTML = '';
+    const modernPlanet = zodiacResult.modernPlanet;
+    const traditionalPlanet = zodiacResult.traditionalPlanet;
+  
+    // Access traits list in the DOM and clear previous entries
+    const traitsList = document.getElementById('traits');
+    traitsList.innerHTML = '';
 
-// Render traits in the list if available
-if (zodiacResult.traits && zodiacResult.traits.length > 0) {  // Ensure traits exist and have length
-    zodiacResult.traits.forEach(trait => {
+    // Render traits in the list if available
+    if (zodiacResult.traits && zodiacResult.traits.length > 0) {
+        zodiacResult.traits.forEach(trait => {
+            const li = document.createElement('li');
+            li.textContent = trait;
+            traitsList.appendChild(li);
+            console.log("Trait added:", trait); // Log each trait for debugging
+        });
+    } else {
+        console.warn("No traits found for the selected zodiac sign.");
         const li = document.createElement('li');
-        li.textContent = trait;
+        li.textContent = "No traits available.";
         traitsList.appendChild(li);
-        console.log("Trait added:", trait); // Log each trait for debugging
-    });
-} else {
-    console.warn("No traits found for the selected zodiac sign.");
-    const li = document.createElement('li');
-    li.textContent = "No traits available.";
-    traitsList.appendChild(li);
-}
-  });
+    }
+
+    // Modern and Traditional Planet Traits Display
+    const modernTraitsList = document.getElementById('modern-planet-traits');
+    const traditionalTraitsList = document.getElementById('traditional-planet-traits');
+    modernTraitsList.innerHTML = '';
+    traditionalTraitsList.innerHTML = '';
+
+    // Display traits for the modern planet
+    if (zodiacResult.planetTraits[modernPlanet]) {
+        zodiacResult.planetTraits[modernPlanet].forEach(trait => {
+            const li = document.createElement('li');
+            li.textContent = trait;
+            modernTraitsList.appendChild(li);
+            console.log(`Modern trait for ${modernPlanet} added:`, trait); // Debug log
+        });
+    } else {
+        const li = document.createElement('li');
+        li.textContent = "No traits available.";
+        modernTraitsList.appendChild(li);
+    }
+
+    // Display traits for the traditional planet
+    if (zodiacResult.planetTraits[traditionalPlanet]) {
+        zodiacResult.planetTraits[traditionalPlanet].forEach(trait => {
+            const li = document.createElement('li');
+            li.textContent = trait;
+            traditionalTraitsList.appendChild(li);
+            console.log(`Traditional trait for ${traditionalPlanet} added:`, trait); // Debug log
+        });
+    } else {
+        const li = document.createElement('li');
+        li.textContent = "No traits available.";
+        traditionalTraitsList.appendChild(li);
+    }
+
+    // Display Planet Impact
+    document.getElementById('planet-impact').textContent = zodiacResult.planetImpact || 'No impact description available.';
+    console.log("Traits selected:", zodiacResult.traits); // Debug log to verify traits
+});
 });
