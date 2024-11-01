@@ -17,10 +17,11 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.5); /* Make border semi-transparent */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Semi-transparent border */
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.5); /* Slightly transparent white */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px); /* Optional: blur background for readability */
 }
 
 /* Heading styles */
