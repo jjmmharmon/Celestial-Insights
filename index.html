@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container"> <!-- Wrap in a container -->
+    <div class="container">
         <input type="date" id="dob">
         <select id="gender">
             <option value="male">Male</option>
@@ -16,14 +16,27 @@
         </select>
         <button id="find-sign">Find Your Zodiac</button>
 
-        <div id="sign-info"> <!-- New div to hold all sign info -->
+        <div id="sign-info">
             <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
             <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
             <h4>Your Element: <span id="element"></span></h4>
             <h4>Sign Type: <span id="sign-type"></span></h4>
             <h4>Modern Planet: <span id="modern-planet"></span></h4>
             <h4>Traditional Planet: <span id="traditional-planet"></span></h4>
-            <div id="planet-traits"></div>
+            
+            <!-- Planet Impact Section -->
+            <h4>Planet Impact:</h4>
+            <p id="planet-impact"></p>
+
+            <!-- Planet Traits Section -->
+            <h4>Modern Planet Traits:</h4>
+            <ul id="modern-planet-traits"></ul>
+            
+            <h4>Traditional Planet Traits:</h4>
+            <ul id="traditional-planet-traits"></ul>
+
+            <!-- General Traits Section -->
+            <h4>Traits:</h4>
             <ul id="traits"></ul>
         </div>
     </div>
