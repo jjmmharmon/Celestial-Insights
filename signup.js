@@ -2,9 +2,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Signup.js loaded");
 
-    // Dummy user storage for demo purposes
-    const users = {};
-
     function toggleAuthForms() {
         const signupForm = document.getElementById('signup');
         const loginForm = document.getElementById('login');
@@ -13,37 +10,56 @@ document.addEventListener("DOMContentLoaded", function () {
         loginForm.classList.toggle('hidden');
     }
 
-    function handleSignup() {
+    async function handleSignup() {
         const username = document.getElementById('signup-username').value;
         const email = document.getElementById('signup-email').value;
         const password = document.getElementById('signup-password').value;
 
         if (username && email && password) {
-            if (!users[username]) {
-                users[username] = { email, password };
-                alert("Signup successful! You can now log in.");
-                // Clear input fields
-                document.getElementById('signup-username').value = '';
-                document.getElementById('signup-email').value = '';
-                document.getElementById('signup-password').value = '';
-            } else {
-                alert("Username already exists. Please choose another one.");
+            try {
+                const response = await fetch('http://localhost:5000/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, email, password }),
+                });
+                const message = await response.text();
+                alert(message);
+                if (response.ok) {
+                    // Clear input fields
+                    document.getElementById('signup-username').value = '';
+                    document.getElementById('signup-email').value = '';
+                    document.getElementById('signup-password').value = '';
+                }
+            } catch (error) {
+                console.error('Error:', error);
             }
         } else {
             alert("Please enter valid username, email, and password.");
         }
     }
 
-    function handleLogin() {
+    async function handleLogin() {
         const username = document.getElementById('login-username').value;
         const password = document.getElementById('login-password').value;
 
         if (username && password) {
-            if (users[username] && users[username].password === password) {
-                alert("Login successful!");
-                displayUserInterface(username);
-            } else {
-                alert("Invalid username or password.");
+            try {
+                const response = await fetch('http://localhost:5000/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password }),
+                });
+                const message = await response.text();
+                alert(message);
+                if (response.ok) {
+                    displayUserInterface(username);
+                }
+            } catch (error) {
+                console.error('Error:', error);
             }
         } else {
             alert("Please enter both username and password.");
