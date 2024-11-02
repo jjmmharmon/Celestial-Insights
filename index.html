@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Authentication Section -->
-    <div class="auth-container">
+    <div class="auth-container" id="auth-section">
         <div id="signup" class="auth-form">
             <h2>Sign Up</h2>
             <input type="text" id="signup-username" placeholder="Username" required>
@@ -27,46 +27,27 @@
     </div>
 
     <!-- Zodiac Finder Section -->
-    <div class="container">
-        <!-- Logout Button (visible only after login) -->
-        <button id="logout" class="hidden" onclick="handleLogout()">Logout</button>
+    <div class="container hidden" id="zodiac-section">
+        <button id="logout" onclick="handleLogout()">Logout</button>
 
-        <!-- Date and Gender Input -->
-        <input type="date" id="dob">
-        <select id="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-        </select>
-        <button id="find-sign">Find Your Zodiac</button>
-
-        <!-- Zodiac Information Display -->
-        <div id="sign-info">
-            <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
-            <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
-            <h4>Your Element: <span id="element"></span></h4>
-            <h4>Sign Type: <span id="sign-type"></span></h4>
-            <h4>Modern Planet: <span id="modern-planet"></span></h4>
-            <h4>Traditional Planet: <span id="traditional-planet"></span></h4>
-            
-            <!-- Planet Impact Section -->
-            <h4>Planet Impact:</h4>
-            <p id="planet-impact"></p>
-
-            <!-- Planet Traits Section -->
-            <h4>Modern Planet Traits:</h4>
-            <ul id="modern-planet-traits"></ul>
-            
-            <h4>Traditional Planet Traits:</h4>
-            <ul id="traditional-planet-traits"></ul>
-
-            <!-- General Traits Section -->
-            <h4>Traits:</h4>
-            <ul id="traits"></ul>
-        </div>
+        <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
+        <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
+        <h4>Your Element: <span id="element"></span></h4>
+        <h4>Sign Type: <span id="sign-type"></span></h4>
+        <h4>Modern Planet: <span id="modern-planet"></span></h4>
+        <h4>Traditional Planet: <span id="traditional-planet"></span></h4>
+        
+        <!-- Additional Zodiac Information Sections -->
+        <h4>Planet Impact:</h4>
+        <p id="planet-impact"></p>
+        <h4>Modern Planet Traits:</h4>
+        <ul id="modern-planet-traits"></ul>
+        <h4>Traditional Planet Traits:</h4>
+        <ul id="traditional-planet-traits"></ul>
+        <h4>Traits:</h4>
+        <ul id="traits"></ul>
     </div>
 
-    <script src="script.js"></script>
     <script src="signup.js"></script>
 </body>
 </html>
