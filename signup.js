@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!users[username]) {
                 users[username] = { email, password };
                 alert("Signup successful! You can now log in.");
+                // Clear input fields
                 document.getElementById('signup-username').value = '';
                 document.getElementById('signup-email').value = '';
                 document.getElementById('signup-password').value = '';
@@ -53,6 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("You have been logged out.");
         document.getElementById('zodiac-container').classList.add('hidden');
         document.getElementById('auth-container').classList.remove('hidden');
+        // Clear the input fields
+        document.getElementById('login-username').value = '';
+        document.getElementById('login-password').value = '';
     }
 
     function displayUserInterface(username) {
