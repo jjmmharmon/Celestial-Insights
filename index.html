@@ -13,7 +13,7 @@
             <h2>Sign Up</h2>
             <input type="text" id="signup-username" placeholder="Username" required>
             <input type="password" id="signup-password" placeholder="Password" required>
-            <button onclick="signUp()">Sign Up</button>
+            <button onclick="handleSignup()">Sign Up</button>
             <p>Already have an account? <span onclick="toggleAuthForms()">Login here</span></p>
         </div>
 
@@ -21,7 +21,7 @@
             <h2>Login</h2>
             <input type="text" id="login-username" placeholder="Username" required>
             <input type="password" id="login-password" placeholder="Password" required>
-            <button onclick="logIn()">Login</button>
+            <button onclick="handleLogin()">Login</button>
             <p>Don’t have an account? <span onclick="toggleAuthForms()">Sign up here</span></p>
         </div>
     </div>
@@ -29,7 +29,7 @@
     <!-- Zodiac Finder Section -->
     <div class="container">
         <!-- Logout Button (visible only after login) -->
-        <button id="logout" class="hidden" onclick="logOut()">Logout</button>
+        <button id="logout" class="hidden" onclick="handleLogout()">Logout</button>
 
         <!-- Date and Gender Input -->
         <input type="date" id="dob">
@@ -67,5 +67,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="signup.js"></script>
 </body>
 </html>
