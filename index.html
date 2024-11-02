@@ -7,7 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Authentication Section -->
+    <div class="auth-container">
+        <div id="signup" class="auth-form">
+            <h2>Sign Up</h2>
+            <input type="text" id="signup-username" placeholder="Username" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <button onclick="signUp()">Sign Up</button>
+            <p>Already have an account? <span onclick="toggleAuthForms()">Login here</span></p>
+        </div>
+
+        <div id="login" class="auth-form hidden">
+            <h2>Login</h2>
+            <input type="text" id="login-username" placeholder="Username" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button onclick="logIn()">Login</button>
+            <p>Don’t have an account? <span onclick="toggleAuthForms()">Sign up here</span></p>
+        </div>
+    </div>
+
+    <!-- Zodiac Finder Section -->
     <div class="container">
+        <!-- Logout Button (visible only after login) -->
+        <button id="logout" class="hidden" onclick="logOut()">Logout</button>
+
+        <!-- Date and Gender Input -->
         <input type="date" id="dob">
         <select id="gender">
             <option value="male">Male</option>
@@ -16,6 +40,7 @@
         </select>
         <button id="find-sign">Find Your Zodiac</button>
 
+        <!-- Zodiac Information Display -->
         <div id="sign-info">
             <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
             <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
@@ -40,6 +65,7 @@
             <ul id="traits"></ul>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
