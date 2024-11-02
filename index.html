@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Authentication Section -->
-    <div class="auth-container">
+    <div class="auth-container" id="auth-container">
         <div id="signup" class="auth-form">
             <h2>Sign Up</h2>
             <input type="text" id="signup-username" placeholder="Username" required>
@@ -32,7 +32,7 @@
         <button id="logout" onclick="handleLogout()">Logout</button>
 
         <!-- Date and Gender Input -->
-        <input type="date" id="dob">
+        <input type="date" id="dob" required>
         <select id="gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
