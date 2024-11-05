@@ -7,8 +7,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container"> <!-- Wrap in a container -->
-        <input type="date" id="dob">
+    <!-- Authentication Section -->
+    <div class="auth-container" id="auth-container">
+        <div id="signup" class="auth-form">
+            <h2>Sign Up</h2>
+            <input type="text" id="signup-username" placeholder="Username" required>
+            <input type="email" id="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <button onclick="handleSignup()">Sign Up</button>
+            <p>Already have an account? <span onclick="toggleAuthForms()">Login here</span></p>
+        </div>
+
+        <div id="login" class="auth-form hidden">
+            <h2>Login</h2>
+            <input type="text" id="login-username" placeholder="Username" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button onclick="handleLogin()">Login</button>
+            <p>Don’t have an account? <span onclick="toggleAuthForms()">Sign up here</span></p>
+        </div>
+    </div>
+
+    <!-- Zodiac Finder Section -->
+    <div class="container hidden" id="zodiac-container">
+        <button id="logout" onclick="handleLogout()">Logout</button>
+
+        <!-- Date and Gender Input -->
+        <input type="date" id="dob" required>
         <select id="gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -16,17 +40,30 @@
         </select>
         <button id="find-sign">Find Your Zodiac</button>
 
-        <div id="sign-info"> <!-- New div to hold all sign info -->
+        <!-- Zodiac Information Display -->
+        <div id="sign-info">
             <h2>Your Zodiac Sign: <span id="zodiac-sign"></span></h2>
             <h3>Your Lucky Number: <span id="lucky-number"></span></h3>
             <h4>Your Element: <span id="element"></span></h4>
             <h4>Sign Type: <span id="sign-type"></span></h4>
             <h4>Modern Planet: <span id="modern-planet"></span></h4>
             <h4>Traditional Planet: <span id="traditional-planet"></span></h4>
-            <div id="planet-traits"></div>
+            
+            <!-- Additional Information Sections -->
+            <h4>Planet Impact:</h4>
+            <p id="planet-impact"></p>
+
+            <h4>Modern Planet Traits:</h4>
+            <ul id="modern-planet-traits"></ul>
+            
+            <h4>Traditional Planet Traits:</h4>
+            <ul id="traditional-planet-traits"></ul>
+
+            <h4>Traits:</h4>
             <ul id="traits"></ul>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="signup.js"></script>
 </body>
 </html>
