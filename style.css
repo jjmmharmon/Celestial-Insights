@@ -1,6 +1,6 @@
 /* General body styles */
 body {
-    font-family: Arial, sans-serif;
+   font-family: Arial, sans-serif;
     color: #333;
     text-align: center;
     margin: 0;
@@ -9,7 +9,6 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Fix background to cover entire screen */
     filter: brightness(0.8);
 }
 
@@ -18,11 +17,10 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.5); /* Semi-transparent border */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Make border semi-transparent */
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px); /* Optional: blur background for readability */
+    background-color: rgba(255, 255, 255, 0.5); /* Slightly transparent white */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
 /* Heading styles */
@@ -107,69 +105,4 @@ ul li {
     button {
         width: 100%; /* Full-width button on small screens */
     }
-}
-
-/* Authentication container styling */
-.auth-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    margin-top: 20px;
-}
-
-/* Auth form styling */
-.auth-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Auth form input styling */
-.auth-form input[type="text"],
-.auth-form input[type="password"] {
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 1em;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 80%;
-}
-
-.auth-form input[type="text"]:focus,
-.auth-form input[type="password"]:focus {
-    border: 2px solid #4CAF50;
-    outline: none;
-}
-
-/* Auth button styling */
-.auth-form button {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: rgba(76, 175, 80, 0.7);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 80%;
-    margin-top: 10px;
-}
-
-.auth-form button:hover {
-    background-color: rgba(69, 160, 73, 0.7);
-}
-
-.auth-form span {
-    color: #4CAF50;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.auth-form span:hover {
-    text-decoration: underline;
 }
