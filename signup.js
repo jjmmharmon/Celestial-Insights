@@ -1,4 +1,8 @@
 // signup.js
+const BASE_URL = process.env.NODE_ENV === 'production'
+    ? 'https://your-app.herokuapp.com'
+    : 'http://localhost:5000';
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Signup.js loaded");
 
