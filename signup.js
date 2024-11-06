@@ -1,7 +1,5 @@
 // signup.js
-const BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'https://your-app.herokuapp.com'
-    : 'http://localhost:5000';
+import config from './config.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Signup.js loaded");
@@ -22,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (username && email && password) {
             try {
-                const response = await fetch(`${BASE_URL}/signup`, {
+                const response = await fetch(`${config.BASE_URL}/signup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -51,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (username && password) {
             try {
-                const response = await fetch(`${BASE_URL}/login`, {
+                const response = await fetch(`${config.BASE_URL}/login`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
