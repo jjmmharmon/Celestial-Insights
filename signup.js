@@ -1,14 +1,16 @@
+// signup.js
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Signup.js loaded");
 
+    // Toggle between login and signup forms
     function toggleAuthForms() {
         const signupForm = document.getElementById('signup');
         const loginForm = document.getElementById('login');
-
         signupForm.classList.toggle('hidden');
         loginForm.classList.toggle('hidden');
     }
 
+    // Handle signup action
     async function handleSignup() {
         const username = document.getElementById('signup-username').value;
         const email = document.getElementById('signup-email').value;
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (username && email && password) {
             try {
-                const response = await fetch('http://localhost:5000/signup', {
+                const response = await fetch(`${BASE_URL}/signup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -38,13 +40,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Handle login action
     async function handleLogin() {
         const username = document.getElementById('login-username').value;
         const password = document.getElementById('login-password').value;
 
         if (username && password) {
             try {
-                const response = await fetch('http://localhost:5000/login', {
+                const response = await fetch(`${BASE_URL}/login`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -64,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Handle logout action
     function handleLogout() {
         alert("You have been logged out.");
         document.getElementById('zodiac-container').classList.add('hidden');
@@ -72,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('login-password').value = '';
     }
 
+    // Display user interface upon successful login
     function displayUserInterface(username) {
         document.getElementById('auth-container').classList.add('hidden');
         document.getElementById('zodiac-container').classList.remove('hidden');
