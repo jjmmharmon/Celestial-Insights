@@ -6,6 +6,9 @@ node_modules/
 .app.env
 config.js
 
+# Ignore build output and distribution folders
+dist/
+
 # Ignore image files if they are stored in the project (if not necessary for the repository)
 *.jpg
 *.jpeg
@@ -29,3 +32,6 @@ coverage/
 
 # Ignore test reports or other temporary files
 .nyc_output/
+
+# Editor-specific files
+.idea/
