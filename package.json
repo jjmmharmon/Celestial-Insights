@@ -4,13 +4,14 @@
   "description": "A zodiac sign application with Node.js and MongoDB",
   "homepage": "https://jjmmharmon.github.io/Celestial-Insights/",
   "main": "dist/app.js",
-  "scripts": {
-    "start": "node dist/app.js",
-    "build": "tsc",  // Builds the TypeScript code
-    "dev": "ts-node-dev src/app.ts",  // Runs the app in development mode without compiling
-    "predeploy": "npm run build",    // Pre-deploy: build the app
-    "deploy": "gh-pages -d build"   // Deploys the built files to gh-pages
-  },
+ "scripts": {
+  "start": "node dist/app.js",
+  "build": "tsc",
+  "dev": "ts-node-dev src/app.ts",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+}
+
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.10.9",
