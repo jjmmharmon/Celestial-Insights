@@ -1,8 +1,8 @@
 {
-  "homepage": "https://jjmmharmon.github.io/Celestial-Insights/"
   "name": "celestial-insights",
   "version": "1.0.0",
   "description": "A zodiac sign application with Node.js and MongoDB",
+  "homepage": "https://jjmmharmon.github.io/Celestial-Insights/",
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
