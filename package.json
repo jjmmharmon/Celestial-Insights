@@ -1,5 +1,24 @@
-"scripts": {
-  "build": "tsc",
-  "start": "node dist/app.js",
-  "dev": "ts-node-dev src/app.ts"
+{
+  "name": "celestial-insights",
+  "version": "1.0.0",
+  "description": "A zodiac sign application with Node.js and MongoDB",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "build": "tsc",  // Builds the TypeScript code
+    "dev": "ts-node-dev src/app.ts"  // Runs the app in development mode without compiling
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9",
+    "dotenv": "^10.0.0",
+    "cors": "^2.8.5",
+    "body-parser": "^1.19.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "ts-node-dev": "^1.1.8"
+  },
+  "author": "",
+  "license": "ISC"
 }
