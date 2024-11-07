@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node dist/app.js",
     "build": "tsc",  // Builds the TypeScript code
-    "dev": "ts-node-dev src/app.ts"  // Runs the app in development mode without compiling
+    "dev": "ts-node-dev src/app.ts",  // Runs the app in development mode without compiling
+    "predeploy": "npm run build",    // Pre-deploy: build the app
+    "deploy": "gh-pages -d build"   // Deploys the built files to gh-pages
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -17,7 +19,8 @@
   },
   "devDependencies": {
     "typescript": "^4.4.4",
-    "ts-node-dev": "^1.1.8"
+    "ts-node-dev": "^1.1.8",
+    "gh-pages": "^3.2.3"  // Added gh-pages to deploy to GitHub Pages
   },
   "author": "",
   "license": "ISC"
