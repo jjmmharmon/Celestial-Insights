@@ -13,19 +13,15 @@ export async function handleSignup() {
                 },
                 body: JSON.stringify({ username, email, password }),
             });
-
             const message = await response.text();
             alert(message);
-
             if (response.ok) {
                 document.getElementById('signup-username').value = '';
                 document.getElementById('signup-email').value = '';
                 document.getElementById('signup-password').value = '';
-                toggleAuthForms(); // Switch to login after successful signup
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('There was an error during signup.');
         }
     } else {
         alert("Please enter valid username, email, and password.");
@@ -46,18 +42,17 @@ export async function handleLogin() {
                 },
                 body: JSON.stringify({ username, password }),
             });
-
-            const message = await response.text();
-            alert(message);
-
+            const data = await response.json();
+            alert(data.message);
             if (response.ok) {
-                // Store username or JWT token in localStorage (for persistence)
-                localStorage.setItem('user', username);
+                // Store the token in localStorage or sessionStorage
+                localStorage.setItem('token', data.token);
                 displayUserInterface(username);
+            } else {
+                alert(data.message);
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('There was an error during login.');
         }
     } else {
         alert("Please enter both username and password.");
@@ -67,7 +62,9 @@ export async function handleLogin() {
 // Handle logout action
 export function handleLogout() {
     alert("You have been logged out.");
-    localStorage.removeItem('user'); // Clear user from localStorage
+    // Remove the token from localStorage
+    localStorage.removeItem('token');
+    // Hide the user interface and show the login form
     document.getElementById('zodiac-container').classList.add('hidden');
     document.getElementById('auth-container').classList.remove('hidden');
     document.getElementById('login-username').value = '';
@@ -88,14 +85,3 @@ export function toggleAuthForms() {
     signupForm.classList.toggle('hidden');
     loginForm.classList.toggle('hidden');
 }
-
-// Check if user is already logged in (from localStorage)
-export function checkUserLoggedIn() {
-    const user = localStorage.getItem('user');
-    if (user) {
-        displayUserInterface(user); // If user is logged in, show user interface
-    }
-}
-
-// Initialize the page state
-document.addEventListener('DOMContentLoaded', checkUserLoggedIn);
