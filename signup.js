@@ -1,5 +1,3 @@
-// signup.js
-
 import config from './config.js';
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -86,9 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('user-name').textContent = username;
     }
 
-    // Expose functions for use in the HTML
-    window.handleSignup = handleSignup;
-    window.handleLogin = handleLogin;
-    window.handleLogout = handleLogout;
-    window.toggleAuthForms = toggleAuthForms;
+    // Export functions to be used in the HTML
+    export { handleSignup, handleLogin, handleLogout, toggleAuthForms };
 });
