@@ -1,10 +1,14 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup and Login</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div id="auth-container">
@@ -31,6 +35,12 @@
         <button onclick="handleLogout()">Logout</button>
     </div>
 
-    <script type="module" src="signup.js"></script>
+    <script type="module">
+        import { handleSignup, handleLogin, handleLogout, toggleAuthForms } from './signup.js';
+        window.handleSignup = handleSignup;
+        window.handleLogin = handleLogin;
+        window.handleLogout = handleLogout;
+        window.toggleAuthForms = toggleAuthForms;
+    </script>
 </body>
 </html>
