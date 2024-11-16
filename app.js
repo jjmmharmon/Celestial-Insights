@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken'); // Used to create a JWT token for user sessions
 const User = require('./models/User'); // Assuming you have a User model
 
 dotenv.config();  // Load environment variables
@@ -21,6 +22,8 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     .catch(err => console.log("Error connecting to MongoDB:", err));
 
 // Routes
+
+// Signup route
 app.post('/signup', async (req, res) => {
     const { username, email, password } = req.body;
     if (!username || !email || !password) {
@@ -47,6 +50,7 @@ app.post('/signup', async (req, res) => {
     }
 });
 
+// Login route
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     if (!username || !password) {
@@ -65,11 +69,20 @@ app.post('/login', async (req, res) => {
             return res.status(401).send("Invalid credentials.");
         }
 
-        res.status(200).send("Login successful.");
+        // Create a JWT token for the user session
+        const token = jwt.sign({ userId: user._id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        res.status(200).send({ message: "Login successful", token });
     } catch (error) {
         console.error("Login Error:", error);
         res.status(500).send("Error during login.");
     }
+});
+
+// Logout route (simple version, would generally clear session or JWT token)
+app.post('/logout', (req, res) => {
+    // This is a simple version. In a real app, you would clear cookies or tokens
+    res.status(200).send("Logged out successfully.");
 });
 
 // Server Start
