@@ -84,6 +84,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('user-name').textContent = username;
     }
 
-    // Export functions to be used in the HTML
-    export { handleSignup, handleLogin, handleLogout, toggleAuthForms };
+    // Export functions using CommonJS
+    module.exports = {
+        handleSignup,
+        handleLogin,
+        handleLogout,
+        toggleAuthForms
+    };
 });
