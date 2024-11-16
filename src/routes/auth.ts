@@ -1,18 +1,20 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import User from '../models/User';
 
 const router = Router();
 
 // Sign-up route
-router.post('/signup', async (req, res) => {
+router.post('/signup', async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
 
   try {
+    // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
+    // Create new user with hashed password
     const user = new User({ username, email, password });
     await user.save();
 
@@ -24,12 +26,19 @@ router.post('/signup', async (req, res) => {
 });
 
 // Log-in route
-router.post('/login', async (req, res) => {
+router.post('/login', async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
+    // Find user by email
     const user = await User.findOne({ email });
-    if (!user || user.password !== password) {
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    // Compare the entered password with the hashed password
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
