@@ -2,12 +2,14 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "commonjs",
-    "outDir": "./dist",  // The compiled JavaScript will go here
-    "rootDir": "./src",  // Your source TypeScript code is in the src folder
-    "strict": true,  // Enforces strict type-checking options
-    "esModuleInterop": true  // Allows default imports to work for non-ESM modules
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,  // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src/**/*"  // Includes all files in the src directory
+    "src/**/*"
   ]
 }
