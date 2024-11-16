@@ -21,6 +21,23 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.log("Error connecting to MongoDB:", err));
 
+// Middleware to check the JWT token in the authorization header
+function verifyToken(req, res, next) {
+    const token = req.headers['authorization']?.split(' ')[1]; // Get the token from 'Authorization' header
+
+    if (!token) {
+        return res.status(403).send("Access denied. No token provided.");
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(401).send("Invalid token.");
+        }
+        req.user = decoded; // Attach user info to the request object
+        next(); // Continue to the next middleware/route handler
+    });
+}
+
 // Routes
 
 // Signup route
@@ -83,6 +100,11 @@ app.post('/login', async (req, res) => {
 app.post('/logout', (req, res) => {
     // This is a simple version. In a real app, you would clear cookies or tokens
     res.status(200).send("Logged out successfully.");
+});
+
+// Protected Route (Example of a route that requires authentication)
+app.get('/protected', verifyToken, (req, res) => {
+    res.status(200).send(`Hello, ${req.user.username}. You have access to this protected route.`);
 });
 
 // Server Start
