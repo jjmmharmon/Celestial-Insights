@@ -1,4 +1,5 @@
 // signup.js
+
 import config from './config.js';
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -85,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('user-name').textContent = username;
     }
 
+    // Expose functions for use in the HTML
     window.handleSignup = handleSignup;
     window.handleLogin = handleLogin;
     window.handleLogout = handleLogout;
