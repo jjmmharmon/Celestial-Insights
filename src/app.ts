@@ -1,63 +1,49 @@
 import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import User from './models/User';  // Importing the User model
-
-dotenv.config();  // Load environment variables
+import connectDB from './config/connectDB'; // Adjust path if necessary
+import User from './models/User'; // Adjust path if necessary
 
 const app = express();
-const port = process.env.PORT || 5000;
+app.use(express.json()); // Middleware to parse JSON bodies
 
-// Middleware setup
-app.use(cors());
-app.use(bodyParser.json());
+// Connect to MongoDB
+connectDB();
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGO_URI as string, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("MongoDB connected"))
-    .catch(err => console.log("Error connecting to MongoDB:", err));
+// Example of a user registration route
+app.post('/api/users/register', async (req, res) => {
+  const { username, email, password } = req.body;
 
-// Routes
-app.post('/signup', async (req, res) => {
-    const { username, email, password } = req.body;
-    if (!username || !email || !password) {
-        return res.status(400).send("Please provide all required fields.");
-    }
-    try {
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(409).send("Email already in use.");
-        }
-
-        const newUser = new User({ username, email, password });
-        await newUser.save();
-        res.status(201).send("User successfully signed up.");
-    } catch (error) {
-        console.error("Signup Error:", error);
-        res.status(500).send("Error during signup.");
-    }
+  try {
+    const user = new User({ username, email, password });
+    await user.save();
+    res.status(201).json({ message: 'User created successfully!' });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
-app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
-    if (!username || !password) {
-        return res.status(400).send("Please provide both username and password.");
+// Example of a login route
+app.post('/api/users/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ error: 'User not found' });
     }
-    try {
-        const user = await User.findOne({ username });
-        if (!user || !(await user.comparePassword(password))) {
-            return res.status(401).send("Invalid credentials.");
-        }
-        res.status(200).send("Login successful.");
-    } catch (error) {
-        console.error("Login Error:", error);
-        res.status(500).send("Error during login.");
+
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+      return res.status(400).json({ error: 'Invalid password' });
     }
+
+    res.status(200).json({ message: 'Login successful' });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
-// Server Start
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+// Port and listening setup
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
