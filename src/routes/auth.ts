@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import User from '../models/User';
+import User, { IUser } from '../models/User'; // Ensure IUser is imported for type casting
 
 const router = Router();
 
@@ -37,7 +37,7 @@ router.post('/login', async (req: Request, res: Response) => {
     }
 
     // Compare the entered password with the hashed password
-    const isMatch = await user.comparePassword(password);
+    const isMatch = await (user as IUser).comparePassword(password); // Cast user to IUser
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
