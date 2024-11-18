@@ -1,49 +1,25 @@
 import express from 'express';
-import connectDB from './config/connectDB'; // Adjust path if necessary
-import User from './models/User'; // Adjust path if necessary
+import cors from 'cors';
+import dotenv from 'dotenv';
+import connectDB from './config/db'; // Import the database connection function
 
+dotenv.config(); // Initialize environment variables
 const app = express();
-app.use(express.json()); // Middleware to parse JSON bodies
 
-// Connect to MongoDB
+// Middleware setup
+app.use(cors()); // Enable CORS
+app.use(express.json()); // Parse JSON bodies
+
+// Connect to the database
 connectDB();
 
-// Example of a user registration route
-app.post('/api/users/register', async (req, res) => {
-  const { username, email, password } = req.body;
-
-  try {
-    const user = new User({ username, email, password });
-    await user.save();
-    res.status(201).json({ message: 'User created successfully!' });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+// Example route
+app.get('/', (req, res) => {
+    res.send('Hello from Celestial Insight!');
 });
 
-// Example of a login route
-app.post('/api/users/login', async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ error: 'User not found' });
-    }
-
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-      return res.status(400).json({ error: 'Invalid password' });
-    }
-
-    res.status(200).json({ message: 'Login successful' });
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-// Port and listening setup
+// Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
