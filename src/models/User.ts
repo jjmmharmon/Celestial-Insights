@@ -20,7 +20,7 @@ UserSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();  // Only hash the password if it's modified
 
   const salt = await bcrypt.genSalt(10);  // Generate salt
-  this.password = await bcrypt.hash(this.password, salt);  // Hash the password with salt
+ this.password = await bcrypt.hash(this.password as string, salt);  // Hash the password with salt
   next();
 });
 
