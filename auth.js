@@ -1,4 +1,3 @@
-// Function to get the JWT token from localStorage
 export function getToken() {
     return localStorage.getItem('token');
 }
