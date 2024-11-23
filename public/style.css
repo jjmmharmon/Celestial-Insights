@@ -1,11 +1,11 @@
 /* General body styles */
 body {
-   font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
     color: #333;
     text-align: center;
     margin: 0;
     height: 100vh;
-    background-image: url('background.jpg'); /* Default background image */
+    background-image: url('/public/background.jpg'); /* Updated path for background image */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,50 +15,52 @@ body {
 /* Main container styling */
 .container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 20px auto; /* Add vertical margin for spacing */
     padding: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.5); /* Make border semi-transparent */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Semi-transparent border */
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.5); /* Slightly transparent white */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
 }
 
 /* Heading styles */
 h1 {
     font-size: 2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    color: #4CAF50;
 }
 
-/* Date input styling */
-input[type="date"] {
+/* Input styling */
+input[type="date"], input[type="text"], input[type="password"], input[type="email"] {
     padding: 10px;
     margin: 10px 0;
     font-size: 1em;
     border-radius: 5px;
     border: 1px solid #ccc;
+    width: calc(100% - 22px); /* Adjust for padding and border */
 }
 
-/* Focus state for date input */
-input[type="date"]:focus {
+/* Focus state for inputs */
+input:focus {
     border: 2px solid #4CAF50;
-    outline: none; /* Remove default outline */
+    outline: none;
 }
 
 /* Button styling */
 button {
     padding: 10px 20px;
     font-size: 1em;
-    background-color: rgba(76, 175, 80, 0.7); /* Semi-transparent button background */
+    background-color: rgba(76, 175, 80, 0.8); /* Semi-transparent button background */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Add smooth transition */
+    transition: background-color 0.3s ease;
 }
 
 /* Button hover state */
 button:hover {
-    background-color: rgba(69, 160, 73, 0.7); /* Darken button on hover */
+    background-color: rgba(69, 160, 73, 0.9); /* Darken button on hover */
 }
 
 /* Button focus state */
@@ -66,7 +68,7 @@ button:focus {
     outline: 2px solid #4CAF50; /* Add focus outline */
 }
 
-/* Hidden class for elements you want to hide */
+/* Hidden class for elements to hide */
 .hidden {
     display: none;
 }
@@ -77,7 +79,7 @@ button:focus {
     padding: 15px;
     border: 1px solid rgba(76, 175, 80, 0.7); /* Semi-transparent border */
     border-radius: 10px;
-    background-color: rgba(224, 247, 250, 0.7); /* Semi-transparent background */
+    background-color: rgba(224, 247, 250, 0.8); /* Semi-transparent background */
 }
 
 /* List styling */
@@ -86,12 +88,17 @@ ul {
     padding: 0; /* Remove default padding */
 }
 
-/* List item styling */
 ul li {
-    background-color: rgba(255, 255, 255, 0.6); /* Light background */
-    margin: 5px 0; /* Add space between list items */
-    padding: 10px; /* Add padding for readability */
-    border-radius: 5px; /* Round corners */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background */
+    margin: 5px 0; /* Space between list items */
+    padding: 10px; /* Padding for readability */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Form styling */
+form {
+    margin-bottom: 20px; /* Add spacing between form and other elements */
 }
 
 /* Responsive design for smaller screens */
@@ -100,9 +107,9 @@ ul li {
         padding: 10px; /* Reduce padding */
     }
     h1 {
-        font-size: 2em; /* Slightly smaller heading */
+        font-size: 2em; /* Adjust heading size */
     }
     button {
-        width: 100%; /* Full-width button on small screens */
+        width: 100%; /* Full-width button */
     }
 }
