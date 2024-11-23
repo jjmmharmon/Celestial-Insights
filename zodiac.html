@@ -3,48 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zodiac Information</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Zodiac Sign Info</title>
+    <link rel="stylesheet" href="/public/style.css" />
+    <link rel="icon" href="/public/favicon.ico" />
 </head>
 <body>
-    <div class="container">
-        <h1>Find Your Zodiac Sign</h1>
-        <form id="zodiac-form">
-            <div>
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" required>
-            </div>
-            <div>
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" required>
-            </div>
-            <div>
-                <label for="gender">Gender:</label>
-                <select id="gender" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            <button type="button" id="find-sign">Find Zodiac</button>
-        </form>
-
-        <div id="zodiac-info">
-            <h2>Your Zodiac Sign</h2>
-            <p><strong>Zodiac Sign:</strong> <span id="zodiac-sign">Unknown</span></p>
-            <p><strong>Lucky Number:</strong> <span id="lucky-number">Unknown</span></p>
-            <p><strong>Element:</strong> <span id="element">Unknown</span></p>
-            <p><strong>Sign Type:</strong> <span id="sign-type">Unknown</span></p>
-            <p><strong>Modern Ruling Planet:</strong> <span id="modern-planet">Unknown</span></p>
-            <p><strong>Traditional Ruling Planet:</strong> <span id="traditional-planet">Unknown</span></p>
-
-            <h3>Traits</h3>
-            <ul id="traits">
-                <!-- Traits will be added here dynamically -->
-            </ul>
-        </div>
+    <div id="zodiac-info-container">
+        <h1 id="zodiac-sign"></h1>
+        <h3>Lucky Number: <span id="lucky-number"></span></h3>
+        <h3>Element: <span id="element"></span></h3>
+        <h3>Sign Type: <span id="sign-type"></span></h3>
+        <h3>Ruling Planets:</h3>
+        <ul>
+            <li>Modern: <span id="modern-planet"></span></li>
+            <li>Traditional: <span id="traditional-planet"></span></li>
+        </ul>
+        <h3>Planet Traits:</h3>
+        <ul id="planet-traits-list">
+            <!-- Planet traits will be added here -->
+        </ul>
+        <h3>Traits:</h3>
+        <ul id="traits-list">
+            <!-- Traits will be added here -->
+        </ul>
+        <button onclick="handleLogout()">Logout</button>
     </div>
 
-    <script src="zodiac.js"></script>
+    <script type="module">
+        import { handleLogout } from '/public/signup.js';
+        
+        // Get user data (This is a placeholder. Replace with actual logic to retrieve user data)
+        const userZodiacData = JSON.parse(localStorage.getItem('userZodiacData')) || {};
+
+        // Populate the zodiac info
+        document.getElementById('zodiac-sign').textContent = userZodiacData.zodiacSign || 'Unknown';
+        document.getElementById('lucky-number').textContent = userZodiacData.luckyNumber || 'Unknown';
+        document.getElementById('element').textContent = userZodiacData.element || 'Unknown';
+        document.getElementById('sign-type').textContent = userZodiacData.signType || 'Unknown';
+        document.getElementById('modern-planet').textContent = userZodiacData.modernPlanet || 'Unknown';
+        document.getElementById('traditional-planet').textContent = userZodiacData.traditionalPlanet || 'Unknown';
+
+        // Populate planet traits
+        const planetTraitsList = document.getElementById('planet-traits-list');
+        for (const planet in userZodiacData.planetTraits) {
+            const traitItem = document.createElement('li');
+            traitItem.textContent = `${planet}: ${userZodiacData.planetTraits[planet].join(', ')}`;
+            planetTraitsList.appendChild(traitItem);
+        }
+
+        // Populate traits
+        const traitsList = document.getElementById('traits-list');
+        userZodiacData.traits.forEach(trait => {
+            const traitItem = document.createElement('li');
+            traitItem.textContent = trait;
+            traitsList.appendChild(traitItem);
+        });
+
+        // Function to handle logout
+        function handleLogout() {
+            localStorage.removeItem('userZodiacData'); // Clear stored data
+            window.location.href = '/'; // Redirect to the login/signup page
+        }
+    </script>
 </body>
 </html>
