@@ -4,53 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celestial Insights</title>
-    <link rel="stylesheet" href="/style.css" />
-    <script type="module" src="/signup.js"></script>
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/public/style.css" />
+    <script type="module" src="/public/signup.js"></script>
+    <link rel="icon" href="/public/favicon.ico" />
 </head>
 <body>
-
-    <!-- Main content -->
-    <main>
-
-        <!-- Auth Container -->
-        <div id="auth-container">
-            <div id="login" class="auth-form">
-                <h2>Login</h2>
-                <input type="email" id="login-email" placeholder="Email">
-                <input type="password" id="login-password" placeholder="Password">
-                <button id="login-btn">Login</button>
-                <button id="toggle-login-to-signup" onclick="toggleAuthForms()">Switch to Signup</button>
-            </div>
-
-            <div id="signup" class="auth-form hidden">
-                <h2>Signup</h2>
-                <input type="text" id="signup-username" placeholder="Username">
-                <input type="email" id="signup-email" placeholder="Email">
-                <input type="password" id="signup-password" placeholder="Password">
-                <button id="signup-btn">Signup</button>
-                <button id="toggle-signup-to-login" onclick="toggleAuthForms()">Switch to Login</button>
-            </div>
+    <div id="auth-container">
+        <div id="login" class="auth-form">
+            <h2>Login</h2>
+            <input type="text" id="login-email" placeholder="Email">
+            <input type="password" id="login-password" placeholder="Password">
+            <button id="login-btn">Login</button>
+            <button id="toggle-btn">Switch to Signup</button>
         </div>
 
-        <!-- Zodiac Container -->
-        <div id="zodiac-container" class="hidden">
-            <h2>Welcome, <span id="user-name"></span></h2>
-            <!-- Display zodiac sign content here -->
-            <button id="logout-btn" onclick="handleLogout()">Logout</button>
+        <div id="signup" class="auth-form hidden">
+            <h2>Signup</h2>
+            <input type="text" id="signup-username" placeholder="Username">
+            <input type="email" id="signup-email" placeholder="Email">
+            <input type="password" id="signup-password" placeholder="Password">
+            <button id="signup-btn">Signup</button>
+            <button id="toggle-btn">Switch to Login</button>
         </div>
+    </div>
 
-    </main>
+    <div id="zodiac-container" class="hidden">
+        <h2>Welcome, <span id="user-name"></span></h2>
+        <button onclick="handleLogout()">Logout</button>
+        <button id="view-zodiac-btn">View Zodiac</button>
+    </div>
 
-    <!-- Scripts -->
     <script type="module">
-        import { handleSignup, handleLogin, handleLogout, toggleAuthForms } from './signup.js'; 
+        import { handleSignup, handleLogin, handleLogout, toggleAuthForms, viewZodiac } from '/public/signup.js';
 
-        // Attach event listeners to buttons
         document.getElementById('signup-btn').addEventListener('click', handleSignup);
         document.getElementById('login-btn').addEventListener('click', handleLogin);
-        document.getElementById('toggle-login-to-signup').addEventListener('click', toggleAuthForms);
-        document.getElementById('toggle-signup-to-login').addEventListener('click', toggleAuthForms);
+        document.getElementById('toggle-btn').addEventListener('click', toggleAuthForms);
+        document.getElementById('view-zodiac-btn').addEventListener('click', viewZodiac);
     </script>
 </body>
 </html>
