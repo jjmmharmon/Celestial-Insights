@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zodiac Information</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Find Your Zodiac Sign</h1>
+        <form id="zodiac-form">
+            <div>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" required>
+            </div>
+            <div>
+                <label for="gender">Gender:</label>
+                <select id="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <button type="button" id="find-sign">Find Zodiac</button>
+        </form>
+
+        <div id="zodiac-info">
+            <h2>Your Zodiac Sign</h2>
+            <p><strong>Zodiac Sign:</strong> <span id="zodiac-sign">Unknown</span></p>
+            <p><strong>Lucky Number:</strong> <span id="lucky-number">Unknown</span></p>
+            <p><strong>Element:</strong> <span id="element">Unknown</span></p>
+            <p><strong>Sign Type:</strong> <span id="sign-type">Unknown</span></p>
+            <p><strong>Modern Ruling Planet:</strong> <span id="modern-planet">Unknown</span></p>
+            <p><strong>Traditional Ruling Planet:</strong> <span id="traditional-planet">Unknown</span></p>
+
+            <h3>Traits</h3>
+            <ul id="traits">
+                <!-- Traits will be added here dynamically -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="zodiac.js"></script>
+</body>
+</html>
