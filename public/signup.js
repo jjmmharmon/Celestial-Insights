@@ -4,6 +4,7 @@ export async function handleSignup() {
     const password = document.getElementById('signup-password').value.trim();
 
     if (email && password) {
+        // Simple email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             alert('Please enter a valid email.');
