@@ -4,6 +4,13 @@ export async function handleSignup() {
     const password = document.getElementById('signup-password').value.trim();
 
     if (email && password) {
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email.');
+            return;
+        }
+
         try {
             const response = await fetch('/signup', {
                 method: 'POST',
@@ -67,14 +74,16 @@ export async function handleLogin() {
 
 // Handle logout action
 export function handleLogout() {
-    localStorage.removeItem('token'); // Clear session token
-    alert('You have been logged out.');
+    if (confirm('Are you sure you want to log out?')) {
+        localStorage.removeItem('token'); // Clear session token
+        alert('You have been logged out.');
 
-    // Reset to authentication view
-    document.getElementById('zodiac-container').classList.add('hidden');
-    document.getElementById('auth-container').classList.remove('hidden');
-    document.getElementById('login-email').value = '';
-    document.getElementById('login-password').value = '';
+        // Reset to authentication view
+        document.getElementById('zodiac-container').classList.add('hidden');
+        document.getElementById('auth-container').classList.remove('hidden');
+        document.getElementById('login-email').value = '';
+        document.getElementById('login-password').value = '';
+    }
 }
 
 // Display user interface with zodiac info
