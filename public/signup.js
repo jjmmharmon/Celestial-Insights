@@ -4,7 +4,6 @@ export async function handleSignup() {
     const password = document.getElementById('signup-password').value.trim();
 
     if (email && password) {
-        // Basic email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             alert('Please enter a valid email.');
@@ -58,7 +57,6 @@ export async function handleLogin() {
             if (response.ok) {
                 alert(data.message || 'Login successful!');
                 localStorage.setItem('token', data.token); // Store token for session
-
                 displayUserInterface(); // Show zodiac info
             } else {
                 alert(data.message || 'Login failed. Please try again.');
@@ -74,16 +72,12 @@ export async function handleLogin() {
 
 // Handle logout action
 export function handleLogout() {
-    if (confirm('Are you sure you want to log out?')) {
-        localStorage.removeItem('token'); // Clear session token
-        alert('You have been logged out.');
-
-        // Reset to authentication view
-        document.getElementById('zodiac-container').classList.add('hidden');
-        document.getElementById('auth-container').classList.remove('hidden');
-        document.getElementById('login-email').value = '';
-        document.getElementById('login-password').value = '';
-    }
+    localStorage.removeItem('token'); // Clear session token
+    alert('You have been logged out.');
+    document.getElementById('zodiac-container').classList.add('hidden');
+    document.getElementById('auth-container').classList.remove('hidden');
+    document.getElementById('login-email').value = '';
+    document.getElementById('login-password').value = '';
 }
 
 // Display user interface with zodiac info
@@ -98,4 +92,10 @@ export function toggleAuthForms() {
     const loginForm = document.getElementById('login');
     signupForm.classList.toggle('hidden');
     loginForm.classList.toggle('hidden');
+}
+
+// Directly view zodiac sign without login
+export function viewZodiac() {
+    alert('Here is your zodiac sign!');
+    // Add your logic for showing the zodiac sign here
 }
