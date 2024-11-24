@@ -12,10 +12,7 @@ config.js
 # Ignore build output and distribution folders
 dist/
 
-# Ignore image files if they are stored in the project (if not necessary for the repository)
-*.jpg
-*.jpeg
-*.png
+
 
 # Ignore logs
 logs/
