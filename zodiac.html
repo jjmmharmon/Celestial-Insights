@@ -29,6 +29,27 @@
         <button onclick="handleLogout()">Logout</button>
     </div>
 
+    <!-- New Form for User Data Input -->
+    <div id="user-info-form">
+        <h2>Enter Your Information</h2>
+        <form id="userForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
     <script type="module">
         import { handleLogout } from '/public/signup.js';
         
@@ -64,6 +85,30 @@
             localStorage.removeItem('userZodiacData'); // Clear stored data
             window.location.href = '/'; // Redirect to the login/signup page
         }
+
+        // Handle form submission to send the data to the backend
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                dob: document.getElementById('dob').value,
+                gender: document.getElementById('gender').value,
+            };
+            fetch('/submit-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Form submitted successfully!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
     </script>
 </body>
 </html>
