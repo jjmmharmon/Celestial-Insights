@@ -232,7 +232,7 @@ function setZodiacBackground(zodiacSign) {
     img.src = backgroundImageUrl; // Trigger the image load
 }
 
-  document.getElementById('find-sign').addEventListener('click', function () {
+document.getElementById('find-sign').addEventListener('click', function () {
     const dob = document.getElementById('dob').value;
     const gender = document.getElementById('gender').value.toLowerCase();
 
@@ -242,6 +242,7 @@ function setZodiacBackground(zodiacSign) {
     console.log("Gender selected:", gender);
     console.log("Traits object:", zodiacResult.traits); // Debugging to confirm traits structure
 
+    // Set the text content for various zodiac info fields
     document.getElementById('zodiac-sign').textContent = zodiacResult.zodiacSign || 'Unknown';
     document.getElementById('lucky-number').textContent = zodiacResult.luckyNumber || 'Unknown';
     document.getElementById('element').textContent = zodiacResult.element || 'Unknown';
@@ -271,5 +272,8 @@ function setZodiacBackground(zodiacSign) {
         traitsList.appendChild(li);
         console.log("Traits object:", zodiacResult.traits);
     }
+
+    // Show the zodiac info section
+    document.getElementById('zodiac-info').style.display = 'block';
 });
 });
