@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
 function setZodiacBackground(zodiacSign) {
     const body = document.body;
-    const backgroundImageUrl = `https://jjmmharmon.github.io/Celestial-Insights/${zodiacSign}.jpg`; // Full URL for image
+   const backgroundImageUrl = `https://jjmmharmon.github.io/Celestial-Insights/${zodiacSign}.jpg`;
 
     // Debug log to check if URL is correct
     console.log("Setting background image with URL:", backgroundImageUrl);
