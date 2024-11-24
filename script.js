@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
 function setZodiacBackground(zodiacSign) {
     const body = document.body;
-    document.body.style.backgroundImage = "url('images/background.jpg')";
+    document.body.style.backgroundImage = "url('background.jpg')";  // This is the default background
 
     const backgroundImageUrl = `https://jjmmharmon.github.io/Celestial-Insights/${zodiacSign}.jpg`;
 
@@ -233,7 +233,6 @@ function setZodiacBackground(zodiacSign) {
     };
     img.src = backgroundImageUrl; // Trigger the image load
 }
-
 document.getElementById('find-sign').addEventListener('click', function () {
     const dob = document.getElementById('dob').value;
     const gender = document.getElementById('gender').value.toLowerCase();
