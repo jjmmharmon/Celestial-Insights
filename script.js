@@ -213,10 +213,10 @@ function setZodiacBackground(zodiacSign) {
     const body = document.body;
     document.body.style.backgroundImage = "url('images/background.jpg')";
 
-   const backgroundImageUrl = `https://jjmmharmon.github.io/Celestial-Insights/${zodiacSign}.jpg`;
+    const backgroundImageUrl = `https://jjmmharmon.github.io/Celestial-Insights/${zodiacSign}.jpg`;
 
     // Debug log to check if URL is correct
-  console.log("Setting background image with URL: https://jjmmharmon.github.io/Celestial-Insights/Scorpio.jpg");
+    console.log("Setting background image with URL: " + backgroundImageUrl);
 
     // Attempt to load the image first to check if it exists
     const img = new Image();
